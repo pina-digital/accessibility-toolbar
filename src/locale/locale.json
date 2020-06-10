@@ -1,0 +1,22 @@
+{
+  "he": {
+    "zoom-out": "הקטנת גופן",
+    "zoom-in": "הגדלת גופן",
+    "invert": "היפוך צבעים",
+    "bigger-mouse": "הגדלת סמן",
+    "brightness": "בהירות",
+    "contrast": "ניגודיות",
+    "grayscale": "גווני אפור",
+    "reset": "ביטול שינויים"
+  },
+  "en": {
+    "zoom-out": "Zoom Out",
+    "zoom-in": "Zoom In",
+    "invert": "Invert",
+    "bigger-cursor": "Bigger Cursor",
+    "brightness": "Brightness",
+    "contrast": "Contrast",
+    "grayscale": "Grayscale",
+    "reset": "Undo Changes"
+  }
+}
