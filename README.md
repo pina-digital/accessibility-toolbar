@@ -77,4 +77,3 @@ localization: ['en']
 
 You may want to extend the `locale.json` file, or the `$.fn.openAccessibility.locale` property in order to add your own language!
 
-* We'll add a support for multilangual select in the menu, soon :)
