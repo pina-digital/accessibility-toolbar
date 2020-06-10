@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>רכיב הנגשה</title>
+
+    <meta property="og:locale" content="he_IL" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="צריך הנגשה באתר? הכר פרוייקט קוד פתוח עם חזון" />
+    <meta property="og:description" content="מאמץ משותף לסרגל נגישות חינמי ופשוט שכל מפעיל אתר יוכל לשלב בעצמו" />
+    <meta property="og:site_name" content="landing page" />
+    <meta property="og:image" content="misc/sharing-thumbnail.png" />
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="dist/open-accessibility.min.css">
+    <script src="dist/open-accessibility.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Assistant&amp;subset=hebrew" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alef&amp;subset=hebrew" rel="stylesheet">
+
+    <script>
+        $(function () {
+            $('body').openAccessibility({
+                textSelector: 'div,span,p,a,td,table,tr',
+                isMenuOpened: false,
+                iconSize: 's',
+                localization: ['he'],
+            });
+        })
+    </script>
+</head>
+
+<body>
+  
+</body>
+
+</html>
