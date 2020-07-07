@@ -128,10 +128,10 @@
             zoomStep: 0.2,
             zoom: 1,
             cursor: false,
-            textSelector: '.open-accessibility-text',
+            textSelector: 'div,span,p,a,td,table,tr,h1,h2,h3,h4,h5,h6,input',
             invert: false,
             localization: ['he'],
-            iconSize: 'm' // supported sizes are s(mall), m(edium), l(arge)
+            iconSize: 's' // supported sizes are s(mall), m(edium), l(arge)
         };
 
         var userOptions = getUserOptions();
