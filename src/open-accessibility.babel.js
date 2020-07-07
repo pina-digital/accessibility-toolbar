@@ -74,7 +74,10 @@
                 var units = getUnit(originalFontSize) || '';
                 var fontSize = parseFloat(originalFontSize) * zoom;
 
-                element.css('font-size', fontSize + units);
+                var styleName = 'font-size';
+                var value = fontSize + units;
+                element.css(styleName, value);
+                //element.attr('style', styleName + ' : ' + value + ' !important;');
             });
     }
 

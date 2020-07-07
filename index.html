@@ -15,7 +15,7 @@
     <script>
         $(function () {
             $('body').openAccessibility({
-                textSelector: 'div,span,p,a,td,table,tr',
+                textSelector: 'div,span,p,a,td,table,tr,h1,h2,h3,h4,h5,h6,input',
                 isMenuOpened: false,
                 iconSize: 's',
                 localization: ['he'],
@@ -25,7 +25,22 @@
 </head>
 
 <body>
-  
+ 
+  <div>
+      <h1>
+          שלום עולם
+      </h1>
+      <h2>
+          hello world
+      </h2>
+  </div>  
+
+<style>
+
+    h1 {
+        font-size: 20px!important;
+    }
+</style>
 </body>
 
 </html>
