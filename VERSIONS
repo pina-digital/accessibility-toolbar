@@ -1,0 +1,17 @@
+1.0.0
+initilaze
+1.0.1
+Bug fixs:
+* the close button was moving while zooming
+* deleting * margin and padding
+1.0.2
+* change default options: textselectors , size - move ouy from index.html
+1.0.3
+Bug fixs:
+* margin tool to right = 0
+* add important to zooming
+* deal with body background invert
+# problem with tool moving down when zooming 
+        (this problem disappeare when:  1. removing h1,h2.. from textselector
+                                2. removing important from setproperty
+                                3. removing filter)

@@ -60,6 +60,7 @@
     }
 
     function applyTextZoom(selector, zoom) {
+        console.log ("zooming " + selector);
         $(selector)
             .not('.open-accessibility *') // To avoid messing up the menu bar itself
             .each(function () {
@@ -76,9 +77,12 @@
 
                 var styleName = 'font-size';
                 var value = fontSize + units;
-                element.css(styleName, value);
-                //element.attr('style', styleName + ' : ' + value + ' !important;');
+                
+                element[0].style.setProperty(styleName, value, 'important');
+
+                
             });
+
     }
 
     function translateTheme(lang) {
@@ -307,8 +311,12 @@
             });
         }
 
+        // position menu on absolute right
+        if ($("body").css ("margin") !="")
+            $(".open-accessibility-collapsed").css ("right", "-" + $("body").css ("margin"));
+        
         // Initialize
-        applyTextZoom(options.textSelector, 1);
+        //applyTextZoom(options.textSelector, 1);
 
         apply();
 
@@ -337,6 +345,21 @@
             var filters = [];
             if (options.invert) {
                 filters.push('invert(1)');
+
+                if (typeof body.css ("background-color") == "undefined" || body.css ("background-color") == "rgba(0, 0, 0, 0)" )
+                    body.css ("background-color", "#ffffff");
+
+                if (body.attr ("data-open-accessibility-background-color-original") == "")
+                {
+                    body.attr ("data-open-accessibility-background-color-original", body.css ("background-color"));
+                    body.css ("background-color", invertColor (body.css ("background-color")));
+                }
+                
+            }
+            else
+            {
+                body.css ("background-color",  body.attr ("data-open-accessibility-background-color-original"));
+                body.attr ("data-open-accessibility-background-color-original", "");
             }
 
             filters.push('contrast(' + options.contrast + '%)');
@@ -375,6 +398,23 @@
 
             setUserOptions(options);
         }
+
+        function invertColor(rgb) {
+            rgb = rgb.replace ("rgb", "").replace ("(", "").replace (")", "").replace (" ", "");
+            var rgbArr = rgb.split (",");
+            if (rgbArr.length != 3)
+                return "";
+            
+            var r = (255 -rgbArr[0]),
+                g = (255 -rgbArr[1]),
+                b = (255 -rgbArr[2]);
+
+
+            return "rgb(" + r + "," + g + "," + b + ")";
+            
+        }
+        
+       
 
     };
 
