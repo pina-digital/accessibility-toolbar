@@ -1,7 +1,9 @@
+$background-color: #41c1eb;
+// #2196f3;
 
-$background-color: #2196F3;
 //ededed
-$background-hover: #cfe8fc;
+$background-hover: #d1f0fa;
+//#cfe8fc;
 //d0e8fb;
 //#b9ddfa;
 //#a0d2f8;
@@ -11,7 +13,7 @@ $z-index: 10;
 $menu-width: 256px;
 $menu-height: 448px;
 
-$images-dir: 'images' !default;
+$images-dir: "images" !default;
 
 .open-accessibility {
   position: fixed;
@@ -37,8 +39,8 @@ $images-dir: 'images' !default;
             width: 24px;
             height: 40px;
           }
-        }        
-      }    
+        }
+      }
     }
   }
 
@@ -57,16 +59,19 @@ $images-dir: 'images' !default;
             width: 80px;
             height: 160px;
           }
-        }        
-      }    
+        }
+      }
     }
   }
 
   &-container {
     overflow: hidden;
     box-sizing: border-box;
-    transition: transform 0.2s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-radius 0.3s ease-in-out;
-    box-shadow: rgba(0, 0, 0, 0.137255) 0px 0px 4px 0px, rgba(0, 0, 0, 0.278431) 0px 4px 8px 0px;
+    transition: transform 0.2s ease-in-out, width 0.3s ease-in-out,
+      height 0.3s ease-in-out, background-color 0.3s ease-in-out,
+      color 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.137255) 0px 0px 4px 0px,
+      rgba(0, 0, 0, 0.278431) 0px 4px 8px 0px;
   }
 
   &-zoom {
@@ -74,7 +79,8 @@ $images-dir: 'images' !default;
   }
 
   &-cursor {
-    *:hover, * {
+    *:hover,
+    * {
       cursor: url("images/cursor.png"), default;
     }
 
@@ -89,7 +95,6 @@ $images-dir: 'images' !default;
   }
 
   &-highlighted-links {
-
     .highlighted-link {
       text-decoration: underline !important;
     }
@@ -118,7 +123,6 @@ $images-dir: 'images' !default;
     }
   }
 
-
   &-menu {
     width: $menu-width;
     height: $menu-height;
@@ -135,13 +139,13 @@ $images-dir: 'images' !default;
       transition: background-color 0.1s;
       text-align: center;
       position: relative;
-      font-family: 'alef', sans-serif;
+      font-family: "alef", sans-serif;
       border-radius: 14px;
-      margin:0px 4px 4px 4px;
+      margin: 0px 4px 4px 4px;
 
-       &:hover {
+      &:hover {
         background-color: $background-hover;
-      } 
+      }
 
       span {
         position: absolute;
@@ -149,12 +153,11 @@ $images-dir: 'images' !default;
         width: 100%;
         bottom: 10px;
         font-weight: 600;
-        font-size: 16px;        
+        font-size: 16px;
       }
     }
 
     &-footer {
-
       position: absolute;
       bottom: 0;
       width: 100%;
@@ -163,7 +166,7 @@ $images-dir: 'images' !default;
       text-align: center;
       font-family: Consolas, sans-serif;
 
-      background-color:$background-color;
+      background-color: $background-color;
       color: #dddddd;
       font-size: 10px;
 
@@ -177,7 +180,6 @@ $images-dir: 'images' !default;
         &:active {
           color: #ffffff;
         }
-
       }
     }
   }
@@ -195,37 +197,34 @@ $images-dir: 'images' !default;
       width: 40px;
       height: $toggle-button-size;
       line-height: $toggle-button-size;
-
     }
   }
 
   &.open-accessibility-expanded {
-
     .open-accessibility-container {
       width: $menu-width;
       height: $menu-height;
-      border-radius: 2px;
+      border-radius: 10px;
       color: #333;
       background-color: #fff;
       transform: scale(1, 1) translate3d(0, 0, 0);
     }
-
   }
 
   &.open-accessibility-collapsed {
-
     .open-accessibility-container {
       width: $toggle-button-size;
       height: $toggle-button-size;
-      border-radius:  50% 0% 0% 50%; //50%;
+      border-radius: 50% 0% 0% 50%; //50%;
       color: white;
       background-color: $background-color;
       font-size: 1rem !important;
-      right:0;
+      right: 0;
 
       &:hover {
         transform: scale(1, 1) translate3d(0, 0, 0);
-        box-shadow: rgba(0, 0, 0, 0.145098) 0px 0px 4.72988px 0px, rgba(0, 0, 0, 0.294118) 0px 4.72988px 9.45976px 0px;
+        box-shadow: rgba(0, 0, 0, 0.145098) 0px 0px 4.72988px 0px,
+          rgba(0, 0, 0, 0.294118) 0px 4.72988px 9.45976px 0px;
       }
     }
   }
