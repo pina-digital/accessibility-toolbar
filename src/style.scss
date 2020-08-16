@@ -15,6 +15,18 @@ $menu-height: 448px;
 
 $images-dir: "images" !default;
 
+.open-accessibility-menu-button {
+  fill: #114761;
+}
+
+.open-accessibility-close-button {
+  fill: #114761;
+}
+
+.open-accessibility-expand-button {
+  fill: #ffffff;
+}
+
 .open-accessibility {
   position: fixed;
   direction: rtl;
@@ -34,6 +46,7 @@ $images-dir: "images" !default;
           line-height: 40px;
           width: 40px;
           height: 40px;
+          color: red;
 
           svg {
             width: 24px;
@@ -54,6 +67,7 @@ $images-dir: "images" !default;
           line-height: 160px;
           width: 160px;
           height: 80px;
+          color: white;
 
           svg {
             width: 80px;
@@ -158,6 +172,10 @@ $images-dir: "images" !default;
     }
 
     &-footer {
+      display: flex;
+      padding: 5px 0;
+
+      direction: ltr;
       position: absolute;
       bottom: 0;
       width: 100%;
@@ -167,7 +185,7 @@ $images-dir: "images" !default;
       font-family: Consolas, sans-serif;
 
       background-color: $background-color;
-      color: #dddddd;
+      color: white;
       font-size: 10px;
 
       a {
@@ -191,9 +209,10 @@ $images-dir: "images" !default;
     width: $toggle-button-size;
     height: $toggle-button-size;
     text-align: center;
+    color: white;
 
     svg {
-      fill: #fff;
+      // fill: #fff;
       width: 40px;
       height: $toggle-button-size;
       line-height: $toggle-button-size;
@@ -204,7 +223,8 @@ $images-dir: "images" !default;
     .open-accessibility-container {
       width: $menu-width;
       height: $menu-height;
-      border-radius: 10px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
       color: #333;
       background-color: #fff;
       transform: scale(1, 1) translate3d(0, 0, 0);
