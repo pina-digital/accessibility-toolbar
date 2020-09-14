@@ -1,3 +1,13 @@
+.highlight-links {
+  background-color: black !important;
+  color: yellow !important;
+  text-decoration: underline !important;
+}
+
+.button-pressed {
+  background-color: lightblue;
+}
+
 /* @media screen and (max-width: 780px) {
 	 $horizontal-width: 25%;
 	 $horizontal-height: 10%;
@@ -209,8 +219,8 @@
   }
 }
 .open-accessibility-menu {
-  width: 256px;
-  height: 448px;
+  // width: 256px;
+  // height: 448px;
 }
 .open-accessibility-menu-footer {
   box-sizing: border-box;
@@ -229,7 +239,7 @@
 .open-accessibility.open-accessibility-expanded {
   .open-accessibility-container {
     width: 256px;
-    height: 448px;
+    height: 540px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     color: #333;

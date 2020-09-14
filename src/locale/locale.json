@@ -7,6 +7,8 @@
     "brightness": "בהירות",
     "contrast": "ניגודיות",
     "grayscale": "גווני אפור",
+    "links-highlight": "הדגשת לינקים",
+    "animation-stop": "עצירת אנימציות",
     "reset": "ביטול שינויים"
   },
   "en": {
@@ -17,6 +19,8 @@
     "brightness": "Brightness",
     "contrast": "Contrast",
     "grayscale": "Grayscale",
+    "links-highlight": "Links Highlight",
+    "animation-stop": "Animation Stop",
     "reset": "Undo Changes"
   }
 }

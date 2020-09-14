@@ -178,6 +178,8 @@
     var brightnessButton = $(".open-accessibility-brightness-button");
     var monochromeButton = $(".open-accessibility-monochrome-button");
     var contrastButton = $(".open-accessibility-contrast-button");
+    var linksButton = $(".open-accessibility-links-button");
+    var animationButton = $(".open-accessibility-animation-button");
     var resetButton = $(".open-accessibility-reset-button");
     var cursorWorkaround = $(".open-accessibility-cursor-workaround");
 
@@ -223,6 +225,23 @@
       if (options.grayscale > 100) {
         options.grayscale = 0;
       }
+
+      apply();
+    });
+
+    // -------------
+    // Links
+    linksButton.click(() => {
+      console.log(options);
+      options.highlightedLinks = !options.highlightedLinks;
+      apply();
+    });
+    // -------------
+    // Animation
+    animationButton.click(() => {
+      console.log(options);
+      // options.highlightedLinks = !options.highlightedLinks;
+
       apply();
     });
 
@@ -358,6 +377,8 @@
 
       var filters = [];
       if (options.invert) {
+        invertButton.addClass("button-pressed");
+
         filters.push("invert(1)");
 
         if (
@@ -379,11 +400,19 @@
           );
         }
       } else {
+        invertButton.removeClass("button-pressed");
+
         body.css(
           "background-color",
           body.attr("data-open-accessibility-background-color-original")
         );
         body.attr("data-open-accessibility-background-color-original", "");
+      }
+
+      if (options.grayscale == 100) {
+        monochromeButton.addClass("button-pressed");
+      } else {
+        monochromeButton.removeClass("button-pressed");
       }
 
       filters.push("contrast(" + options.contrast + "%)");
@@ -407,15 +436,28 @@
 
       if (options.cursor) {
         html.addClass("open-accessibility-cursor");
+        cursorButton.addClass("button-pressed");
 
         if (!googleChrome) {
           cursorWorkaround.show();
         }
       } else {
         html.removeClass("open-accessibility-cursor");
+        cursorButton.removeClass("button-pressed");
+
         if (!googleChrome) {
           cursorWorkaround.hide();
         }
+      }
+
+      // ----------
+      // Link Highlight
+      if (options.highlightedLinks) {
+        $("a").addClass("highlight-links");
+        linksButton.addClass("button-pressed");
+      } else {
+        $("a").removeClass("highlight-links");
+        linksButton.removeClass("button-pressed");
       }
 
       setUserOptions(options);
