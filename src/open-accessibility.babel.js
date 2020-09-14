@@ -415,6 +415,36 @@
         monochromeButton.removeClass("button-pressed");
       }
 
+      if (options.zoom > 1) {
+        zoomInButton.addClass("button-pressed");
+      } else {
+        zoomInButton.removeClass("button-pressed");
+      }
+
+      if (options.zoom < 1) {
+        zoomOutButton.addClass("button-pressed");
+      } else {
+        zoomOutButton.removeClass("button-pressed");
+      }
+
+      if (options.brightness > 100) {
+        brightnessButton.addClass("button-pressed");
+      } else if (options.brightness < 100) {
+        brightnessButton.addClass("button-pressed");
+      } else {
+        brightnessButton.removeClass("button-pressed");
+      }
+
+      if (options.contrast > 100) {
+        contrastButton.addClass("button-pressed");
+      } else if (options.contrast < 100) {
+        contrastButton.addClass("button-pressed");
+      } else {
+        contrastButton.removeClass("button-pressed");
+      }
+
+      console.log("b", options.brightness);
+
       filters.push("contrast(" + options.contrast + "%)");
       filters.push("brightness(" + options.brightness + "%)");
       filters.push("grayscale(" + options.grayscale + "%)");
