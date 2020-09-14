@@ -390,11 +390,11 @@
       filters.push("brightness(" + options.brightness + "%)");
       filters.push("grayscale(" + options.grayscale + "%)");
       var filterValue = filters.join(" ");
-      body.css("filter", filterValue);
-      body.css("-ms-filter", filterValue);
-      body.css("-moz-filter", filterValue);
-      body.css("-webkit-filter", filterValue);
-      body.css("-o-filter", filterValue);
+      html.css("filter", filterValue);
+      html.css("-ms-filter", filterValue);
+      html.css("-moz-filter", filterValue);
+      html.css("-webkit-filter", filterValue);
+      html.css("-o-filter", filterValue);
 
       // ----------
       // Zoom
