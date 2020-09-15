@@ -1,5 +1,7 @@
-<svg version="1.1" id="Layer_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg version="1.1" id="close-button" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+
+<title><span data-lang="close">סגירה</span></title>
 <g>
 	<path d="M17,15l5.9,5.9l-2,2L15,17l-5.9,5.9l-2-2L13,15L7.1,9.1l2-2L15,13l5.9-5.9l2,2L17,15z"/>
 </g>

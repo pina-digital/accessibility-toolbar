@@ -1,24 +1,28 @@
 {
   "he": {
+    "expand": "האיש הנגיש",
+    "close": "סגירה",
     "zoom-out": "הקטנת גופן",
     "zoom-in": "הגדלת גופן",
     "invert": "היפוך צבעים",
-    "bigger-mouse": "הגדלת סמן",
+    "bigger-cursor": "הגדלת סמן",
     "brightness": "בהירות",
     "contrast": "ניגודיות",
-    "grayscale": "גווני אפור",
+    "monochrome": "גווני אפור",
     "links-highlight": "הדגשת לינקים",
     "animation-stop": "עצירת אנימציות",
     "reset": "ביטול שינויים"
   },
   "en": {
+    "expand": "The Accessible Guy",
+    "close": "Close",
     "zoom-out": "Zoom Out",
     "zoom-in": "Zoom In",
     "invert": "Invert",
     "bigger-cursor": "Bigger Cursor",
     "brightness": "Brightness",
     "contrast": "Contrast",
-    "grayscale": "Grayscale",
+    "monochrome": "Grayscale",
     "links-highlight": "Links Highlight",
     "animation-stop": "Animation Stop",
     "reset": "Undo Changes"
