@@ -148,6 +148,7 @@
       cursor: false,
       textSelector: "div,span,p,a,td,table,tr,h1,h2,h3,h4,h5,h6,input",
       invert: false,
+      isAnimStopped: false,
       localization: ["he"],
       iconSize: "s", // supported sizes are s(mall), m(edium), l(arge)
     };
@@ -232,7 +233,6 @@
     // -------------
     // Links
     linksButton.click(() => {
-      console.log(options);
       options.highlightedLinks = !options.highlightedLinks;
       apply();
     });
@@ -240,8 +240,7 @@
     // Animation
     animationButton.click(() => {
       console.log(options);
-      // options.highlightedLinks = !options.highlightedLinks;
-
+      options.isAnimStopped = !options.isAnimStopped;
       apply();
     });
 
@@ -491,6 +490,16 @@
         $("a img").removeClass("highlight-links");
 
         linksButton.removeClass("button-pressed");
+      }
+
+      // ----------
+      // Animation Stop
+      if (options.isAnimStopped) {
+        $("*").addClass("paused");
+        animationButton.addClass("button-pressed");
+      } else {
+        $("*").removeClass("paused");
+        animationButton.removeClass("button-pressed");
       }
 
       setUserOptions(options);
