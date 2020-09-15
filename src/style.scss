@@ -52,25 +52,25 @@
   -moz-animation-play-state: paused;
   -o-animation-play-state: paused;
   animation-play-state: paused;
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+  -o-transform: none !important;
+  -moz-transform: none !important;
+  -ms-transform: none !important;
+  -webkit-transform: none !important;
+  transform: none !important;
+  -webkit-animation: none !important;
+  -moz-animation: none !important;
+  -o-animation: none !important;
+  -ms-animation: none !important;
+  animation: none !important;
+  animation-play-state: paused;
 }
 
-// .animation-stop {
-//   -webkit-transition: none !important;
-//   -moz-transition: none !important;
-//   -o-transition: none !important;
-//   transition: none !important;
-//   -o-transform: none !important;
-//   -moz-transform: none !important;
-//   -ms-transform: none !important;
-//   -webkit-transform: none !important;
-//   transform: none !important;
-//   -webkit-animation: none !important;
-//   -moz-animation: none !important;
-//   -o-animation: none !important;
-//   -ms-animation: none !important;
-//   animation: none !important;
-//   animation-play-state: paused;
-// }
+.animation-stop {
+}
 
 /* @media screen and (max-width: 780px) {
 	 $horizontal-width: 25%;
