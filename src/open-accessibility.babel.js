@@ -482,11 +482,11 @@
       // ----------
       // Link Highlight
       if (options.highlightedLinks) {
-        $("a").addClass("highlight-links");
+        $("a:not(a:has(img))").addClass("highlight-links");
         $("a img").addClass("highlight-links");
         linksButton.addClass("button-pressed");
       } else {
-        $("a").removeClass("highlight-links");
+        $("a:not(a:has(img))").removeClass("highlight-links");
         $("a img").removeClass("highlight-links");
 
         linksButton.removeClass("button-pressed");
