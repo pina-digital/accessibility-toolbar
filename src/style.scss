@@ -42,16 +42,18 @@
   text-decoration: underline !important;
   border: 3px solid yellow !important;
   padding: 2px;
+  // line-height: 120%;
+  // font-size: initial;
 }
 
 .button-pressed {
   background-color: lightblue;
 }
 .paused {
-  -webkit-animation-play-state: paused;
-  -moz-animation-play-state: paused;
-  -o-animation-play-state: paused;
-  animation-play-state: paused;
+  -webkit-animation-play-state: paused !important;
+  -moz-animation-play-state: paused !important;
+  -o-animation-play-state: paused !important;
+  animation-play-state: paused !important;
   -webkit-transition: none !important;
   -moz-transition: none !important;
   -o-transition: none !important;
@@ -60,7 +62,7 @@
   // -moz-transform: none !important;
   // -ms-transform: none !important;
   // -webkit-transform: none !important;
-  // transform: none !important;
+  transform: none !important;
   // -webkit-animation: none !important;
   // -moz-animation: none !important;
   // -o-animation: none !important;
@@ -290,6 +292,7 @@
   box-sizing: border-box;
   cursor: pointer;
   // transition: background-color 0.1s;
+
   direction: ltr;
   position: absolute;
   bottom: 0;
@@ -315,7 +318,7 @@
     border-top-right-radius: 10px;
     color: #333;
     background-color: #fff;
-    transform: scale(1, 1) translate3d(0, 0, 0);
+    // transform: scale(1, 1) translate3d(0, 0, 0);
   }
 }
 .open-accessibility.open-accessibility-collapsed {
