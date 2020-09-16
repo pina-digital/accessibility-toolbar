@@ -40,14 +40,14 @@
   background-color: black !important;
   color: yellow !important;
   text-decoration: underline !important;
-  border: 3px solid yellow !important;
+  border: 3px dashed yellow !important;
   padding: 2px;
   // line-height: 120%;
   // font-size: initial;
 }
 
 .button-pressed {
-  background-color: lightblue;
+  background-color: #d1f0fa;
 }
 .paused {
   -webkit-animation-play-state: paused !important;
