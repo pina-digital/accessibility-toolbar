@@ -483,6 +483,8 @@
       // Link Highlight
       if (options.highlightedLinks) {
         $("a:not(a:has(img))").addClass("highlight-links");
+        // $("a:not(a:has(svg))").addClass("highlight-links");
+
         $("a img").addClass("highlight-links");
         linksButton.addClass("button-pressed");
       } else {
