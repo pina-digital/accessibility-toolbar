@@ -482,14 +482,23 @@
       // ----------
       // Link Highlight
       if (options.highlightedLinks) {
-        $("a:not(a:has(img))").addClass("highlight-links");
-        // $("a:not(a:has(svg))").addClass("highlight-links");
+        $("a:not(a:has(img))")
+          .not(".open-accessibility *")
+          .addClass("highlight-links");
+        $("a img").addClass("highlight-links-img");
+        $(".open-accessibility-menu-footer").addClass("highlight-links");
+        $(".open-accessibility-menu-footer svg").addClass(
+          "highlight-links-footer-img"
+        );
 
-        $("a img").addClass("highlight-links");
         linksButton.addClass("button-pressed");
       } else {
         $("a:not(a:has(img))").removeClass("highlight-links");
-        $("a img").removeClass("highlight-links");
+        $("a img").removeClass("highlight-links-img");
+        $(".open-accessibility-menu-footer").removeClass("highlight-links");
+        $(".open-accessibility-menu-footer svg").removeClass(
+          "highlight-links-footer-img"
+        );
 
         linksButton.removeClass("button-pressed");
       }
@@ -497,7 +506,7 @@
       // ----------
       // Animation Stop
       if (options.isAnimStopped) {
-        $("*").addClass("paused");
+        $("*").not(".open-accessibility *").addClass("paused");
         animationButton.addClass("button-pressed");
       } else {
         $("*").removeClass("paused");

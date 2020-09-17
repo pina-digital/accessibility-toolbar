@@ -46,6 +46,11 @@
   // font-size: initial;
 }
 
+.highlight-links-footer-img {
+  height: 95%;
+  width: 95%;
+}
+
 .button-pressed {
   background-color: #d1f0fa;
 }
@@ -58,17 +63,16 @@
   -moz-transition: none !important;
   -o-transition: none !important;
   transition: none !important;
-  // -o-transform: none !important;
-  // -moz-transform: none !important;
-  // -ms-transform: none !important;
-  // -webkit-transform: none !important;
+  -o-transform: none !important;
+  -moz-transform: none !important;
+  -ms-transform: none !important;
+  -webkit-transform: none !important;
   transform: none !important;
-  // -webkit-animation: none !important;
-  // -moz-animation: none !important;
-  // -o-animation: none !important;
-  // -ms-animation: none !important;
-  // animation: none !important;
-  // animation-play-state: paused;
+  -webkit-animation: none !important;
+  -moz-animation: none !important;
+  -o-animation: none !important;
+  -ms-animation: none !important;
+  animation: none !important;
 }
 
 .animation-stop {
@@ -289,13 +293,17 @@
   // height: 448px;
 }
 .open-accessibility-menu-footer {
+  float: left;
+  text-align: center;
+  position: relative;
+
   box-sizing: border-box;
   cursor: pointer;
-  // transition: background-color 0.1s;
+  transition: background-color 0.1s;
 
   direction: ltr;
-  position: absolute;
-  bottom: 0;
+  // position: absolute;
+  // bottom: 0;
   width: 100%;
   height: 40px;
   &:hover {
@@ -303,17 +311,10 @@
   }
 }
 
-.open-accessibility-menu-footer img {
-  box-sizing: border-box;
-
-  width: 97%;
-  height: auto;
-}
-
 .open-accessibility.open-accessibility-expanded {
   .open-accessibility-container {
     width: 256px;
-    height: 544px;
+    height: 542px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     color: #333;
