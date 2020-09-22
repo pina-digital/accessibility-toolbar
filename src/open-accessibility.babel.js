@@ -485,7 +485,7 @@
         $("a:not(a:has(img))")
           .not(".open-accessibility *")
           .addClass("highlight-links");
-        $("a img").addClass("highlight-links-img");
+        $("a img").addClass("highlight-links");
         $(".open-accessibility-menu-footer").addClass("highlight-links");
         $(".open-accessibility-menu-footer svg").addClass(
           "highlight-links-footer-img"
@@ -494,7 +494,7 @@
         linksButton.addClass("button-pressed");
       } else {
         $("a:not(a:has(img))").removeClass("highlight-links");
-        $("a img").removeClass("highlight-links-img");
+        $("a img").removeClass("highlight-links");
         $(".open-accessibility-menu-footer").removeClass("highlight-links");
         $(".open-accessibility-menu-footer svg").removeClass(
           "highlight-links-footer-img"
@@ -508,6 +508,7 @@
       if (options.isAnimStopped) {
         $("*").not(".open-accessibility *").addClass("paused");
         animationButton.addClass("button-pressed");
+        $("*").stop();
       } else {
         $("*").removeClass("paused");
         animationButton.removeClass("button-pressed");
