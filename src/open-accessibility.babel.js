@@ -508,7 +508,6 @@
       if (options.isAnimStopped) {
         $("*").not(".open-accessibility *").addClass("paused");
         animationButton.addClass("button-pressed");
-        $("*").stop();
       } else {
         $("*").removeClass("paused");
         animationButton.removeClass("button-pressed");
