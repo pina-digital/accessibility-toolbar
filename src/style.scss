@@ -1,6 +1,9 @@
 html {
   background-color: lightcoral;
 }
+// :focus {
+//   border: 3px solid red;
+// }
 .anim {
   width: 100px;
   height: 100px;
@@ -58,6 +61,9 @@ html {
   // &a {
   //   color: yellow;
   // }
+  & a {
+    color: yellow;
+  }
 }
 
 .lc {
@@ -163,6 +169,9 @@ html {
 	}
 }
  */
+.top-row {
+  display: flex;
+}
 .open-accessibility-menu-button {
   fill: #114761;
   float: right;

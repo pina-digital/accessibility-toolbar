@@ -196,10 +196,10 @@
     // -------------
     // Brightness
     brightnessButton.click(() => {
-      options.brightness += 50;
+      options.brightness += 10;
 
-      if (options.brightness > 150) {
-        options.brightness = 50;
+      if (options.brightness > 120) {
+        options.brightness = 80;
       }
 
       apply();
@@ -417,34 +417,70 @@
 
       if (options.zoom > options.minZoomLevel) {
         zoomInButton.addClass("button-pressed");
+        document
+          .getElementById("zoom-in-button")
+          .setAttribute("aria-pressed", "true");
       } else {
         zoomInButton.removeClass("button-pressed");
+        document
+          .getElementById("zoom-in-button")
+          .setAttribute("aria-pressed", "false");
       }
 
       if (options.zoom >= options.maxZoomLevel) {
         zoomInButton.addClass("disabled-button");
+        document
+          .getElementById("zoom-in-button")
+          .setAttribute("aria-disabled", "true");
       } else {
         zoomInButton.removeClass("disabled-button");
+        document
+          .getElementById("zoom-in-button")
+          .setAttribute("aria-disabled", "false");
         zoomInButton.addClass("open-accessibility-menu-button");
       }
 
       if (options.zoom <= options.minZoomLevel) {
         zoomOutButton.removeClass("button-pressed");
         zoomOutButton.addClass("disabled-button");
-
-        // zoomOutButton.addClass("button-pressed");
+        document
+          .getElementById("zoom-out-button")
+          .setAttribute("aria-disabled", "true");
       } else {
         zoomOutButton.removeClass("disabled-button");
+        document
+          .getElementById("zoom-out-button")
+          .setAttribute("aria-disabled", "false");
         zoomOutButton.addClass("open-accessibility-menu-button");
       }
 
-      if (options.brightness > 100) {
-        brightnessButton.addClass("button-pressed");
-      } else if (options.brightness < 100) {
-        brightnessButton.addClass("button-pressed");
-      } else {
+      if (options.brightness == 100) {
         brightnessButton.removeClass("button-pressed");
+        document
+          .getElementById("brightness-button")
+          .setAttribute("aria-pressed", "false");
+      } else {
+        brightnessButton.addClass("button-pressed");
+        document
+          .getElementById("brightness-button")
+          .setAttribute("aria-pressed", "true");
       }
+      // if (options.brightness > 100) {
+      //   brightnessButton.addClass("button-pressed");
+      //   document
+      //     .getElementById("brightness-button")
+      //     .setAttribute("aria-pressed", "true");
+      // } else if (options.brightness < 100) {
+      //   brightnessButton.addClass("button-pressed");
+      //   document
+      //     .getElementById("brightness-button")
+      //     .setAttribute("aria-pressed", "true");
+      // } else {
+      //   brightnessButton.removeClass("button-pressed");
+      //   document
+      //     .getElementById("brightness-button")
+      //     .setAttribute("aria-pressed", "false");
+      // }
 
       if (options.contrast > 100) {
         $("*")
@@ -456,6 +492,9 @@
         $("*").removeClass("lc");
 
         contrastButton.addClass("button-pressed");
+        document
+          .getElementById("contrast-button")
+          .setAttribute("aria-pressed", "true");
       } else if (options.contrast < 100) {
         $("*")
           .not(".open-accessibility *")
@@ -467,11 +506,17 @@
         $("*").removeClass("dc");
 
         contrastButton.addClass("button-pressed");
+        document
+          .getElementById("contrast-button")
+          .setAttribute("aria-pressed", "true");
       } else {
         $("*").removeClass("dc");
         $("*").removeClass("lc");
 
         contrastButton.removeClass("button-pressed");
+        document
+          .getElementById("contrast-button")
+          .setAttribute("aria-pressed", "false");
       }
 
       console.log("b", options.brightness);
@@ -482,11 +527,11 @@
       filters.push("grayscale(" + options.grayscale + "%)");
       var filterValue = filters.join(" ");
       console.log("filterValue", filterValue);
-      $("*").css("filter", filterValue);
-      $("*").css("-ms-filter", filterValue);
-      $("*").css("-moz-filter", filterValue);
-      $("*").css("-webkit-filter", filterValue);
-      $("*").css("-o-filter", filterValue);
+      html.css("filter", filterValue);
+      html.css("-ms-filter", filterValue);
+      html.css("-moz-filter", filterValue);
+      html.css("-webkit-filter", filterValue);
+      html.css("-o-filter", filterValue);
 
       // ----------
       // Zoom
@@ -503,13 +548,18 @@
       if (options.cursor) {
         html.addClass("open-accessibility-cursor");
         cursorButton.addClass("button-pressed");
-
+        document
+          .getElementById("cursor-button")
+          .setAttribute("aria-pressed", "true");
         if (!googleChrome) {
           cursorWorkaround.show();
         }
       } else {
         html.removeClass("open-accessibility-cursor");
         cursorButton.removeClass("button-pressed");
+        document
+          .getElementById("cursor-button")
+          .setAttribute("aria-pressed", "false");
 
         if (!googleChrome) {
           cursorWorkaround.hide();
@@ -529,6 +579,9 @@
         // );
 
         linksButton.addClass("button-pressed");
+        document
+          .getElementById("links-button")
+          .setAttribute("aria-pressed", "true");
       } else {
         $("a:not(a:has(img))").removeClass("highlight-links");
         $("a img").removeClass("highlight-links");
@@ -538,6 +591,9 @@
         );
 
         linksButton.removeClass("button-pressed");
+        document
+          .getElementById("links-button")
+          .setAttribute("aria-pressed", "false");
       }
 
       // ----------
@@ -545,9 +601,15 @@
       if (options.isAnimStopped) {
         $("*").not(".open-accessibility *").addClass("paused");
         animationButton.addClass("button-pressed");
+        document
+          .getElementById("stop-anim-button")
+          .setAttribute("aria-pressed", "true");
       } else {
         $("*").removeClass("paused");
         animationButton.removeClass("button-pressed");
+        document
+          .getElementById("stop-anim-button")
+          .setAttribute("aria-pressed", "false");
       }
 
       setUserOptions(options);

@@ -1,96 +1,160 @@
 <div class="open-accessibility-cursor-workaround"></div>
-<div class="open-accessibility open-accessibility-collapsed">
+<div
+  class="open-accessibility open-accessibility-collapsed"
+  role="toolbar"
+  aria-orientation="vertical"
+>
   <div class="open-accessibility-container">
-    <div class="open-accessibility-expand-button">
+    <div
+      class="open-accessibility-expand-button"
+      role="button"
+      id="lbexpand"
+      aria-label="האיש הנגיש"
+      tabindex="0"
+    >
       @@include('../svgs/expand.svg')
       <!-- <span data-lang="expand"></span> -->
     </div>
 
     <div class="open-accessibility-menu">
-      <div class="open-accessibility-close-button">
-        @@include('../svgs/close.svg')
-        <!-- <span data-lang="close"></span> -->
+      <div class="top-row">
+        <div
+          class="open-accessibility-close-button"
+          role="button"
+          id="lbclose"
+          aria-label="סגירה"
+          tabindex="0"
+        >
+          @@include('../svgs/close.svg')
+          <!-- <span data-lang="close"></span> -->
+        </div>
+        <!-- <div class="language-selector">
+          <label class="switch">
+            <input type="checkbox" checked />
+            <span class="slider round"></span>
+          </label>
+        </div> -->
       </div>
-
       <div
         class="open-accessibility-menu-button open-accessibility-zoom-in-button"
         id="zoom-in-button"
+        role="button"
+        aria-pressed="false"
+        aria-disabled="false"
+        tabindex="0"
       >
         @@include('../svgs/zoom-in.svg')
-        <span data-lang="zoom-in">הגדלת גופן</span>
+        <span data-lang="zoom-in" id="lbzoomin">הגדלת גופן</span>
       </div>
 
       <div
         class="open-accessibility-menu-button open-accessibility-zoom-out-button"
         id="zoom-out-button"
+        role="button"
+        aria-pressed="false"
+        aria-disabled="true"
+        tabindex="0"
       >
         @@include('../svgs/zoom-out.svg')
-        <span data-lang="zoom-out">הקטנת גופן</span>
+        <span data-lang="zoom-out" id="lbzoomout">הקטנת גופן</span>
       </div>
 
       <div
         class="open-accessibility-menu-button open-accessibility-invert-button"
         id="invert-button"
+        role="button"
+        aria-pressed="false"
+        tabindex="0"
       >
         @@include('../svgs/invert.svg')
-        <span data-lang="invert">היפוך צבעים</span>
+        <span id="lbinvert" data-lang="invert" id="lbinvert">היפוך צבעים</span>
       </div>
 
       <div
         class="open-accessibility-menu-button open-accessibility-cursor-button"
         id="cursor-button"
+        role="button"
+        aria-pressed="false"
+        tabindex="0"
       >
         @@include('../svgs/cursor.svg')
-        <span data-lang="bigger-cursor">הגדלת סמן</span>
+        <span data-lang="bigger-cursor" id="lbcursor">הגדלת סמן</span>
       </div>
 
       <div
         class="open-accessibility-menu-button open-accessibility-brightness-button"
         id="brightness-button"
+        role="button"
+        aria-pressed="false"
+        tabindex="0"
       >
         @@include('../svgs/brightness.svg')
-        <span data-lang="brightness">בהירות</span>
+        <span data-lang="brightness" id="lbbrightness">בהירות</span>
       </div>
 
       <div
         class="open-accessibility-menu-button open-accessibility-contrast-button"
+        id="contrast-button"
+        role="button"
+        aria-pressed="false"
+        tabindex="0"
       >
         @@include('../svgs/contrast.svg')
-        <span data-lang="contrast">ניגודיות</span>
+        <span data-lang="contrast" id="contrast">ניגודיות</span>
       </div>
 
       <div
         class="open-accessibility-menu-button open-accessibility-monochrome-button"
         id="monochrome-button"
+        role="button"
+        aria-pressed="false"
+        tabindex="0"
       >
         @@include('../svgs/monochrome.svg')
-        <span data-lang="monochrome">גווני אפור</span>
+        <span data-lang="monochrome" id="lbmonochrome">גווני אפור</span>
       </div>
 
       <div
         class="open-accessibility-menu-button open-accessibility-links-button"
         id="links-button"
+        role="button"
+        aria-pressed="false"
+        tabindex="0"
       >
         @@include('../svgs/link.svg')
-        <span data-lang="links-highlight">הדגשת לינקים</span>
+        <span data-lang="links-highlight" id="lblink">הדגשת לינקים</span>
       </div>
       <div
         class="open-accessibility-menu-button open-accessibility-animation-button"
+        id="stop-anim-button"
+        aria-role="button"
+        aria-pressed="false"
+        tabindex="0"
       >
         @@include('../svgs/pause.svg')
-        <span data-lang="animation-stop">עצירת אנימציות</span>
+        <span data-lang="animation-stop" id="lbpause">עצירת אנימציות</span>
       </div>
 
       <div
         class="open-accessibility-menu-button open-accessibility-reset-button"
+        id="reset-button"
+        role="button"
+        aria-pressed="false"
+        tabindex="0"
       >
         @@include('../svgs/revert.svg')
-        <span data-lang="reset">בטל שינויים</span>
+        <span data-lang="reset" id="lbrevert">בטל שינויים</span>
       </div>
 
       <div class="open-accessibility-menu-footer">
         <!-- <div class="open-accessibility-menu-footer-img"> -->
-        <a href="https://pina.co.il" target="_blank">
+        <a
+          href="https://pina.co.il"
+          target="_blank"
+          role="link"
+          aria-label="לוגו פינה"
+          tabindex="0"
+        >
           <!-- <img src="./src/svgs/footerpina.svg" alt="Pina Logo" /> -->
           <!-- <img src="./src/svgs/footerpina.svg" alt="Pina Logo" width="238" /> -->
 
