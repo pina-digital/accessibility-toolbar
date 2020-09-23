@@ -1,3 +1,6 @@
+html {
+  background-color: lightcoral;
+}
 .anim {
   width: 100px;
   height: 100px;
@@ -41,9 +44,25 @@
   color: yellow !important;
   // text-decoration: underline !important;
   border: 3px dashed yellow !important;
-  padding: 2px;
-  // line-height: 120%;
-  // font-size: initial;
+  padding: 3px;
+  line-height: auto;
+
+  &:hover {
+    font-weight: bold;
+  }
+}
+
+.dc {
+  background-color: black !important;
+  color: white !important;
+  // &a {
+  //   color: yellow;
+  // }
+}
+
+.lc {
+  background-color: white !important;
+  color: black !important;
 }
 
 .highlight-links-footer-img {
@@ -73,9 +92,6 @@
   // -o-animation: none !important;
   // -ms-animation: none !important;
   // animation: none !important;
-}
-
-.animation-stop {
 }
 
 /* @media screen and (max-width: 780px) {
@@ -198,6 +214,10 @@
     height: 80px;
     line-height: 80px;
   }
+}
+
+.disabled-button {
+  fill: lightgray;
 }
 .open-accessibility {
   position: fixed;

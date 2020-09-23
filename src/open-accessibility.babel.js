@@ -141,7 +141,7 @@
       grayscale: 0,
       brightness: 100,
       contrast: 100,
-      maxZoomLevel: 4,
+      maxZoomLevel: 3,
       minZoomLevel: 1,
       zoomStep: 0.2,
       zoom: 1,
@@ -239,7 +239,7 @@
     // -------------
     // Animation
     animationButton.click(() => {
-      console.log(options);
+      console.log("options", options);
       options.isAnimStopped = !options.isAnimStopped;
       apply();
     });
@@ -262,6 +262,7 @@
         options.maxZoomLevel,
         options.zoom + options.zoomStep
       );
+      console.log("zzz", options.zoom);
       apply();
     });
 
@@ -414,16 +415,27 @@
         monochromeButton.removeClass("button-pressed");
       }
 
-      if (options.zoom > 1) {
+      if (options.zoom > options.minZoomLevel) {
         zoomInButton.addClass("button-pressed");
       } else {
         zoomInButton.removeClass("button-pressed");
       }
 
-      if (options.zoom < 1) {
-        zoomOutButton.addClass("button-pressed");
+      if (options.zoom >= options.maxZoomLevel) {
+        zoomInButton.addClass("disabled-button");
       } else {
+        zoomInButton.removeClass("disabled-button");
+        zoomInButton.addClass("open-accessibility-menu-button");
+      }
+
+      if (options.zoom <= options.minZoomLevel) {
         zoomOutButton.removeClass("button-pressed");
+        zoomOutButton.addClass("disabled-button");
+
+        // zoomOutButton.addClass("button-pressed");
+      } else {
+        zoomOutButton.removeClass("disabled-button");
+        zoomOutButton.addClass("open-accessibility-menu-button");
       }
 
       if (options.brightness > 100) {
@@ -435,30 +447,55 @@
       }
 
       if (options.contrast > 100) {
+        $("*")
+          .not(".open-accessibility *")
+          .not(".open-accessibility")
+          .not("a")
+          .addClass("dc");
+
+        $("*").removeClass("lc");
+
         contrastButton.addClass("button-pressed");
       } else if (options.contrast < 100) {
+        $("*")
+          .not(".open-accessibility *")
+          .not(".open-accessibility")
+          .not("a")
+          .not("img")
+          .addClass("lc");
+
+        $("*").removeClass("dc");
+
         contrastButton.addClass("button-pressed");
       } else {
+        $("*").removeClass("dc");
+        $("*").removeClass("lc");
+
         contrastButton.removeClass("button-pressed");
       }
 
       console.log("b", options.brightness);
+      console.log("c", options.contrast);
 
-      filters.push("contrast(" + options.contrast + "%)");
+      filters.push("contrast(" + 100 + "%)");
       filters.push("brightness(" + options.brightness + "%)");
       filters.push("grayscale(" + options.grayscale + "%)");
       var filterValue = filters.join(" ");
-      html.css("filter", filterValue);
-      html.css("-ms-filter", filterValue);
-      html.css("-moz-filter", filterValue);
-      html.css("-webkit-filter", filterValue);
-      html.css("-o-filter", filterValue);
+      console.log("filterValue", filterValue);
+      $("*").css("filter", filterValue);
+      $("*").css("-ms-filter", filterValue);
+      $("*").css("-moz-filter", filterValue);
+      $("*").css("-webkit-filter", filterValue);
+      $("*").css("-o-filter", filterValue);
 
       // ----------
       // Zoom
       applyTextZoom(options.textSelector, options.zoom);
 
-      //$('.open-accessibility-zoom').css('transform', 'scale(' + options.zoom + ')');
+      // $(".open-accessibility-zoom").css(
+      //   "transform",
+      //   "scale(" + options.zoom + ")"
+      // );
 
       // ----------
       // Cursor
@@ -486,10 +523,10 @@
           .not(".open-accessibility *")
           .addClass("highlight-links");
         $("a img").addClass("highlight-links");
-        $(".open-accessibility-menu-footer").addClass("highlight-links");
-        $(".open-accessibility-menu-footer svg").addClass(
-          "highlight-links-footer-img"
-        );
+        // $(".open-accessibility-menu-footer").addClass("highlight-links");
+        // $(".open-accessibility-menu-footer svg").addClass(
+        //   "highlight-links-footer-img"
+        // );
 
         linksButton.addClass("button-pressed");
       } else {
