@@ -17,7 +17,7 @@
     </div>
 
     <div class="open-accessibility-menu">
-      <div class="top-row">
+      <div class="open-accessibility-top-row">
         <div
           class="open-accessibility-close-button"
           role="button"
@@ -28,12 +28,17 @@
           @@include('../svgs/close.svg')
           <!-- <span data-lang="close"></span> -->
         </div>
-        <!-- <div class="language-selector">
-          <label class="switch">
-            <input type="checkbox" checked />
-            <span class="slider round"></span>
-          </label>
-        </div> -->
+        <div class="open-accessibility-language-selector">
+          <form action="/action_page.php">
+            <label for="lang"></label>
+            <select name="lang" id="lang-sel" role="listbox" tabindex="0">
+              <option value="he">עברית</option>
+              <option value="en" disabled>English</option>
+              <option value="sp" disabled>Español</option>
+              <option value="en" disabled>Française</option>
+            </select>
+          </form>
+        </div>
       </div>
       <div
         class="open-accessibility-menu-button open-accessibility-zoom-in-button"
@@ -157,8 +162,9 @@
         >
           <!-- <img src="./src/svgs/footerpina.svg" alt="Pina Logo" /> -->
           <!-- <img src="./src/svgs/footerpina.svg" alt="Pina Logo" width="238" /> -->
-
-          @@include('../svgs/footerpina.svg')
+          <div id="open-accessibility-footer-logo">
+            @@include('../svgs/footerpina.svg')
+          </div>
         </a>
         <!-- </div> -->
       </div>

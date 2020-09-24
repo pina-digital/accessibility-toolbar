@@ -76,7 +76,8 @@
   function applyTextZoom(selector, zoom) {
     console.log("zooming " + selector);
     $(selector)
-      .not(".open-accessibility *") // To avoid messing up the menu bar itself
+      .not(".open-accessibility *")
+      .not(".open-accessibility") // To avoid messing up the menu bar itself
       .each(function () {
         var element = $(this);
 
@@ -192,6 +193,17 @@
     translateTheme(languages[Object.keys(languages)[0]]);
 
     html.addClass("open-accessibility-zoom");
+
+    // Adding Enter or Space trigger to Toolbar Buttons
+    $(
+      ".open-accessibility-expand-button,.open-accessibility-close-button,.open-accessibility-menu-button, .open-accessibility-menu-footer"
+    ).keyup(function (event) {
+      if (event.keyCode == 13 || event.keyCode == 32) {
+        event.preventDefault();
+
+        $(this).click();
+      }
+    });
 
     // -------------
     // Brightness
