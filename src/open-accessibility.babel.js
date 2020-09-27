@@ -184,6 +184,10 @@
     var animationButton = $(".open-accessibility-animation-button");
     var resetButton = $(".open-accessibility-reset-button");
     var cursorWorkaround = $(".open-accessibility-cursor-workaround");
+    var languageSelector = $("#lang-sel");
+
+    // Initialize
+    applyTextZoom(options.textSelector, 1);
 
     // Set icon size
     container.addClass(getIconClass(options.iconSize));
@@ -206,116 +210,24 @@
     });
 
     // -------------
-    // Brightness
-    brightnessButton.click(() => {
-      options.brightness += 10;
-
-      if (options.brightness > 120) {
-        options.brightness = 80;
-      }
-
-      apply();
-    });
-
-    // -------------
-    // Contrast
-
-    contrastButton.click(() => {
-      options.contrast += 50;
-
-      if (options.contrast > 150) {
-        options.contrast = 50;
-      }
-
-      apply();
-    });
-
-    // -------------
-    // Grayscale
-
-    monochromeButton.click(() => {
-      options.grayscale += 100;
-      if (options.grayscale > 100) {
-        options.grayscale = 0;
-      }
-
-      apply();
-    });
-
-    // -------------
-    // Links
-    linksButton.click(() => {
-      options.highlightedLinks = !options.highlightedLinks;
-      apply();
-    });
-    // -------------
-    // Animation
-    animationButton.click(() => {
-      console.log("options", options);
-      options.isAnimStopped = !options.isAnimStopped;
-      apply();
-    });
-
-    // -------------
-    // Reset
-
-    resetButton.click(() => {
-      options = $.extend({}, initialOptions);
-      options.isMenuOpened = false;
-
-      apply();
-    });
-
-    // -------------
-    // Zoom
-
-    zoomInButton.click(() => {
-      options.zoom = Math.min(
-        options.maxZoomLevel,
-        options.zoom + options.zoomStep
-      );
-      console.log("zzz", options.zoom);
-      apply();
-    });
-
-    zoomOutButton.click(() => {
-      options.zoom = Math.max(
-        options.minZoomLevel,
-        options.zoom - options.zoomStep
-      );
-      apply();
-    });
-
-    // -------------
-    // Invert
-
-    invertButton.click(() => {
-      options.invert = !options.invert;
-      apply();
-    });
-
-    // -------------
-    // Cursor
-
-    cursorButton.click(() => {
-      options.cursor = !options.cursor;
-      apply();
-    });
-
-    // -------------
-    // Menu
+    // Menu open button click
 
     expandButton.click(() => {
       options.isMenuOpened = true;
       apply();
     });
 
+    // -------------
+    // Menu close button click
+
     closeButton.click(() => {
       options.isMenuOpened = false;
       apply();
     });
 
+    // -------------
     // Click outside of the menu -> close
+
     $(document).click((event) => {
       if (!$(event.target).closest(".open-accessibility").length) {
         if (options.isMenuOpened) {
@@ -337,6 +249,45 @@
     }
 
     // -------------
+    // Zoom in button click
+
+    zoomInButton.click(() => {
+      options.zoom = Math.min(
+        options.maxZoomLevel,
+        options.zoom + options.zoomStep
+      );
+      console.log("zi", options.zoom);
+      apply();
+    });
+
+    // -------------
+    // Zoom out button click
+
+    zoomOutButton.click(() => {
+      options.zoom = Math.max(
+        options.minZoomLevel,
+        options.zoom - options.zoomStep
+      );
+      console.log("zo", options.zoom);
+      apply();
+    });
+
+    // -------------
+    // Invert button click
+
+    invertButton.click(() => {
+      options.invert = !options.invert;
+      apply();
+    });
+
+    // -------------
+    // Cursor button click
+
+    cursorButton.click(() => {
+      options.cursor = !options.cursor;
+      apply();
+    });
+
     // Mouse cursor workaround
 
     cursorWorkaround.hide();
@@ -355,15 +306,76 @@
       });
     }
 
-    // position menu on absolute right
-    if ($("body").css("margin") != "")
-      $(".open-accessibility-collapsed").css(
-        "right",
-        "-" + $("body").css("margin")
-      );
+    // -------------
+    // Brightness button click
+    brightnessButton.click(() => {
+      options.brightness += 10;
 
-    // Initialize
-    //applyTextZoom(options.textSelector, 1);
+      if (options.brightness > 120) {
+        options.brightness = 80;
+      }
+
+      apply();
+    });
+
+    // -------------
+    // Contrast button click
+
+    contrastButton.click(() => {
+      options.contrast += 50;
+
+      if (options.contrast > 150) {
+        options.contrast = 50;
+      }
+
+      apply();
+    });
+
+    // -------------
+    // Grayscale button click
+
+    monochromeButton.click(() => {
+      options.grayscale += 100;
+      if (options.grayscale > 100) {
+        options.grayscale = 0;
+      }
+
+      apply();
+    });
+
+    // -------------
+    // Links button click
+
+    linksButton.click(() => {
+      options.highlightedLinks = !options.highlightedLinks;
+      apply();
+    });
+
+    // -------------
+    // Animation stop button click
+
+    animationButton.click(() => {
+      console.log("options", options);
+      options.isAnimStopped = !options.isAnimStopped;
+      apply();
+    });
+
+    // -------------
+    // Reset button click
+
+    resetButton.click(() => {
+      options = $.extend({}, initialOptions);
+      options.isMenuOpened = false;
+
+      apply();
+    });
+
+    // position menu on absolute right
+    // if ($("body").css("margin") != "")
+    //   $(".open-accessibility-collapsed").css(
+    //     "right",
+    //     "-" + $("body").css("margin")
+    //   );
 
     apply();
 
@@ -384,48 +396,18 @@
         container.addClass("open-accessibility-collapsed");
       }
 
-      // ----------------
-      // Filters
+      // Get selected lamguage
 
-      var filters = [];
-      if (options.invert) {
-        invertButton.addClass("button-pressed");
+      languageSelector.click(() => {
+        options.localization = document.getElementById("lang-sel").value;
+        console.log(options.localization);
+        translateTheme(options.localization);
+        apply();
+      });
 
-        filters.push("invert(1)");
-
-        if (
-          typeof body.css("background-color") == "undefined" ||
-          body.css("background-color") == "rgba(0, 0, 0, 0)"
-        )
-          body.css("background-color", "#ffffff");
-
-        if (
-          body.attr("data-open-accessibility-background-color-original") == ""
-        ) {
-          body.attr(
-            "data-open-accessibility-background-color-original",
-            body.css("background-color")
-          );
-          body.css(
-            "background-color",
-            invertColor(body.css("background-color"))
-          );
-        }
-      } else {
-        invertButton.removeClass("button-pressed");
-
-        body.css(
-          "background-color",
-          body.attr("data-open-accessibility-background-color-original")
-        );
-        body.attr("data-open-accessibility-background-color-original", "");
-      }
-
-      if (options.grayscale == 100) {
-        monochromeButton.addClass("button-pressed");
-      } else {
-        monochromeButton.removeClass("button-pressed");
-      }
+      // ----------
+      // Zoom
+      applyTextZoom(options.textSelector, options.zoom);
 
       if (options.zoom > options.minZoomLevel) {
         zoomInButton.addClass("button-pressed");
@@ -466,93 +448,49 @@
         zoomOutButton.addClass("open-accessibility-menu-button");
       }
 
-      if (options.brightness == 100) {
-        brightnessButton.removeClass("button-pressed");
-        document
-          .getElementById("brightness-button")
-          .setAttribute("aria-pressed", "false");
-      } else {
-        brightnessButton.addClass("button-pressed");
-        document
-          .getElementById("brightness-button")
-          .setAttribute("aria-pressed", "true");
-      }
-      // if (options.brightness > 100) {
-      //   brightnessButton.addClass("button-pressed");
-      //   document
-      //     .getElementById("brightness-button")
-      //     .setAttribute("aria-pressed", "true");
-      // } else if (options.brightness < 100) {
-      //   brightnessButton.addClass("button-pressed");
-      //   document
-      //     .getElementById("brightness-button")
-      //     .setAttribute("aria-pressed", "true");
-      // } else {
-      //   brightnessButton.removeClass("button-pressed");
-      //   document
-      //     .getElementById("brightness-button")
-      //     .setAttribute("aria-pressed", "false");
-      // }
-
-      if (options.contrast > 100) {
-        $("*")
-          .not(".open-accessibility *")
-          .not(".open-accessibility")
-          .not("a")
-          .addClass("dc");
-
-        $("*").removeClass("lc");
-
-        contrastButton.addClass("button-pressed");
-        document
-          .getElementById("contrast-button")
-          .setAttribute("aria-pressed", "true");
-      } else if (options.contrast < 100) {
-        $("*")
-          .not(".open-accessibility *")
-          .not(".open-accessibility")
-          .not("a")
-          .not("img")
-          .addClass("lc");
-
-        $("*").removeClass("dc");
-
-        contrastButton.addClass("button-pressed");
-        document
-          .getElementById("contrast-button")
-          .setAttribute("aria-pressed", "true");
-      } else {
-        $("*").removeClass("dc");
-        $("*").removeClass("lc");
-
-        contrastButton.removeClass("button-pressed");
-        document
-          .getElementById("contrast-button")
-          .setAttribute("aria-pressed", "false");
-      }
-
-      console.log("b", options.brightness);
-      console.log("c", options.contrast);
-
-      filters.push("contrast(" + 100 + "%)");
-      filters.push("brightness(" + options.brightness + "%)");
-      filters.push("grayscale(" + options.grayscale + "%)");
-      var filterValue = filters.join(" ");
-      console.log("filterValue", filterValue);
-      html.css("filter", filterValue);
-      html.css("-ms-filter", filterValue);
-      html.css("-moz-filter", filterValue);
-      html.css("-webkit-filter", filterValue);
-      html.css("-o-filter", filterValue);
-
-      // ----------
-      // Zoom
-      applyTextZoom(options.textSelector, options.zoom);
-
       // $(".open-accessibility-zoom").css(
       //   "transform",
       //   "scale(" + options.zoom + ")"
       // );
+
+      // ----------------
+      // Filters
+
+      var filters = [];
+
+      // Invert
+
+      if (options.invert) {
+        invertButton.addClass("button-pressed");
+        filters.push("invert(1)");
+
+        if (
+          typeof html.css("background-color") == "undefined" ||
+          html.css("background-color") == "rgba(0, 0, 0, 0)"
+        )
+          html.css("background-color", "#ffffff");
+
+        if (
+          html.attr("data-open-accessibility-background-color-original") == ""
+        ) {
+          html.attr(
+            "data-open-accessibility-background-color-original",
+            html.css("background-color")
+          );
+          html.css(
+            "background-color",
+            invertColor(html.css("background-color"))
+          );
+        }
+      } else {
+        invertButton.removeClass("button-pressed");
+
+        html.css(
+          "background-color",
+          html.attr("data-open-accessibility-background-color-original")
+        );
+        html.attr("data-open-accessibility-background-color-original", "");
+      }
 
       // ----------
       // Cursor
@@ -578,7 +516,84 @@
         }
       }
 
-      // ----------
+      // Brightness
+
+      if (options.brightness == 100) {
+        brightnessButton.removeClass("button-pressed");
+        document
+          .getElementById("brightness-button")
+          .setAttribute("aria-pressed", "false");
+      } else {
+        // console.log("AAA", options.contrast);
+        // $("html").css("zoom", "200%");
+        brightnessButton.addClass("button-pressed");
+        document
+          .getElementById("brightness-button")
+          .setAttribute("aria-pressed", "true");
+      }
+
+      console.log("b", options.brightness);
+
+      // Contrast
+
+      if (options.contrast > 100) {
+        $("*")
+          .not(".open-accessibility *")
+          .not(".open-accessibility")
+          .not("a")
+          .addClass("dc");
+
+        $("*").removeClass("lc");
+
+        contrastButton.addClass("button-pressed");
+        document
+          .getElementById("contrast-button")
+          .setAttribute("aria-pressed", "true");
+      } else if (options.contrast < 100) {
+        $("*")
+          .not(".open-accessibility *")
+          .not(".open-accessibility")
+          .not("a")
+          // .not("img")
+          .addClass("lc");
+
+        $("*").removeClass("dc");
+
+        contrastButton.addClass("button-pressed");
+        document
+          .getElementById("contrast-button")
+          .setAttribute("aria-pressed", "true");
+      } else {
+        $("*").removeClass("dc");
+        $("*").removeClass("lc");
+
+        contrastButton.removeClass("button-pressed");
+        document
+          .getElementById("contrast-button")
+          .setAttribute("aria-pressed", "false");
+      }
+
+      console.log("c", options.contrast);
+
+      // Grayscale
+
+      if (options.grayscale == 100) {
+        monochromeButton.addClass("button-pressed");
+      } else {
+        monochromeButton.removeClass("button-pressed");
+      }
+
+      filters.push("contrast(" + 100 + "%)");
+      filters.push("brightness(" + options.brightness + "%)");
+      filters.push("grayscale(" + options.grayscale + "%)");
+      var filterValue = filters.join(" ");
+      console.log("filterValue", filterValue);
+      html.css("filter", filterValue);
+      html.css("-ms-filter", filterValue);
+      html.css("-moz-filter", filterValue);
+      html.css("-webkit-filter", filterValue);
+      html.css("-o-filter", filterValue);
+
       // Link Highlight
       if (options.highlightedLinks) {
         $("a:not(a:has(img))")
@@ -608,7 +623,6 @@
           .setAttribute("aria-pressed", "false");
       }
 
-      // ----------
       // Animation Stop
       if (options.isAnimStopped) {
         $("*").not(".open-accessibility *").addClass("paused");
