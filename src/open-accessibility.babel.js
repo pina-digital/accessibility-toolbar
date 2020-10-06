@@ -273,8 +273,6 @@
             isMenuOpened: true,
             localization: ["sp"],
           });
-          document.getElementById("lang-sel").value = selectedLanguage;
-          // document.getElementById("sp").selected = true;
         });
       } else if (selectedLanguage == "he") {
         $(function () {
@@ -282,8 +280,8 @@
             isMenuOpened: true,
             localization: ["he"],
           });
-          document.getElementById("lang-sel").value = selectedLanguage;
-          // document.getElementById("he").selected = true;
+
+          location.reload();
         });
       } else if (selectedLanguage == "en") {
         $(function () {
@@ -291,11 +289,10 @@
             isMenuOpened: true,
             localization: ["en"],
           });
-          // alert(selectedLanguage);
-          document.getElementById("lang-sel").value = selectedLanguage;
-          // document.getElementById("en").selected = true;
+          location.reload();
         });
       }
+      options.isMenuOpened = true;
       apply();
     });
 
@@ -478,6 +475,12 @@
         container.removeClass("open-accessibility-expanded");
         container.addClass("open-accessibility-collapsed");
       }
+
+      // ----------
+      // Selected language
+
+      var selectedLanguage = options.localization;
+      document.getElementById("lang-sel").value = selectedLanguage;
 
       // ----------
       // Text Zoom
