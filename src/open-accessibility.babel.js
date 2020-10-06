@@ -73,7 +73,7 @@
     localStorage.setItem(LOCAL_STORAGE_OPTIONS_KEY, JSON.stringify(options));
   }
 
-  function applyTextZoom(selector, zoom) {
+  function applyFontZoom(selector, fZoom) {
     console.log("zooming " + selector);
     $(selector)
       .not(".open-accessibility *")
@@ -82,18 +82,18 @@
         var element = $(this);
 
         var originalFontSize = element.attr(
-          "data-open-accessibility-text-original"
+          "data-open-accessibility-font-original"
         );
         if (!originalFontSize) {
           originalFontSize = element.css("font-size");
           element.attr(
-            "data-open-accessibility-text-original",
+            "data-open-accessibility-font-original",
             originalFontSize
           );
         }
 
         var units = getUnit(originalFontSize) || "";
-        var fontSize = parseFloat(originalFontSize) * zoom;
+        var fontSize = parseFloat(originalFontSize) * fZoom;
 
         var styleName = "font-size";
         var value = fontSize + units;
@@ -111,8 +111,8 @@
   }
 
   function getLanguages(langs, map) {
+    console.log("langs", langs);
     var res = {};
-
     langs.forEach((key) => {
       var value = (map && map[key]) || locale[key];
       if ($.isPlainObject(value)) {
@@ -120,6 +120,7 @@
       } else {
         console.error(key + "language does not set!");
       }
+      console.log("aaaaaa", res);
     });
 
     return res;
@@ -142,16 +143,21 @@
       grayscale: 0,
       brightness: 100,
       contrast: 100,
-      maxZoomLevel: 3,
-      minZoomLevel: 1,
-      zoomStep: 0.2,
-      zoom: 1,
+      maxFZoomLevel: 3,
+      minFZoomLevel: 1,
+      fZoomStep: 0.2,
+      fZoom: 1,
+      maxPZoomLevel: 1.9,
+      minPZoomLevel: 1,
+      pZoomStep: 0.2,
+      pZoom: 1,
+      mZoom: 1,
       cursor: false,
-      textSelector: "div,span,p,a,td,table,tr,h1,h2,h3,h4,h5,h6,input",
+      fontSelector: "div,span,p,a,td,table,tr,h1,h2,h3,h4,h5,h6,input",
       invert: false,
       isAnimStopped: false,
-      localization: ["he"],
       iconSize: "s", // supported sizes are s(mall), m(edium), l(arge)
+      origMenuTop: window.innerHeight * 0.25,
     };
 
     var userOptions = getUserOptions();
@@ -175,9 +181,9 @@
     var closeButton = $(".open-accessibility-close-button");
     var invertButton = $(".open-accessibility-invert-button");
     var cursorButton = $(".open-accessibility-cursor-button");
-    var zoomInButton = $(".open-accessibility-zoom-in-button");
-    var zoomOutButton = $(".open-accessibility-zoom-out-button");
-    var brightnessButton = $(".open-accessibility-brightness-button");
+    var fZoomInButton = $(".open-accessibility-font-zoom-in-button");
+    var fZoomOutButton = $(".open-accessibility-font-zoom-out-button");
+    var pZoomButton = $(".open-accessibility-page-zoom-button");
     var monochromeButton = $(".open-accessibility-monochrome-button");
     var contrastButton = $(".open-accessibility-contrast-button");
     var linksButton = $(".open-accessibility-links-button");
@@ -185,9 +191,12 @@
     var resetButton = $(".open-accessibility-reset-button");
     var cursorWorkaround = $(".open-accessibility-cursor-workaround");
     var languageSelector = $("#lang-sel");
+    var pZoomIndicator = $("#pZoom-indicator");
+    var fZoomInIndicator = $("#fZoomIn-indicator");
+    var fZoomOutIndicator = $("#fZoomOut-indicator");
 
     // Initialize
-    applyTextZoom(options.textSelector, 1);
+    applyFontZoom(options.fontSelector, 1);
 
     // Set icon size
     container.addClass(getIconClass(options.iconSize));
@@ -196,7 +205,7 @@
     var languages = getLanguages(options.localization, options.localizationMap);
     translateTheme(languages[Object.keys(languages)[0]]);
 
-    html.addClass("open-accessibility-zoom");
+    html.addClass("open-accessibility-font-Zoom");
 
     // Adding Enter or Space trigger to Toolbar Buttons
     $(
@@ -249,35 +258,84 @@
     }
 
     // -------------
-    // Zoom in button click
+    // Get selected lamguage
 
-    zoomInButton.click(() => {
-      options.zoom = Math.min(
-        options.maxZoomLevel,
-        options.zoom + options.zoomStep
-      );
-      console.log("zi", options.zoom);
+    // $("#lang-sel").change(function () {
+    languageSelector.change(function () {
+      options.localization = $(this).val();
+      console.log("options.localization", options.localization);
+      var selectedLanguage = options.localization;
+
+      if (selectedLanguage == "sp") {
+        $(function () {
+          $("body").openAccessibility({
+            isMenuOpened: true,
+            localization: ["sp"],
+          });
+          document.getElementById("lang-sel").value = selectedLanguage;
+          // document.getElementById("sp").selected = true;
+        });
+      } else if (selectedLanguage == "he") {
+        $(function () {
+          $("body").openAccessibility({
+            isMenuOpened: true,
+            localization: ["he"],
+          });
+          document.getElementById("lang-sel").value = selectedLanguage;
+          // document.getElementById("he").selected = true;
+        });
+      } else if (selectedLanguage == "en") {
+        $(function () {
+          $("body").openAccessibility({
+            isMenuOpened: true,
+            localization: ["en"],
+          });
+          // alert(selectedLanguage);
+          document.getElementById("lang-sel").value = selectedLanguage;
+          // document.getElementById("en").selected = true;
+        });
+      }
       apply();
     });
 
     // -------------
-    // Zoom out button click
+    // Text Zoom in button click
 
-    zoomOutButton.click(() => {
-      options.zoom = Math.max(
-        options.minZoomLevel,
-        options.zoom - options.zoomStep
+    function fZoomInRemoveClass() {
+      fZoomInIndicator.removeClass("button-indicator");
+      fZoomInIndicator.addClass("hidden-indicator");
+    }
+
+    fZoomInButton.click(() => {
+      options.fZoom = Math.min(
+        options.maxFZoomLevel,
+        options.fZoom + options.fZoomStep
       );
-      console.log("zo", options.zoom);
+      console.log("zi", options.fZoom);
       apply();
+      fZoomInIndicator.addClass("button-indicator");
+      // fZoomInIndicator.removeClass("hidden-indicator");
+      setTimeout(fZoomInRemoveClass, 2000);
     });
 
     // -------------
-    // Invert button click
+    // Text Zoom out button click
 
-    invertButton.click(() => {
-      options.invert = !options.invert;
+    function fZoomOutRemoveClass() {
+      fZoomOutIndicator.removeClass("button-indicator");
+      fZoomOutIndicator.addClass("hidden-indicator");
+    }
+
+    fZoomOutButton.click(() => {
+      options.fZoom = Math.max(
+        options.minFZoomLevel,
+        options.fZoom - options.fZoomStep
+      );
+      console.log("zo", options.fZoom);
       apply();
+      fZoomOutIndicator.addClass("button-indicator");
+      // fZoomOutIndicator.removeClass("hidden-indicator");
+      setTimeout(fZoomOutRemoveClass, 2000);
     });
 
     // -------------
@@ -286,6 +344,37 @@
     cursorButton.click(() => {
       options.cursor = !options.cursor;
       apply();
+    });
+
+    // Page zoom button click
+
+    function pZoomRemoveClass() {
+      pZoomIndicator.removeClass("button-indicator");
+      pZoomIndicator.addClass("hidden-indicator");
+    }
+
+    pZoomButton.click(() => {
+      if (options.pZoom == 1) {
+        options.origMenuTop = document.getElementById("pina-main").offsetTop;
+        console.log("origMenuTop", options.origMenuTop);
+      }
+
+      options.pZoom += options.pZoomStep;
+
+      console.log("pZoom", options.pZoom);
+
+      var calculus = 1 / options.pZoom;
+      options.mZoom = calculus;
+      console.log("mZoom", options.mZoom);
+
+      if (options.pZoom > options.maxPZoomLevel) {
+        options.pZoom = options.minPZoomLevel;
+        options.mZoom = options.minPZoomLevel;
+      }
+      apply();
+      pZoomIndicator.addClass("button-indicator");
+      // pZoomIndicator.removeClass("hidden-indicator");
+      setTimeout(pZoomRemoveClass, 2000);
     });
 
     // Mouse cursor workaround
@@ -300,23 +389,11 @@
         }
 
         cursorWorkaround.css({
-          left: e.pageX / options.zoom,
-          top: e.pageY / options.zoom,
+          left: e.pageX / options.fZoom,
+          top: e.pageY / options.fZoom,
         });
       });
     }
-
-    // -------------
-    // Brightness button click
-    brightnessButton.click(() => {
-      options.brightness += 10;
-
-      if (options.brightness > 120) {
-        options.brightness = 80;
-      }
-
-      apply();
-    });
 
     // -------------
     // Contrast button click
@@ -327,7 +404,14 @@
       if (options.contrast > 150) {
         options.contrast = 50;
       }
+      apply();
+    });
 
+    // -------------
+    // Invert button click
+
+    invertButton.click(() => {
+      options.invert = !options.invert;
       apply();
     });
 
@@ -339,7 +423,6 @@
       if (options.grayscale > 100) {
         options.grayscale = 0;
       }
-
       apply();
     });
 
@@ -366,7 +449,6 @@
     resetButton.click(() => {
       options = $.extend({}, initialOptions);
       options.isMenuOpened = false;
-
       apply();
     });
 
@@ -396,56 +478,54 @@
         container.addClass("open-accessibility-collapsed");
       }
 
-      // Get selected lamguage
-
-      languageSelector.click(() => {
-        options.localization = document.getElementById("lang-sel").value;
-        console.log(options.localization);
-        translateTheme(options.localization);
-        apply();
-      });
-
       // ----------
-      // Zoom
-      applyTextZoom(options.textSelector, options.zoom);
+      // Text Zoom
 
-      if (options.zoom > options.minZoomLevel) {
-        zoomInButton.addClass("button-pressed");
+      applyFontZoom(options.fontSelector, options.fZoom);
+      var fZoomInd = "x " + options.fZoom.toFixed(1);
+
+      document.getElementById("fZoomIn-indicator").innerHTML = fZoomInd;
+      document.getElementById("fZoomOut-indicator").innerHTML = fZoomInd;
+
+      if (options.fZoom > options.minFZoomLevel) {
+        fZoomInButton.addClass("button-pressed");
+
         document
-          .getElementById("zoom-in-button")
+          .getElementById("font-zoom-in-button")
           .setAttribute("aria-pressed", "true");
       } else {
-        zoomInButton.removeClass("button-pressed");
+        fZoomInButton.removeClass("button-pressed");
         document
-          .getElementById("zoom-in-button")
+          .getElementById("font-zoom-in-button")
           .setAttribute("aria-pressed", "false");
       }
 
-      if (options.zoom >= options.maxZoomLevel) {
-        zoomInButton.addClass("disabled-button");
+      if (options.fZoom >= options.maxFZoomLevel) {
+        fZoomInButton.addClass("disabled-button");
         document
-          .getElementById("zoom-in-button")
+          .getElementById("font-zoom-in-button")
           .setAttribute("aria-disabled", "true");
       } else {
-        zoomInButton.removeClass("disabled-button");
+        fZoomInButton.removeClass("disabled-button");
         document
-          .getElementById("zoom-in-button")
+          .getElementById("font-zoom-in-button")
           .setAttribute("aria-disabled", "false");
-        zoomInButton.addClass("open-accessibility-menu-button");
+        fZoomInButton.addClass("open-accessibility-menu-button");
       }
 
-      if (options.zoom <= options.minZoomLevel) {
-        zoomOutButton.removeClass("button-pressed");
-        zoomOutButton.addClass("disabled-button");
+      if (options.fZoom <= options.minFZoomLevel) {
+        fZoomOutButton.removeClass("button-pressed");
+
+        fZoomOutButton.addClass("disabled-button");
         document
-          .getElementById("zoom-out-button")
+          .getElementById("font-zoom-out-button")
           .setAttribute("aria-disabled", "true");
       } else {
-        zoomOutButton.removeClass("disabled-button");
+        fZoomOutButton.removeClass("disabled-button");
         document
-          .getElementById("zoom-out-button")
+          .getElementById("font-zoom-out-button")
           .setAttribute("aria-disabled", "false");
-        zoomOutButton.addClass("open-accessibility-menu-button");
+        fZoomOutButton.addClass("open-accessibility-menu-button");
       }
 
       // $(".open-accessibility-zoom").css(
@@ -497,6 +577,7 @@
 
       if (options.cursor) {
         html.addClass("open-accessibility-cursor");
+
         cursorButton.addClass("button-pressed");
         document
           .getElementById("cursor-button")
@@ -516,23 +597,35 @@
         }
       }
 
-      // Brightness
+      // Page Zoom
 
-      if (options.brightness == 100) {
-        brightnessButton.removeClass("button-pressed");
+      $("body").css("zoom", options.pZoom);
+      $(".open-accessibility #pina-container").css("zoom", options.mZoom);
+      // $("#pina-container").css("zoom", options.mZoom);
+
+      var setMenuTop = options.origMenuTop * options.mZoom + "px";
+
+      document.getElementById("pina-main").style.top = setMenuTop;
+      var pZoomInd = "x " + options.pZoom.toFixed(1);
+
+      document.getElementById("pZoom-indicator").innerHTML = pZoomInd;
+
+      if (options.pZoom > options.minPZoomLevel) {
+        pZoomButton.addClass("button-pressed");
+
         document
-          .getElementById("brightness-button")
-          .setAttribute("aria-pressed", "false");
-      } else {
-        // console.log("AAA", options.contrast);
-        // $("html").css("zoom", "200%");
-        brightnessButton.addClass("button-pressed");
-        document
-          .getElementById("brightness-button")
+          .getElementById("page-zoom-button")
           .setAttribute("aria-pressed", "true");
-      }
+        // var setZoom = (options.pZoom * 100).toFixed(0) + "%";
+        // alert(setZoom);
+        // document.body.style.zoom = setZoom;
+      } else {
+        pZoomButton.removeClass("button-pressed");
 
-      console.log("b", options.brightness);
+        document
+          .getElementById("page-zoom-button")
+          .setAttribute("aria-pressed", "false");
+      }
 
       // Contrast
 
@@ -542,9 +635,7 @@
           .not(".open-accessibility")
           .not("a")
           .addClass("dc");
-
         $("*").removeClass("lc");
-
         contrastButton.addClass("button-pressed");
         document
           .getElementById("contrast-button")

@@ -60,7 +60,9 @@ html {
 
 .dc {
   background-color: black !important;
+  // outline: 1px solid white;
   color: white !important;
+  fill: white;
 
   & a {
     color: yellow;
@@ -183,8 +185,32 @@ html {
 #lbexpand:focus {
   outline: 2px dashed black;
 }
+.button-indicator {
+  visibility: visible !important;
 
+  width: 2rem;
+  height: 2rem;
+  position: relative;
+  top: 5px;
+  right: -40px;
+  color: #d1f0fa;
+  font-size: 0.7rem;
+  font-weight: bold;
+  background-color: #114761;
+  display: initial;
+  padding: 3px 6px;
+  border-radius: 8px;
+  // border: 2px solid #114761;
+}
+.hidden-indicator {
+  visibility: hidden;
+}
+.button-icon {
+  position: relative;
+  top: -20px;
+}
 .open-accessibility-menu-button {
+  position: fixed;
   fill: #114761;
   float: right;
   box-sizing: border-box;
@@ -243,16 +269,18 @@ html {
 }
 
 .disabled-button {
-  fill: lightgray;
+  fill: lightgray !important;
+  stroke: lightgray !important;
 }
 .open-accessibility {
   position: fixed;
   direction: rtl;
   z-index: 10;
-  right: 0px;
-  top: 25vh;
-  min-width: 256px;
+  right: 0px !important;
+  // top: 25vh;
+  // min-width: 258px;
   user-select: none;
+  zoom: 1 !important;
 }
 .open-accessibility.open-accessibility-size-s.open-accessibility-collapsed {
   .open-accessibility-container {
@@ -295,7 +323,7 @@ html {
   box-shadow: rgba(0, 0, 0, 0.137255) 0px 0px 4px 0px,
     rgba(0, 0, 0, 0.278431) 0px 4px 8px 0px;
 }
-.open-accessibility-zoom {
+.open-accessibility-font-zoom {
   transition: zoom 0.3s ease-in-out;
 }
 .open-accessibility-cursor {
@@ -356,14 +384,16 @@ html {
 #open-accessibility-footer-logo svg {
   height: 100%;
 }
+
 .open-accessibility.open-accessibility-expanded {
   .open-accessibility-container {
-    width: 256px;
+    width: 260px;
     height: 548px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     color: #333;
     background-color: #fff;
+    border: 1px solid white;
     // transform: scale(1, 1) translate3d(0, 0, 0);
   }
 }

@@ -1,10 +1,17 @@
+<!-- <script type="text/javascript">
+  function jsFunction(value) {
+    alert(value);
+  }
+</script> -->
+
 <div class="open-accessibility-cursor-workaround"></div>
 <div
   class="open-accessibility open-accessibility-collapsed"
+  id="pina-main"
   role="toolbar"
   aria-orientation="vertical"
 >
-  <div class="open-accessibility-container">
+  <div class="open-accessibility-container" id="pina-container">
     <div
       class="open-accessibility-expand-button"
       role="button"
@@ -31,48 +38,65 @@
         <div class="open-accessibility-language-selector">
           <form action="/action_page.php">
             <label for="lang"></label>
-            <select name="lang" id="lang-sel" role="listbox" tabindex="0">
-              <option value="he">עברית</option>
-              <option value="en">English</option>
-              <option value="sp" disabled>Español</option>
-              <option value="en" disabled>Française</option>
+            <select
+              name="lang"
+              id="lang-sel"
+              role="listbox"
+              tabindex="0"
+              onmousedown="this.value='';"
+            >
+              <option id="he" value="he">עברית</option>
+              <option id="en" value="en">English</option>
+              <option id="ar" value="en" disabled>عربى</option>
+              <option id="ru" value="en" disabled>русский</option>
+              <option id="sp" value="sp" disabled>Español</option>
+              <option id="fr" value="fr" disabled>Française</option>
             </select>
           </form>
         </div>
       </div>
       <div
-        class="open-accessibility-menu-button open-accessibility-zoom-in-button"
-        id="zoom-in-button"
+        class="open-accessibility-menu-button open-accessibility-font-zoom-in-button"
+        id="font-zoom-in-button"
         role="button"
         aria-pressed="false"
         aria-disabled="false"
         tabindex="0"
       >
-        @@include('../svgs/zoom-in.svg')
-        <span data-lang="zoom-in" id="lbzoomin">הגדלת גופן</span>
+        <div class="hidden-indicator" id="fZoomIn-indicator"></div>
+        <div class="button-icon">
+          @@include('../svgs/font-zoom-in.svg')
+          <span data-lang="font-zoom-in" id="lbfzoomin">הגדלת גופן</span>
+        </div>
       </div>
 
       <div
-        class="open-accessibility-menu-button open-accessibility-zoom-out-button"
-        id="zoom-out-button"
+        class="open-accessibility-menu-button open-accessibility-font-zoom-out-button"
+        id="font-zoom-out-button"
         role="button"
         aria-pressed="false"
         aria-disabled="true"
         tabindex="0"
       >
-        @@include('../svgs/zoom-out.svg')
-        <span data-lang="zoom-out" id="lbzoomout">הקטנת גופן</span>
+        <div class="hidden-indicator" id="fZoomOut-indicator"></div>
+        <div class="button-icon">
+          @@include('../svgs/font-zoom-out2.svg')
+          <span data-lang="font-zoom-out" id="lbfzoomout">הקטנת גופן</span>
+        </div>
       </div>
 
       <div
-        class="open-accessibility-menu-button open-accessibility-invert-button"
-        id="invert-button"
+        class="open-accessibility-menu-button open-accessibility-page-zoom-button"
+        id="page-zoom-button"
         role="button"
         aria-pressed="false"
         tabindex="0"
       >
-        @@include('../svgs/invert.svg')
-        <span id="lbinvert" data-lang="invert" id="lbinvert">היפוך צבעים</span>
+        <div class="hidden-indicator" id="pZoom-indicator"></div>
+        <div class="button-icon">
+          @@include('../svgs/zoom-in.svg')
+          <span data-lang="page-zoom" id="lbpzoom">הגדלת תצוגה</span>
+        </div>
       </div>
 
       <div
@@ -87,17 +111,6 @@
       </div>
 
       <div
-        class="open-accessibility-menu-button open-accessibility-brightness-button"
-        id="brightness-button"
-        role="button"
-        aria-pressed="false"
-        tabindex="0"
-      >
-        @@include('../svgs/brightness.svg')
-        <span data-lang="brightness" id="lbbrightness">בהירות</span>
-      </div>
-
-      <div
         class="open-accessibility-menu-button open-accessibility-contrast-button"
         id="contrast-button"
         role="button"
@@ -106,6 +119,17 @@
       >
         @@include('../svgs/contrast.svg')
         <span data-lang="contrast" id="contrast">ניגודיות</span>
+      </div>
+
+      <div
+        class="open-accessibility-menu-button open-accessibility-invert-button"
+        id="invert-button"
+        role="button"
+        aria-pressed="false"
+        tabindex="0"
+      >
+        @@include('../svgs/invert.svg')
+        <span id="lbinvert" data-lang="invert" id="lbinvert">היפוך צבעים</span>
       </div>
 
       <div
