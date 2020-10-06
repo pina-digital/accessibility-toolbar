@@ -528,10 +528,59 @@
         fZoomOutButton.addClass("open-accessibility-menu-button");
       }
 
-      // $(".open-accessibility-zoom").css(
+      // Page Zoom
+
+      $("body").css("zoom", options.pZoom);
+      $(".open-accessibility #pina-container").css("zoom", options.mZoom);
+
+      var setMenuTop = options.origMenuTop * options.mZoom + "px";
+      document.getElementById("pina-main").style.top = setMenuTop;
+
+      var pZoomInd = "x " + options.pZoom.toFixed(1);
+      document.getElementById("pZoom-indicator").innerHTML = pZoomInd;
+
+      if (options.pZoom > options.minPZoomLevel) {
+        pZoomButton.addClass("button-pressed");
+
+        document
+          .getElementById("page-zoom-button")
+          .setAttribute("aria-pressed", "true");
+      } else {
+        pZoomButton.removeClass("button-pressed");
+
+        document
+          .getElementById("page-zoom-button")
+          .setAttribute("aria-pressed", "false");
+      }
+      // $("*").not(".open-accessibility *").css(
       //   "transform",
       //   "scale(" + options.zoom + ")"
       // );
+
+      // ----------
+      // Cursor
+
+      if (options.cursor) {
+        html.addClass("open-accessibility-cursor");
+
+        cursorButton.addClass("button-pressed");
+        document
+          .getElementById("cursor-button")
+          .setAttribute("aria-pressed", "true");
+        if (!googleChrome) {
+          cursorWorkaround.show();
+        }
+      } else {
+        html.removeClass("open-accessibility-cursor");
+        cursorButton.removeClass("button-pressed");
+        document
+          .getElementById("cursor-button")
+          .setAttribute("aria-pressed", "false");
+
+        if (!googleChrome) {
+          cursorWorkaround.hide();
+        }
+      }
 
       // ----------------
       // Filters
@@ -570,61 +619,6 @@
           html.attr("data-open-accessibility-background-color-original")
         );
         html.attr("data-open-accessibility-background-color-original", "");
-      }
-
-      // ----------
-      // Cursor
-
-      if (options.cursor) {
-        html.addClass("open-accessibility-cursor");
-
-        cursorButton.addClass("button-pressed");
-        document
-          .getElementById("cursor-button")
-          .setAttribute("aria-pressed", "true");
-        if (!googleChrome) {
-          cursorWorkaround.show();
-        }
-      } else {
-        html.removeClass("open-accessibility-cursor");
-        cursorButton.removeClass("button-pressed");
-        document
-          .getElementById("cursor-button")
-          .setAttribute("aria-pressed", "false");
-
-        if (!googleChrome) {
-          cursorWorkaround.hide();
-        }
-      }
-
-      // Page Zoom
-
-      $("body").css("zoom", options.pZoom);
-      $(".open-accessibility #pina-container").css("zoom", options.mZoom);
-      // $("#pina-container").css("zoom", options.mZoom);
-
-      var setMenuTop = options.origMenuTop * options.mZoom + "px";
-
-      document.getElementById("pina-main").style.top = setMenuTop;
-      var pZoomInd = "x " + options.pZoom.toFixed(1);
-
-      document.getElementById("pZoom-indicator").innerHTML = pZoomInd;
-
-      if (options.pZoom > options.minPZoomLevel) {
-        pZoomButton.addClass("button-pressed");
-
-        document
-          .getElementById("page-zoom-button")
-          .setAttribute("aria-pressed", "true");
-        // var setZoom = (options.pZoom * 100).toFixed(0) + "%";
-        // alert(setZoom);
-        // document.body.style.zoom = setZoom;
-      } else {
-        pZoomButton.removeClass("button-pressed");
-
-        document
-          .getElementById("page-zoom-button")
-          .setAttribute("aria-pressed", "false");
       }
 
       // Contrast
