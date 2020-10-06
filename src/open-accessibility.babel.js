@@ -158,6 +158,7 @@
       isAnimStopped: false,
       iconSize: "s", // supported sizes are s(mall), m(edium), l(arge)
       origMenuTop: window.innerHeight * 0.25,
+      localization: ["he"],
     };
 
     var userOptions = getUserOptions();
@@ -263,7 +264,7 @@
     // $("#lang-sel").change(function () {
     languageSelector.change(function () {
       options.localization = $(this).val();
-      console.log("options.localization", options.localization);
+      console.log("optionssss.localization", options.localization);
       var selectedLanguage = options.localization;
 
       if (selectedLanguage == "sp") {
