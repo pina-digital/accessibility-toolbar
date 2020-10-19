@@ -1,0 +1,7 @@
+- Save toolbar location after dragging (transfer data between files)
+- Fix html content disapearing after toolbar side switching and contrast option selected (solved with refresh)
+- Figure out a way to change languages without refreshing the entire html
+- Decide what to do when the toolbar is opened and slides out of the visible page
+- Fix GrayScale filter issue (not working on background color)
+
+- Add languages

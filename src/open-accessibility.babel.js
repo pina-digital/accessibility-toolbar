@@ -76,8 +76,13 @@
   function applyFontZoom(selector, fZoom) {
     console.log("zooming " + selector);
     $(selector)
+      .not(".empties")
+      .not(".empty")
+      .not(".fill")
+      .not(".open-accessibility-cursor-workaround")
       .not(".open-accessibility *")
       .not(".open-accessibility") // To avoid messing up the menu bar itself
+      .not("body")
       .each(function () {
         var element = $(this);
 
@@ -159,6 +164,8 @@
       iconSize: "s", // supported sizes are s(mall), m(edium), l(arge)
       origMenuTop: window.innerHeight * 0.25,
       localization: ["he"],
+      toolbarSide: true,
+      gZoom: 6,
     };
 
     var userOptions = getUserOptions();
@@ -192,6 +199,7 @@
     var resetButton = $(".open-accessibility-reset-button");
     var cursorWorkaround = $(".open-accessibility-cursor-workaround");
     var languageSelector = $("#lang-sel");
+    var toolbarSwitch = $("#togBtn");
     var pZoomIndicator = $("#pZoom-indicator");
     var fZoomInIndicator = $("#fZoomIn-indicator");
     var fZoomOutIndicator = $("#fZoomOut-indicator");
@@ -210,7 +218,7 @@
 
     // Adding Enter or Space trigger to Toolbar Buttons
     $(
-      ".open-accessibility-expand-button,.open-accessibility-close-button,.open-accessibility-menu-button, .open-accessibility-menu-footer"
+      ".open-accessibility-expand-button,.open-accessibility-close-button,.open-accessibility-menu-button, .l-switch, .open-accessibility-language-selector, .open-accessibility-menu-footer"
     ).keyup(function (event) {
       if (event.keyCode == 13 || event.keyCode == 32) {
         event.preventDefault();
@@ -218,6 +226,13 @@
         $(this).click();
       }
     });
+
+    // -------------
+    // Setting the initial div position of the toolbar
+
+    // options.ptdl = 6;
+    sessionStorage.setItem("ptdl", options.gZoom);
+    console.log("options.gZoom", options.gZoom);
 
     // -------------
     // Menu open button click
@@ -259,6 +274,25 @@
     }
 
     // -------------
+    // Toolbar side switch
+    document.getElementById("togBtn").checked = options.toolbarSide;
+
+    toolbarSwitch.change(function () {
+      options.toolbarSide = !options.toolbarSide;
+
+      var x = document.getElementById("togBtn").checked;
+      console.log("checkbox", x);
+      if ((x = false)) {
+        x = true;
+      } else {
+        if ((x = true)) {
+          x = false;
+        }
+      }
+      apply();
+    });
+
+    // -------------
     // Get selected lamguage
 
     // $("#lang-sel").change(function () {
@@ -289,6 +323,15 @@
             isMenuOpened: true,
             localization: ["en"],
           });
+          location.reload();
+        });
+      } else if (selectedLanguage == "ru") {
+        $(function () {
+          $("body").openAccessibility({
+            isMenuOpened: true,
+            localization: ["ru"],
+          });
+
           location.reload();
         });
       }
@@ -461,6 +504,9 @@
 
     function apply() {
       // ----------------
+      var bbb = sessionStorage.getItem("ptdl");
+      options.gZoom = bbb;
+      // alert(options.gZoom);
 
       if (options.isMenuOpened) {
         expandButton.fadeOut(300);
@@ -474,6 +520,23 @@
 
         container.removeClass("open-accessibility-expanded");
         container.addClass("open-accessibility-collapsed");
+      }
+
+      // ----------
+      // Toolbar Side
+
+      if (options.toolbarSide) {
+        document.getElementById("empties-side").style.right = "0px";
+        document.getElementById("empties-side").style.direction = "rtl";
+        document.getElementById("filler").style.direction = "rtl";
+        document.getElementById("lbexpand").style.borderRadius =
+          "50% 0% 0% 50%";
+      } else {
+        document.getElementById("empties-side").style.left = "0px";
+        document.getElementById("empties-side").style.direction = "ltr";
+        document.getElementById("filler").style.direction = "ltr";
+        document.getElementById("lbexpand").style.borderRadius =
+          "0% 50% 50% 0%";
       }
 
       // ----------
@@ -493,7 +556,6 @@
 
       if (options.fZoom > options.minFZoomLevel) {
         fZoomInButton.addClass("button-pressed");
-
         document
           .getElementById("font-zoom-in-button")
           .setAttribute("aria-pressed", "true");
@@ -519,7 +581,6 @@
 
       if (options.fZoom <= options.minFZoomLevel) {
         fZoomOutButton.removeClass("button-pressed");
-
         fZoomOutButton.addClass("disabled-button");
         document
           .getElementById("font-zoom-out-button")
@@ -535,7 +596,7 @@
       // Page Zoom
 
       $("body").css("zoom", options.pZoom);
-      $(".open-accessibility #pina-container").css("zoom", options.mZoom);
+      $(".empty").not(".fill").css("zoom", options.mZoom);
 
       var setMenuTop = options.origMenuTop * options.mZoom + "px";
       document.getElementById("pina-main").style.top = setMenuTop;
@@ -591,6 +652,59 @@
 
       var filters = [];
 
+      // Contrast
+
+      if (options.contrast > 100) {
+        $("*")
+          .not(".open-accessibility-menu-button")
+          .not(".open-accessibility-menu-button svg")
+          .not(".open-accessibility-menu-button span")
+
+          .not(".open-accessibility-expand-button")
+          .not(".open-accessibility-expand-button svg")
+          .not("#open-accessibility-footer-logo")
+          // .not(".open-accessibility *")
+          .not(".open-accessibility")
+          .not("a")
+          // $("body,div,span,p,td,table,tr,h1,h2,h3,h4,h5,h6,input,select")
+          //   .not(".open-accessibility-expand-button")
+          //   .not(".open-accessibility-expand-button svg")
+          //   .not("#open-accessibility-footer-logo")
+          .addClass("dc");
+        $("*").removeClass("lc");
+        contrastButton.addClass("button-pressed");
+        document
+          .getElementById("contrast-button")
+          .setAttribute("aria-pressed", "true");
+      } else if (options.contrast < 100) {
+        $("*")
+          .not(".open-accessibility-expand-button")
+          .not(".open-accessibility-expand-button svg")
+          .not("#open-accessibility-footer-logo")
+          // .not(".open-accessibility *")
+          // .not(".open-accessibility")
+          .not("a")
+          // .not("img")
+          .addClass("lc");
+
+        $("*").removeClass("dc");
+
+        contrastButton.addClass("button-pressed");
+        document
+          .getElementById("contrast-button")
+          .setAttribute("aria-pressed", "true");
+      } else {
+        $("*").removeClass("dc");
+        $("*").removeClass("lc");
+
+        contrastButton.removeClass("button-pressed");
+        document
+          .getElementById("contrast-button")
+          .setAttribute("aria-pressed", "false");
+      }
+
+      console.log("c", options.contrast);
+
       // Invert
 
       if (options.invert) {
@@ -625,49 +739,12 @@
         html.attr("data-open-accessibility-background-color-original", "");
       }
 
-      // Contrast
-
-      if (options.contrast > 100) {
-        $("*")
-          .not(".open-accessibility *")
-          .not(".open-accessibility")
-          .not("a")
-          .addClass("dc");
-        $("*").removeClass("lc");
-        contrastButton.addClass("button-pressed");
-        document
-          .getElementById("contrast-button")
-          .setAttribute("aria-pressed", "true");
-      } else if (options.contrast < 100) {
-        $("*")
-          .not(".open-accessibility *")
-          .not(".open-accessibility")
-          .not("a")
-          // .not("img")
-          .addClass("lc");
-
-        $("*").removeClass("dc");
-
-        contrastButton.addClass("button-pressed");
-        document
-          .getElementById("contrast-button")
-          .setAttribute("aria-pressed", "true");
-      } else {
-        $("*").removeClass("dc");
-        $("*").removeClass("lc");
-
-        contrastButton.removeClass("button-pressed");
-        document
-          .getElementById("contrast-button")
-          .setAttribute("aria-pressed", "false");
-      }
-
-      console.log("c", options.contrast);
-
       // Grayscale
 
       if (options.grayscale == 100) {
         monochromeButton.addClass("button-pressed");
+        var bgc = document.body.style.backgroundColor;
+        console.log("bgc", bgc);
       } else {
         monochromeButton.removeClass("button-pressed");
       }
@@ -684,6 +761,7 @@
       html.css("-o-filter", filterValue);
 
       // Link Highlight
+
       if (options.highlightedLinks) {
         $("a:not(a:has(img))")
           .not(".open-accessibility *")

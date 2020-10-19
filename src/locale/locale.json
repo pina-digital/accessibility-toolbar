@@ -11,7 +11,9 @@
     "monochrome": "גווני אפור",
     "links-highlight": "הדגשת לינקים",
     "animation-stop": "עצירת אנימציות",
-    "reset": "ביטול שינויים"
+    "reset": "ביטול שינויים",
+    "toolbar-align-right": "ימין",
+    "toolbar-align-left": "שמאל"
   },
   "en": {
     "expand": "The Accessible Guy",
@@ -25,20 +27,24 @@
     "monochrome": "Grayscale",
     "links-highlight": "Links Highlight",
     "animation-stop": "Animation Stop",
-    "reset": "Undo Changes"
+    "reset": "Undo Changes",
+    "toolbar-align-right": "Right",
+    "toolbar-align-left": "Left"
   },
-  "sp": {
-    "expand": "xcvxcvcessible Guy",
-    "close": "Cxcvxcvlose",
-    "font-zoom-out": "xcvxcv Font",
-    "font-zoom-in": "Bigger Font",
-    "invert": "Invert Colors",
-    "bigger-cursor": "Bigger Cursor",
-    "page-zoom": "Bigger Display",
-    "contrast": "Contrast",
-    "monochrome": "Grayscale",
-    "links-highlight": "Links Highlight",
-    "animation-stop": "Animation Stop",
-    "reset": "Undo Changes"
+  "ru": {
+    "expand": "The Accessible Guy",
+    "close": "закрыть",
+    "font-zoom-out": "Уменьшить шрифт",
+    "font-zoom-in": "Увеличить шрифт",
+    "invert": "поменять цвета",
+    "bigger-cursor": "Увеличить курсор",
+    "page-zoom": "Увеличить изображение",
+    "contrast": "Контраст",
+    "monochrome": "Оттенки серого",
+    "links-highlight": "Выделить линки/ссылки",
+    "animation-stop": "Остановить анимации",
+    "reset": "Отменить изменения",
+    "toolbar-align-right": "право",
+    "toolbar-align-left": "налево"
   }
 }
