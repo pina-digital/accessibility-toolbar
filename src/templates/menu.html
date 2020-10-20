@@ -123,8 +123,8 @@
                     <option id="he" value="he">עברית</option>
                     <option id="en" value="en">English</option>
                     <option id="ru" value="ru">Pусский</option>
-                    <option id="ar" value="ar" disabled>عربى</option>
-                    <option id="sp" value="sp" disabled>Español</option>
+                    <option id="ar" value="ar">عربى</option>
+                    <option id="sp" value="sp">Español</option>
                     <option id="fr" value="fr" disabled>Française</option>
                   </select>
                 </form>
@@ -141,12 +141,7 @@
               <div class="hidden-indicator" id="fZoomIn-indicator"></div>
               <div class="button-icon">
                 @@include('../svgs/font-zoom-in.svg')
-                <span
-                  class="menu-button-text"
-                  data-lang="font-zoom-in"
-                  id="lbfzoomin"
-                  >הגדלת גופן</span
-                >
+                <span data-lang="font-zoom-in" id="lbfzoomin">הגדלת גופן</span>
               </div>
             </div>
 
@@ -188,8 +183,11 @@
               aria-pressed="false"
               tabindex="0"
             >
-              @@include('../svgs/cursor.svg')
-              <span data-lang="bigger-cursor" id="lbcursor">הגדלת סמן</span>
+              <div class="hidden-indicator" id="cursor-indicator">gg</div>
+              <div class="button-icon">
+                @@include('../svgs/cursor.svg')
+                <span data-lang="bigger-cursor" id="lbcursor">הגדלת סמן</span>
+              </div>
             </div>
 
             <div
@@ -199,8 +197,11 @@
               aria-pressed="false"
               tabindex="0"
             >
-              @@include('../svgs/contrast.svg')
-              <span data-lang="contrast" id="contrast">ניגודיות</span>
+              <div class="hidden-indicator" id="contrast-indicator">gg</div>
+              <div class="button-icon">
+                @@include('../svgs/contrast.svg')
+                <span data-lang="contrast" id="contrast">ניגודיות</span>
+              </div>
             </div>
 
             <div
@@ -210,10 +211,13 @@
               aria-pressed="false"
               tabindex="0"
             >
-              @@include('../svgs/invert.svg')
-              <span id="lbinvert" data-lang="invert" id="lbinvert"
-                >היפוך צבעים</span
-              >
+              <div class="hidden-indicator" id="invert-indicator">gg</div>
+              <div class="button-icon">
+                @@include('../svgs/invert.svg')
+                <span id="lbinvert" data-lang="invert" id="lbinvert"
+                  >היפוך צבעים</span
+                >
+              </div>
             </div>
 
             <div
@@ -223,8 +227,11 @@
               aria-pressed="false"
               tabindex="0"
             >
-              @@include('../svgs/monochrome.svg')
-              <span data-lang="monochrome" id="lbmonochrome">גווני אפור</span>
+              <div class="hidden-indicator" id="monochrome-indicator">gg</div>
+              <div class="button-icon">
+                @@include('../svgs/monochrome.svg')
+                <span data-lang="monochrome" id="lbmonochrome">גווני אפור</span>
+              </div>
             </div>
 
             <div
@@ -234,8 +241,13 @@
               aria-pressed="false"
               tabindex="0"
             >
-              @@include('../svgs/link.svg')
-              <span data-lang="links-highlight" id="lblink">הדגשת לינקים</span>
+              <div class="hidden-indicator" id="links-indicator">gg</div>
+              <div class="button-icon">
+                @@include('../svgs/link.svg')
+                <span data-lang="links-highlight" id="lblink"
+                  >הדגשת לינקים</span
+                >
+              </div>
             </div>
             <div
               class="open-accessibility-menu-button open-accessibility-animation-button"
@@ -244,10 +256,13 @@
               aria-pressed="false"
               tabindex="0"
             >
-              @@include('../svgs/pause.svg')
-              <span data-lang="animation-stop" id="lbpause"
-                >עצירת אנימציות</span
-              >
+              <div class="hidden-indicator" id="animation-indicator">gg</div>
+              <div class="button-icon">
+                @@include('../svgs/pause.svg')
+                <span data-lang="animation-stop" id="lbpause"
+                  >עצירת אנימציות</span
+                >
+              </div>
             </div>
 
             <div
@@ -257,8 +272,11 @@
               aria-pressed="false"
               tabindex="0"
             >
-              @@include('../svgs/revert.svg')
-              <span data-lang="reset" id="lbrevert">בטל שינויים</span>
+              <div class="hidden-indicator" id="reset-indicator">gg</div>
+              <div class="button-icon">
+                @@include('../svgs/revert.svg')
+                <span data-lang="reset" id="lbrevert">בטל שינויים</span>
+              </div>
             </div>
 
             <div class="open-accessibility-menu-footer">

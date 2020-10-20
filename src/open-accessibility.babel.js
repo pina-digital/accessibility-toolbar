@@ -334,6 +334,24 @@
 
           location.reload();
         });
+      } else if (selectedLanguage == "ar") {
+        $(function () {
+          $("body").openAccessibility({
+            isMenuOpened: true,
+            localization: ["ar"],
+          });
+
+          location.reload();
+        });
+      } else if (selectedLanguage == "sp") {
+        $(function () {
+          $("body").openAccessibility({
+            isMenuOpened: true,
+            localization: ["sp"],
+          });
+
+          location.reload();
+        });
       }
       options.isMenuOpened = true;
       apply();
