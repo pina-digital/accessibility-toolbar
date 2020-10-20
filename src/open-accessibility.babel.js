@@ -372,8 +372,9 @@
       );
       console.log("zi", options.fZoom);
       apply();
+
       fZoomInIndicator.addClass("button-indicator");
-      // fZoomInIndicator.removeClass("hidden-indicator");
+      fZoomInIndicator.removeClass("hidden-indicator");
       setTimeout(fZoomInRemoveClass, 2000);
     });
 
@@ -393,7 +394,7 @@
       console.log("zo", options.fZoom);
       apply();
       fZoomOutIndicator.addClass("button-indicator");
-      // fZoomOutIndicator.removeClass("hidden-indicator");
+      fZoomOutIndicator.removeClass("hidden-indicator");
       setTimeout(fZoomOutRemoveClass, 2000);
     });
 
@@ -432,7 +433,7 @@
       }
       apply();
       pZoomIndicator.addClass("button-indicator");
-      // pZoomIndicator.removeClass("hidden-indicator");
+      pZoomIndicator.removeClass("hidden-indicator");
       setTimeout(pZoomRemoveClass, 2000);
     });
 
@@ -549,14 +550,75 @@
         document.getElementById("filler").style.direction = "rtl";
         document.getElementById("lbexpand").style.borderRadius =
           "50% 0% 0% 50%";
+
+        document
+          .getElementById("pt-font-zoomin")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-font-zoomout")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-page-zoomin")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-cursor")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-contrast")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-invert")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-monochrome")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-links")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-pause")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-revert")
+          .setAttribute("viewBox", "30 20 70 70");
       } else {
         document.getElementById("empties-side").style.left = "0px";
         document.getElementById("empties-side").style.direction = "ltr";
         document.getElementById("filler").style.direction = "ltr";
         document.getElementById("lbexpand").style.borderRadius =
           "0% 50% 50% 0%";
-      }
 
+        document
+          .getElementById("pt-font-zoomin")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-font-zoomout")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-page-zoomin")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-cursor")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-contrast")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-invert")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-monochrome")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-links")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-pause")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-revert")
+          .setAttribute("viewBox", "52 20 70 70");
+      }
       // ----------
       // Selected language
 
@@ -680,6 +742,7 @@
           .not(".open-accessibility-menu-button span")
           .not(".button-icon")
           .not(".open-accessibility-expand-button")
+          .not(".first-line")
           .not(".open-accessibility-expand-button svg")
           .not("#open-accessibility-footer-logo")
           .not(".open-accessibility")
@@ -703,6 +766,7 @@
           .not(".open-accessibility-menu-button span")
           .not(".button-icon")
           .not(".open-accessibility-expand-button")
+          .not(".first-line")
           .not(".open-accessibility-expand-button svg")
           .not("#open-accessibility-footer-logo")
           // .not(".open-accessibility *")
