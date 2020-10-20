@@ -556,6 +556,7 @@
 
       if (options.fZoom > options.minFZoomLevel) {
         fZoomInButton.addClass("button-pressed");
+
         document
           .getElementById("font-zoom-in-button")
           .setAttribute("aria-pressed", "true");
@@ -659,37 +660,43 @@
           .not(".open-accessibility-menu-button")
           .not(".open-accessibility-menu-button svg")
           .not(".open-accessibility-menu-button span")
+          .not(".button-icon")
+          .not(".open-accessibility-expand-button")
+          .not(".open-accessibility-expand-button svg")
+          .not("#open-accessibility-footer-logo")
+          .not(".open-accessibility")
+          .not("a")
+          .addClass("dc");
+        $("*").removeClass("lc");
 
+        $("#lbexpand").css("background-color", "#fff");
+        $("#expand-image").css("fill", "#114761");
+
+        $(".open-accessibility-menu-button span").addClass("dc-button");
+        contrastButton.addClass("button-pressed");
+
+        document
+          .getElementById("contrast-button")
+          .setAttribute("aria-pressed", "true");
+      } else if (options.contrast < 100) {
+        $("*")
+          .not(".open-accessibility-menu-button")
+          .not(".open-accessibility-menu-button svg")
+          .not(".open-accessibility-menu-button span")
+          .not(".button-icon")
           .not(".open-accessibility-expand-button")
           .not(".open-accessibility-expand-button svg")
           .not("#open-accessibility-footer-logo")
           // .not(".open-accessibility *")
           .not(".open-accessibility")
           .not("a")
-          // $("body,div,span,p,td,table,tr,h1,h2,h3,h4,h5,h6,input,select")
-          //   .not(".open-accessibility-expand-button")
-          //   .not(".open-accessibility-expand-button svg")
-          //   .not("#open-accessibility-footer-logo")
-          .addClass("dc");
-        $("*").removeClass("lc");
-        contrastButton.addClass("button-pressed");
-        document
-          .getElementById("contrast-button")
-          .setAttribute("aria-pressed", "true");
-      } else if (options.contrast < 100) {
-        $("*")
-          .not(".open-accessibility-expand-button")
-          .not(".open-accessibility-expand-button svg")
-          .not("#open-accessibility-footer-logo")
-          // .not(".open-accessibility *")
-          // .not(".open-accessibility")
-          .not("a")
-          // .not("img")
           .addClass("lc");
-
         $("*").removeClass("dc");
 
-        contrastButton.addClass("button-pressed");
+        $("#lbexpand").css("background-color", "#114761");
+        $("#expand-image").css("fill", "#fff");
+
+        $("*").removeClass("dc-button");
         document
           .getElementById("contrast-button")
           .setAttribute("aria-pressed", "true");
@@ -697,7 +704,11 @@
         $("*").removeClass("dc");
         $("*").removeClass("lc");
 
+        $("#lbexpand").css("background-color", "#41c1eb");
+        $("#expand-image").css("fill", "#fff");
+
         contrastButton.removeClass("button-pressed");
+
         document
           .getElementById("contrast-button")
           .setAttribute("aria-pressed", "false");

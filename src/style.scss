@@ -168,7 +168,9 @@
   border-radius: 14px;
   margin: 0px 4px 4px 4px;
   &:hover {
-    background-color: #d1f0fa;
+    background-color: #114761;
+    fill: white;
+    color: white;
   }
   &:focus {
     outline: none;
@@ -184,28 +186,10 @@
   }
 }
 
-.open-accessibility-menu-button-dark {
-  fill: #fff !important;
-  color: #fff !important;
-  float: right;
-  outline: 1px lightgray;
-  &:hover {
-    background-color: #d1f0fa;
-    color: #fff !important;
-  }
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 1.5px 1px #fff;
-  }
-  span {
-    position: absolute;
-    display: block;
-    width: 100%;
-    bottom: 10px;
-    font-weight: 600;
-    font-size: 16px;
-  }
-}
+// .dark-hover:hover {
+//   background-color: #114761 !important;
+//   fill: white !important;
+// }
 
 .open-accessibility-menu-button:focus {
   outline: none;
@@ -213,9 +197,15 @@
 }
 
 .button-pressed {
-  background-color: #d1f0fa;
+  background-color: #114761;
+  color: #fff !important;
+  fill: #fff !important;
 }
-
+.button-pressed-dark {
+  background-color: #114761;
+  color: #114761 !important;
+  fill: #114761 !important;
+}
 .disabled-button {
   fill: lightgray !important;
   stroke: lightgray !important;
@@ -276,11 +266,14 @@
     color: yellow;
   }
 }
+.dc-button {
+  color: #fff;
+  fill: #fff;
+}
 
 .lc {
   background: #fff !important;
   color: black !important;
-  fill: black;
 }
 
 .highlight-links {
