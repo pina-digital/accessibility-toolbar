@@ -582,7 +582,7 @@
           .getElementById("pt-revert")
           .setAttribute("viewBox", "30 20 70 70");
       } else {
-        document.getElementById("empties-side").style.left = "0px";
+        document.getElementById("empties-side").style.left = "0vw";
         document.getElementById("empties-side").style.direction = "ltr";
         document.getElementById("filler").style.direction = "ltr";
         document.getElementById("lbexpand").style.borderRadius =
@@ -737,6 +737,11 @@
 
       if (options.contrast > 100) {
         $("*")
+          .not(".empty")
+          .not(".empties")
+          .not("#filler")
+          .not("#lbexpand")
+          // .not("#pina-container")
           .not(".open-accessibility-menu-button")
           .not(".open-accessibility-menu-button svg")
           .not(".open-accessibility-menu-button span")
@@ -751,6 +756,7 @@
         $("*").removeClass("lc");
 
         $("#lbexpand").css("background-color", "#fff");
+
         $("#expand-image").css("fill", "#114761");
 
         $(".open-accessibility-menu-button span").addClass("dc-button");
@@ -761,6 +767,11 @@
           .setAttribute("aria-pressed", "true");
       } else if (options.contrast < 100) {
         $("*")
+          .not(".empty")
+          .not(".empties")
+          .not("#filler")
+          .not("#lbexpand")
+          .not("#pina-container")
           .not(".open-accessibility-menu-button")
           .not(".open-accessibility-menu-button svg")
           .not(".open-accessibility-menu-button span")
@@ -804,32 +815,32 @@
         invertButton.addClass("button-pressed");
         filters.push("invert(1)");
 
-        if (
-          typeof html.css("background-color") == "undefined" ||
-          html.css("background-color") == "rgba(0, 0, 0, 0)"
-        )
-          html.css("background-color", "#ffffff");
+        //   if (
+        //     typeof html.css("background-color") == "undefined" ||
+        //     html.css("background-color") == "rgba(0, 0, 0, 0)"
+        //   )
+        //     html.css("background-color", "#ffffff");
 
-        if (
-          html.attr("data-open-accessibility-background-color-original") == ""
-        ) {
-          html.attr(
-            "data-open-accessibility-background-color-original",
-            html.css("background-color")
-          );
-          html.css(
-            "background-color",
-            invertColor(html.css("background-color"))
-          );
-        }
+        //   if (
+        //     html.attr("data-open-accessibility-background-color-original") == ""
+        //   ) {
+        //     html.attr(
+        //       "data-open-accessibility-background-color-original",
+        //       html.css("background-color")
+        //     );
+        //     html.css(
+        //       "background-color",
+        //       invertColor(html.css("background-color"))
+        //     );
+        //   }
       } else {
         invertButton.removeClass("button-pressed");
 
-        html.css(
-          "background-color",
-          html.attr("data-open-accessibility-background-color-original")
-        );
-        html.attr("data-open-accessibility-background-color-original", "");
+        //   html.css(
+        //     "background-color",
+        //     html.attr("data-open-accessibility-background-color-original")
+        //   );
+        //   html.attr("data-open-accessibility-background-color-original", "");
       }
 
       // Grayscale
