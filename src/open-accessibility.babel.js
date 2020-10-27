@@ -550,6 +550,8 @@
         document.getElementById("filler").style.direction = "rtl";
         document.getElementById("lbexpand").style.borderRadius =
           "50% 0% 0% 50%";
+        document.getElementById("side-switch").style.marginLeft = "50px";
+        document.getElementById("side-switch").style.marginRight = "0px";
 
         document
           .getElementById("pt-font-zoomin")
@@ -587,6 +589,8 @@
         document.getElementById("filler").style.direction = "ltr";
         document.getElementById("lbexpand").style.borderRadius =
           "0% 50% 50% 0%";
+        document.getElementById("side-switch").style.marginRight = "50px";
+        document.getElementById("side-switch").style.marginLeft = "0px";
 
         document
           .getElementById("pt-font-zoomin")
