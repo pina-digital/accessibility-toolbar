@@ -564,7 +564,7 @@
           .setAttribute("viewBox", "30 20 70 70");
         document
           .getElementById("pt-cursor")
-          .setAttribute("viewBox", "30 20 70 70");
+          .setAttribute("viewBox", "0 0 70 70");
         document
           .getElementById("pt-contrast")
           .setAttribute("viewBox", "30 20 70 70");

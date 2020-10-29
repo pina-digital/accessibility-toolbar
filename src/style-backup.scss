@@ -95,7 +95,7 @@ $images-dir: "images" !default;
   &-cursor {
     *:hover,
     * {
-      cursor: url("images/cursor.png"), default;
+      cursor: url("images/big-cursor2.png"), default;
     }
 
     &-workaround {
@@ -104,7 +104,7 @@ $images-dir: "images" !default;
       width: 38px;
       height: 60px;
       z-index: 1000;
-      background-image: url("images/cursor.png");
+      background-image: url("images/big-cursor2.png");
     }
   }
 

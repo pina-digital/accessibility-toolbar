@@ -65,18 +65,18 @@
     transition: zoom 0.3s ease-in-out;
 }
 
-.open-accessibility-cursor *:hover, .open-accessibility-cursor * {
+/* .open-accessibility-cursor *:hover, .open-accessibility-cursor * {
     cursor: url("images/cursor.png"), default;
-}
+} */
 
-.open-accessibility-cursor-workaround {
+/* .open-accessibility-cursor-workaround {
     pointer-events: none;
     position: absolute;
     width: 38px;
     height: 60px;
     z-index: 1000;
     background-image: url("images/cursor.png");
-}
+} */
 
 .open-accessibility-highlighted-links .highlighted-link {
     text-decoration: underline !important;

@@ -254,9 +254,15 @@
 .open-accessibility-cursor {
   * {
     &:hover {
-      cursor: url("images/cursor.png"), default;
+      cursor: url("images/big-cursor.png"), default;
     }
-    cursor: url("images/cursor.png"), default;
+    cursor: url("images/big-cursor.png"), default;
+    & a:link {
+      cursor: url("images/big-pointer.png"), auto;
+    }
+    & a:link img {
+      cursor: url("images/big-pointer.png"), auto;
+    }
   }
 }
 
@@ -564,3 +570,6 @@ input:checked + .slider .off {
 	}
 }
  */
+.bigger-cursor {
+  cursor: url(./svgs/cursor.svg);
+}
