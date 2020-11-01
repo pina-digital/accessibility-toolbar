@@ -555,7 +555,7 @@
         document.getElementById("filler").style.direction = "rtl";
         document.getElementById("lbexpand").style.borderRadius =
           "50% 0% 0% 50%";
-        document.getElementById("side-switch").style.marginLeft = "50px";
+        document.getElementById("side-switch").style.marginLeft = "45px";
         document.getElementById("side-switch").style.marginRight = "0px";
 
         document
@@ -594,7 +594,7 @@
         document.getElementById("filler").style.direction = "ltr";
         document.getElementById("lbexpand").style.borderRadius =
           "0% 50% 50% 0%";
-        document.getElementById("side-switch").style.marginRight = "50px";
+        document.getElementById("side-switch").style.marginRight = "45px";
         document.getElementById("side-switch").style.marginLeft = "0px";
 
         document
@@ -765,8 +765,12 @@
         $("*").removeClass("lc");
 
         $("#lbexpand").css("background-color", "#fff");
-
         $("#expand-image").css("fill", "#114761");
+
+        $("#open-accessibility-footer-logo").css(
+          "background-color",
+          "transparent"
+        );
 
         $(".open-accessibility-menu-button span").addClass("dc-button");
         contrastButton.addClass("button-pressed");
@@ -789,7 +793,8 @@
           .not(".first-line")
           .not(".open-accessibility-expand-button svg")
           .not("#open-accessibility-footer-logo")
-          // .not(".open-accessibility *")
+          .not(".open-accessibility-menu-disclaimer")
+          .not("#open-accessibility-footer-logo svg")
           .not(".open-accessibility")
           .not("a")
           .addClass("lc");
@@ -797,6 +802,7 @@
 
         $("#lbexpand").css("background-color", "#114761");
         $("#expand-image").css("fill", "#fff");
+        $("#open-accessibility-footer-logo").css("background-color", "#114761");
 
         $("*").removeClass("dc-button");
         document
@@ -808,6 +814,10 @@
 
         $("#lbexpand").css("background-color", "#41c1eb");
         $("#expand-image").css("fill", "#fff");
+
+        $("#open-accessibility-footer-logo").css("background-color", "#114761");
+
+        // $("#accDec").css("color", "#fff");
 
         contrastButton.removeClass("button-pressed");
 
