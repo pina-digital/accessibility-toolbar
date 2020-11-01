@@ -142,7 +142,7 @@
     customOptions = customOptions || {};
 
     var defaultOptions = {
-      isMenuOpened: false,
+      isMenuOpened: true,
       highlightedLinks: false,
       isMobileEnabled: true,
       grayscale: 0,
@@ -166,6 +166,7 @@
       localization: ["he"],
       toolbarSide: true,
       gZoom: 6,
+      // accessibilityDecleration: "",
     };
 
     var userOptions = getUserOptions();
@@ -228,8 +229,12 @@
     });
 
     // -------------
-    // Setting the initial div position of the toolbar
+    // Setting the accessibility declaration's url
+    console.log("111", options.accessibilityDecleration);
+    $("#accDec").attr("href", options.accessibilityDecleration);
 
+    // -------------
+    // Setting the initial div position of the toolbar
     // options.ptdl = 6;
     sessionStorage.setItem("ptdl", options.gZoom);
     console.log("options.gZoom", options.gZoom);
