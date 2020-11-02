@@ -3,13 +3,12 @@
   const empties = document.querySelectorAll(".empty");
 
   // ================================
-  // Trying to set location in memory
-  // ================================
+  // appending the fill div to the position from local storage
 
-  var kkk = sessionStorage.getItem("ptdl");
-  console.log("kkk", kkk);
-  var jjj = "#patd" + kkk;
-  // $(jjj).append(fill);
+  var initLoc = localStorage.getItem("ptdl");
+  console.log("initLoc", initLoc);
+  var initLocID = "#patd" + initLoc;
+  $(initLocID).append(fill);
 
   // Fill Listeneres
   fill.addEventListener("dragstart", dragStart);
@@ -49,13 +48,19 @@
   function dragDrop() {
     this.className = "empty";
     this.append(fill);
-    console.log("divNum", this.id);
-    var www = this.id.substring(4);
-    console.log("www", www);
+    console.log("D&D divName", this.id);
+    var newLoc = this.id.substring(4);
+    console.log("D&D divNum", newLoc);
 
-    sessionStorage.setItem("ptdl", www);
+    localStorage.setItem("ptdl", newLoc);
+    console.log("D&D ptdlSet", newLoc);
+    // $.getscript("./open-accessibility-babel.js", function () {
+    //   apply();
+    // });
+    // apply();
   }
 </script>
+
 <div class="empties" id="empties-side">
   <div class="empty" id="patd0"></div>
   <div class="empty" id="patd1"></div>

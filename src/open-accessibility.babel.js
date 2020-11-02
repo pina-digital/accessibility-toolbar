@@ -74,7 +74,7 @@
   }
 
   function applyFontZoom(selector, fZoom) {
-    console.log("zooming " + selector);
+    // console.log("zooming " + selector);
     $(selector)
       .not(".empties")
       .not(".empty")
@@ -116,7 +116,7 @@
   }
 
   function getLanguages(langs, map) {
-    console.log("langs", langs);
+    // console.log("langs", langs);
     var res = {};
     langs.forEach((key) => {
       var value = (map && map[key]) || locale[key];
@@ -125,7 +125,7 @@
       } else {
         console.error(key + "language does not set!");
       }
-      console.log("aaaaaa", res);
+      // console.log("aaaaaa", res);
     });
 
     return res;
@@ -230,14 +230,13 @@
 
     // -------------
     // Setting the accessibility declaration's url
-    console.log("111", options.accessibilityDecleration);
+    // console.log("111", options.accessibilityDecleration);
     $("#accDec").attr("href", options.accessibilityDecleration);
 
     // -------------
-    // Setting the initial div position of the toolbar
-    // options.ptdl = 6;
-    sessionStorage.setItem("ptdl", options.gZoom);
-    console.log("options.gZoom", options.gZoom);
+    // Setting the initial div position of the toolbar into local storage
+    localStorage.setItem("ptdl", options.gZoom);
+    // console.log("options.gZoom", options.gZoom);
 
     // -------------
     // Menu open button click
@@ -528,8 +527,9 @@
 
     function apply() {
       // ----------------
-      var bbb = sessionStorage.getItem("ptdl");
-      options.gZoom = bbb;
+      var newLocApply = localStorage.getItem("ptdl");
+      console.log("JS apply get ptdl", newLocApply);
+      options.gZoom = newLocApply;
       // alert(options.gZoom);
 
       if (options.isMenuOpened) {
@@ -826,7 +826,7 @@
           .setAttribute("aria-pressed", "false");
       }
 
-      console.log("c", options.contrast);
+      // console.log("c", options.contrast);
 
       // Invert
 
@@ -867,7 +867,7 @@
       if (options.grayscale == 100) {
         monochromeButton.addClass("button-pressed");
         var bgc = document.body.style.backgroundColor;
-        console.log("bgc", bgc);
+        // console.log("bgc", bgc);
       } else {
         monochromeButton.removeClass("button-pressed");
       }
@@ -876,7 +876,7 @@
       filters.push("brightness(" + options.brightness + "%)");
       filters.push("grayscale(" + options.grayscale + "%)");
       var filterValue = filters.join(" ");
-      console.log("filterValue", filterValue);
+      // console.log("filterValue", filterValue);
       html.css("filter", filterValue);
       html.css("-ms-filter", filterValue);
       html.css("-moz-filter", filterValue);
