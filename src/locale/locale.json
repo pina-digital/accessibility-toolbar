@@ -68,8 +68,8 @@
     "toolbar-align-left": "اليسار",
     "accessibility-statement": "بيان إمكانية الوصول"
   },
-  "sp": {
-    "expand": "El chico accesible",
+  "es": {
+    "expand": "El Chico Accesible",
     "close": "Cerrar",
     "font-zoom-out": "Reducir la fuente",
     "font-zoom-in": "Aumentar la fuente",
@@ -84,5 +84,5 @@
     "toolbar-align-right": "Derecho",
     "toolbar-align-left": "Izquierdo",
     "accessibility-statement": "Dec. de Accesibilidad"
-  },
+  }
 }

@@ -1,6 +1,6 @@
 <script>
-  const fill = document.querySelector(".fill");
-  const empties = document.querySelectorAll(".empty");
+  var fill = document.querySelector(".fill");
+  var empties = document.querySelectorAll(".empty");
 
   // ================================
   // appending the fill div to the position from local storage
@@ -115,7 +115,7 @@
                   </div></label
                 >
               </div>
-              <div class="open-accessibility-language-selector">
+              <div class="open-accessibility-language-selector" id="oals">
                 <form action="/action_page.php">
                   <!-- <label for="lang">lior</label> -->
                   <select
@@ -130,7 +130,7 @@
                     <option id="en" value="en">English</option>
                     <option id="ru" value="ru">Pусский</option>
                     <option id="ar" value="ar">عربى</option>
-                    <option id="sp" value="sp">Español</option>
+                    <option id="es" value="es">Español</option>
                     <option id="fr" value="fr" disabled>Française</option>
                   </select>
                 </form>

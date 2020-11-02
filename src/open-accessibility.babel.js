@@ -284,15 +284,15 @@
     toolbarSwitch.change(function () {
       options.toolbarSide = !options.toolbarSide;
 
-      var x = document.getElementById("togBtn").checked;
-      console.log("checkbox", x);
-      if ((x = false)) {
-        x = true;
-      } else {
-        if ((x = true)) {
-          x = false;
-        }
-      }
+      // var x = document.getElementById("togBtn").checked;
+      // console.log("checkbox", x);
+      // if ((x = false)) {
+      //   x = true;
+      // } else {
+      //   if ((x = true)) {
+      //     x = false;
+      //   }
+      // }
       apply();
     });
 
@@ -347,11 +347,11 @@
 
           location.reload();
         });
-      } else if (selectedLanguage == "sp") {
+      } else if (selectedLanguage == "es") {
         $(function () {
           $("body").openAccessibility({
             isMenuOpened: true,
-            localization: ["sp"],
+            localization: ["es"],
           });
 
           location.reload();
@@ -555,8 +555,8 @@
         document.getElementById("filler").style.direction = "rtl";
         document.getElementById("lbexpand").style.borderRadius =
           "50% 0% 0% 50%";
-        document.getElementById("side-switch").style.marginLeft = "45px";
-        document.getElementById("side-switch").style.marginRight = "0px";
+        document.getElementById("side-switch").style.margin = "0 0 0 45px";
+        document.getElementById("oals").style.margin = "1px 0 0 25px";
 
         document
           .getElementById("pt-font-zoomin")
@@ -589,13 +589,13 @@
           .getElementById("pt-revert")
           .setAttribute("viewBox", "30 20 70 70");
       } else {
-        document.getElementById("empties-side").style.left = "0vw";
+        document.getElementById("empties-side").style.left = "0px";
         document.getElementById("empties-side").style.direction = "ltr";
         document.getElementById("filler").style.direction = "ltr";
         document.getElementById("lbexpand").style.borderRadius =
           "0% 50% 50% 0%";
-        document.getElementById("side-switch").style.marginRight = "45px";
-        document.getElementById("side-switch").style.marginLeft = "0px";
+        document.getElementById("side-switch").style.margin = "0 45px 0 0";
+        document.getElementById("oals").style.margin = "1px 25px 0 0";
 
         document
           .getElementById("pt-font-zoomin")
