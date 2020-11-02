@@ -374,7 +374,7 @@
         options.maxFZoomLevel,
         options.fZoom + options.fZoomStep
       );
-      console.log("zi", options.fZoom);
+      // console.log("zi", options.fZoom);
       apply();
 
       fZoomInIndicator.addClass("button-indicator");
@@ -395,7 +395,7 @@
         options.minFZoomLevel,
         options.fZoom - options.fZoomStep
       );
-      console.log("zo", options.fZoom);
+      // console.log("zo", options.fZoom);
       apply();
       fZoomOutIndicator.addClass("button-indicator");
       fZoomOutIndicator.removeClass("hidden-indicator");
@@ -420,16 +420,16 @@
     pZoomButton.click(() => {
       if (options.pZoom == 1) {
         options.origMenuTop = document.getElementById("pina-main").offsetTop;
-        console.log("origMenuTop", options.origMenuTop);
+        // console.log("origMenuTop", options.origMenuTop);
       }
 
       options.pZoom += options.pZoomStep;
 
-      console.log("pZoom", options.pZoom);
+      // console.log("pZoom", options.pZoom);
 
       var calculus = 1 / options.pZoom;
       options.mZoom = calculus;
-      console.log("mZoom", options.mZoom);
+      // console.log("mZoom", options.mZoom);
 
       if (options.pZoom > options.maxPZoomLevel) {
         options.pZoom = options.minPZoomLevel;
@@ -502,7 +502,7 @@
     // Animation stop button click
 
     animationButton.click(() => {
-      console.log("options", options);
+      // console.log("options", options);
       options.isAnimStopped = !options.isAnimStopped;
       apply();
     });

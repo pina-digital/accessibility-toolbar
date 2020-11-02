@@ -13,7 +13,8 @@
     "animation-stop": "עצירת אנימציות",
     "reset": "ביטול שינויים",
     "toolbar-align-right": "ימין",
-    "toolbar-align-left": "שמאל"
+    "toolbar-align-left": "שמאל",
+    "accessibility-statement": "הצהרת נגישות"
   },
   "en": {
     "expand": "The Accessible Guy",
@@ -29,7 +30,9 @@
     "animation-stop": "Animation Stop",
     "reset": "Undo Changes",
     "toolbar-align-right": "Right",
-    "toolbar-align-left": "Left"
+    "toolbar-align-left": "Left",
+    "accessibility-statement": "Access. Statement"
+
   },
   "ru": {
     "expand": "The Accessible Guy",
@@ -45,7 +48,8 @@
     "animation-stop": "Остановить анимации",
     "reset": "Отменить изменения",
     "toolbar-align-right": "право",
-    "toolbar-align-left": "налево"
+    "toolbar-align-left": "налево",
+    "accessibility-statement": "заявление"
   },
   "ar": {
     "expand": "The Accessible Guy",
@@ -61,7 +65,8 @@
     "animation-stop": "عناصر التوقف",
     "reset": "إلغاء التغييرات",
     "toolbar-align-right": "يمين",
-    "toolbar-align-left": "اليسار"
+    "toolbar-align-left": "اليسار",
+    "accessibility-statement": "بيان إمكانية الوصول"
   },
   "sp": {
     "expand": "El chico accesible",
@@ -77,6 +82,7 @@
     "animation-stop": "Bloquear parpadeos",
     "reset": "Deshacer cambios",
     "toolbar-align-right": "Derecho",
-    "toolbar-align-left": "Izquierdo"
+    "toolbar-align-left": "Izquierdo",
+    "accessibility-statement": "Dec. de Accesibilidad"
   },
 }
