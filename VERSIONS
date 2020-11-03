@@ -15,3 +15,19 @@ Bug fixs:
         (this problem disappeare when:  1. removing h1,h2.. from textselector
                                 2. removing important from setproperty
                                 3. removing filter)
+
+2.0.0
+* Added left/right switch to change toolbar side on display
+* Added language select option for multiple languages
+* Added display zoom button
+* Added highlight links button
+* Added stop animations button
+* Elimintated the option to decrease font size below initial
+* Added zoom level indicator on font size decrease, font size increase and display zoom buttons
+* Changed the contrast button funtionality to Initial/Dark/Light contrast
+* Removed the brightness button
+* Changed the toolbar structure to flex display
+* Changed toolbar design
+* Added menu buttons area scrolling option on low res displays
+
+
