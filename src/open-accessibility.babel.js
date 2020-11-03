@@ -204,10 +204,9 @@
     var pZoomIndicator = $("#pZoom-indicator");
     var fZoomInIndicator = $("#fZoomIn-indicator");
     var fZoomOutIndicator = $("#fZoomOut-indicator");
-
+    var screenHeight = window.screen.height;
     // Initialize
     applyFontZoom(options.fontSelector, 1);
-
     // Set icon size
     container.addClass(getIconClass(options.iconSize));
 
@@ -535,6 +534,10 @@
     apply();
 
     function apply() {
+      if (screenHeight < 1080) {
+        $(".open-accessibility-menu-buttons").addClass("low-res-screen");
+        $("#pina-container").css("width", "262px");
+      }
       // ----------------
       var newLocApply = localStorage.getItem("ptdl");
       console.log("JS apply get ptdl", newLocApply);
