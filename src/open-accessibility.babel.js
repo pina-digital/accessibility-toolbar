@@ -356,6 +356,15 @@
 
           location.reload();
         });
+      } else if (selectedLanguage == "fr") {
+        $(function () {
+          $("body").openAccessibility({
+            isMenuOpened: true,
+            localization: ["fr"],
+          });
+
+          location.reload();
+        });
       }
       options.isMenuOpened = true;
       apply();

@@ -84,5 +84,22 @@
     "toolbar-align-right": "Derecho",
     "toolbar-align-left": "Izquierdo",
     "accessibility-statement": "Dec. de Accesibilidad"
+  },
+  "fr": {
+    "expand": "Le Gars Accessible",
+    "close": "Fermer",
+    "font-zoom-out": "Diminuer la taille de la police",
+    "font-zoom-in": "Augmenter la taille de la police",
+    "invert": "Inverser les couleurs",
+    "bigger-cursor": "Curseur plus grand",
+    "page-zoom": "Zoom de page",
+    "contrast": "Contraste",
+    "monochrome": "Niveaux de gris",
+    "links-highlight": "Liens soulignent",
+    "animation-stop": "Arrêt de l'animation",
+    "reset": "Annuler les changements",
+    "toolbar-align-right": "Droit",
+    "toolbar-align-left": "Gauche",
+    "accessibility-statement": "Déc. d'Accessibilité"
   }
-}
+ }
