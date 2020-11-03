@@ -73,26 +73,32 @@
     localStorage.setItem(LOCAL_STORAGE_OPTIONS_KEY, JSON.stringify(options));
   }
 
-  function applyTextZoom(selector, zoom) {
-    console.log("zooming " + selector);
+  function applyFontZoom(selector, fZoom) {
+    // console.log("zooming " + selector);
     $(selector)
-      .not(".open-accessibility *") // To avoid messing up the menu bar itself
+      .not(".empties")
+      .not(".empty")
+      .not(".fill")
+      .not(".open-accessibility-cursor-workaround")
+      .not(".open-accessibility *")
+      .not(".open-accessibility") // To avoid messing up the menu bar itself
+      .not("body")
       .each(function () {
         var element = $(this);
 
         var originalFontSize = element.attr(
-          "data-open-accessibility-text-original"
+          "data-open-accessibility-font-original"
         );
         if (!originalFontSize) {
           originalFontSize = element.css("font-size");
           element.attr(
-            "data-open-accessibility-text-original",
+            "data-open-accessibility-font-original",
             originalFontSize
           );
         }
 
         var units = getUnit(originalFontSize) || "";
-        var fontSize = parseFloat(originalFontSize) * zoom;
+        var fontSize = parseFloat(originalFontSize) * fZoom;
 
         var styleName = "font-size";
         var value = fontSize + units;
@@ -110,8 +116,8 @@
   }
 
   function getLanguages(langs, map) {
+    // console.log("langs", langs);
     var res = {};
-
     langs.forEach((key) => {
       var value = (map && map[key]) || locale[key];
       if ($.isPlainObject(value)) {
@@ -119,6 +125,7 @@
       } else {
         console.error(key + "language does not set!");
       }
+      // console.log("aaaaaa", res);
     });
 
     return res;
@@ -135,21 +142,31 @@
     customOptions = customOptions || {};
 
     var defaultOptions = {
-      isMenuOpened: false,
+      isMenuOpened: true,
       highlightedLinks: false,
       isMobileEnabled: true,
       grayscale: 0,
       brightness: 100,
       contrast: 100,
-      maxZoomLevel: 3,
-      minZoomLevel: 0.5,
-      zoomStep: 0.2,
-      zoom: 1,
+      maxFZoomLevel: 3,
+      minFZoomLevel: 1,
+      fZoomStep: 0.2,
+      fZoom: 1,
+      maxPZoomLevel: 1.9,
+      minPZoomLevel: 1,
+      pZoomStep: 0.2,
+      pZoom: 1,
+      mZoom: 1,
       cursor: false,
-      textSelector: "div,span,p,a,td,table,tr,h1,h2,h3,h4,h5,h6,input",
+      fontSelector: "div,span,p,a,td,table,tr,h1,h2,h3,h4,h5,h6,input",
       invert: false,
-      localization: ["he"],
+      isAnimStopped: false,
       iconSize: "s", // supported sizes are s(mall), m(edium), l(arge)
+      origMenuTop: window.innerHeight * 0.25,
+      localization: ["he"],
+      toolbarSide: true,
+      gZoom: 6,
+      // accessibilityDecleration: "",
     };
 
     var userOptions = getUserOptions();
@@ -173,14 +190,23 @@
     var closeButton = $(".open-accessibility-close-button");
     var invertButton = $(".open-accessibility-invert-button");
     var cursorButton = $(".open-accessibility-cursor-button");
-    var zoomInButton = $(".open-accessibility-zoom-in-button");
-    var zoomOutButton = $(".open-accessibility-zoom-out-button");
-    var brightnessButton = $(".open-accessibility-brightness-button");
+    var fZoomInButton = $(".open-accessibility-font-zoom-in-button");
+    var fZoomOutButton = $(".open-accessibility-font-zoom-out-button");
+    var pZoomButton = $(".open-accessibility-page-zoom-button");
     var monochromeButton = $(".open-accessibility-monochrome-button");
     var contrastButton = $(".open-accessibility-contrast-button");
+    var linksButton = $(".open-accessibility-links-button");
+    var animationButton = $(".open-accessibility-animation-button");
     var resetButton = $(".open-accessibility-reset-button");
     var cursorWorkaround = $(".open-accessibility-cursor-workaround");
-
+    var languageSelector = $("#lang-sel");
+    var toolbarSwitch = $("#togBtn");
+    var pZoomIndicator = $("#pZoom-indicator");
+    var fZoomInIndicator = $("#fZoomIn-indicator");
+    var fZoomOutIndicator = $("#fZoomOut-indicator");
+    var screenHeight = window.screen.height;
+    // Initialize
+    applyFontZoom(options.fontSelector, 1);
     // Set icon size
     container.addClass(getIconClass(options.iconSize));
 
@@ -188,103 +214,48 @@
     var languages = getLanguages(options.localization, options.localizationMap);
     translateTheme(languages[Object.keys(languages)[0]]);
 
-    html.addClass("open-accessibility-zoom");
+    html.addClass("open-accessibility-font-Zoom");
 
-    // -------------
-    // Brightness
-    brightnessButton.click(() => {
-      options.brightness += 50;
+    // Adding Enter or Space trigger to Toolbar Buttons
+    $(
+      ".open-accessibility-expand-button,.open-accessibility-close-button,.open-accessibility-menu-button, .l-switch, .open-accessibility-language-selector, .open-accessibility-menu-footer"
+    ).keyup(function (event) {
+      if (event.keyCode == 13 || event.keyCode == 32) {
+        event.preventDefault();
 
-      if (options.brightness > 150) {
-        options.brightness = 50;
+        $(this).click();
       }
-
-      apply();
     });
 
     // -------------
-    // Contrast
-
-    contrastButton.click(() => {
-      options.contrast += 50;
-
-      if (options.contrast > 150) {
-        options.contrast = 50;
-      }
-
-      apply();
-    });
+    // Setting the accessibility declaration's url
+    // console.log("111", options.accessibilityDecleration);
+    $("#accDec").attr("href", options.accessibilityDecleration);
 
     // -------------
-    // Grayscale
-
-    monochromeButton.click(() => {
-      options.grayscale += 100;
-      if (options.grayscale > 100) {
-        options.grayscale = 0;
-      }
-      apply();
-    });
+    // Setting the initial div position of the toolbar into local storage
+    localStorage.setItem("ptdl", options.gZoom);
+    // console.log("options.gZoom", options.gZoom);
 
     // -------------
-    // Reset
-
-    resetButton.click(() => {
-      options = $.extend({}, initialOptions);
-      options.isMenuOpened = false;
-
-      apply();
-    });
-
-    // -------------
-    // Zoom
-
-    zoomInButton.click(() => {
-      options.zoom = Math.min(
-        options.maxZoomLevel,
-        options.zoom + options.zoomStep
-      );
-      apply();
-    });
-
-    zoomOutButton.click(() => {
-      options.zoom = Math.max(
-        options.minZoomLevel,
-        options.zoom - options.zoomStep
-      );
-      apply();
-    });
-
-    // -------------
-    // Invert
-
-    invertButton.click(() => {
-      options.invert = !options.invert;
-      apply();
-    });
-
-    // -------------
-    // Cursor
-
-    cursorButton.click(() => {
-      options.cursor = !options.cursor;
-      apply();
-    });
-
-    // -------------
-    // Menu
+    // Menu open button click
 
     expandButton.click(() => {
       options.isMenuOpened = true;
       apply();
     });
 
+    // -------------
+    // Menu close button click
+
     closeButton.click(() => {
       options.isMenuOpened = false;
       apply();
     });
 
+    // -------------
     // Click outside of the menu -> close
+
     $(document).click((event) => {
       if (!$(event.target).closest(".open-accessibility").length) {
         if (options.isMenuOpened) {
@@ -306,6 +277,178 @@
     }
 
     // -------------
+    // Toolbar side switch
+    document.getElementById("togBtn").checked = options.toolbarSide;
+
+    toolbarSwitch.change(function () {
+      options.toolbarSide = !options.toolbarSide;
+
+      // var x = document.getElementById("togBtn").checked;
+      // console.log("checkbox", x);
+      // if ((x = false)) {
+      //   x = true;
+      // } else {
+      //   if ((x = true)) {
+      //     x = false;
+      //   }
+      // }
+      apply();
+    });
+
+    // -------------
+    // Get selected lamguage
+
+    // $("#lang-sel").change(function () {
+    languageSelector.change(function () {
+      options.localization = $(this).val();
+      console.log("optionssss.localization", options.localization);
+      var selectedLanguage = options.localization;
+
+      if (selectedLanguage == "sp") {
+        $(function () {
+          $("body").openAccessibility({
+            isMenuOpened: true,
+            localization: ["sp"],
+          });
+        });
+      } else if (selectedLanguage == "he") {
+        $(function () {
+          $("body").openAccessibility({
+            isMenuOpened: true,
+            localization: ["he"],
+          });
+
+          location.reload();
+        });
+      } else if (selectedLanguage == "en") {
+        $(function () {
+          $("body").openAccessibility({
+            isMenuOpened: true,
+            localization: ["en"],
+          });
+          location.reload();
+        });
+      } else if (selectedLanguage == "ru") {
+        $(function () {
+          $("body").openAccessibility({
+            isMenuOpened: true,
+            localization: ["ru"],
+          });
+
+          location.reload();
+        });
+      } else if (selectedLanguage == "ar") {
+        $(function () {
+          $("body").openAccessibility({
+            isMenuOpened: true,
+            localization: ["ar"],
+          });
+
+          location.reload();
+        });
+      } else if (selectedLanguage == "es") {
+        $(function () {
+          $("body").openAccessibility({
+            isMenuOpened: true,
+            localization: ["es"],
+          });
+
+          location.reload();
+        });
+      } else if (selectedLanguage == "fr") {
+        $(function () {
+          $("body").openAccessibility({
+            isMenuOpened: true,
+            localization: ["fr"],
+          });
+
+          location.reload();
+        });
+      }
+      options.isMenuOpened = true;
+      apply();
+    });
+
+    // -------------
+    // Text Zoom in button click
+
+    function fZoomInRemoveClass() {
+      fZoomInIndicator.removeClass("button-indicator");
+      fZoomInIndicator.addClass("hidden-indicator");
+    }
+
+    fZoomInButton.click(() => {
+      options.fZoom = Math.min(
+        options.maxFZoomLevel,
+        options.fZoom + options.fZoomStep
+      );
+      // console.log("zi", options.fZoom);
+      apply();
+
+      fZoomInIndicator.addClass("button-indicator");
+      fZoomInIndicator.removeClass("hidden-indicator");
+      setTimeout(fZoomInRemoveClass, 2000);
+    });
+
+    // -------------
+    // Text Zoom out button click
+
+    function fZoomOutRemoveClass() {
+      fZoomOutIndicator.removeClass("button-indicator");
+      fZoomOutIndicator.addClass("hidden-indicator");
+    }
+
+    fZoomOutButton.click(() => {
+      options.fZoom = Math.max(
+        options.minFZoomLevel,
+        options.fZoom - options.fZoomStep
+      );
+      // console.log("zo", options.fZoom);
+      apply();
+      fZoomOutIndicator.addClass("button-indicator");
+      fZoomOutIndicator.removeClass("hidden-indicator");
+      setTimeout(fZoomOutRemoveClass, 2000);
+    });
+
+    // -------------
+    // Cursor button click
+
+    cursorButton.click(() => {
+      options.cursor = !options.cursor;
+      apply();
+    });
+
+    // Page zoom button click
+
+    function pZoomRemoveClass() {
+      pZoomIndicator.removeClass("button-indicator");
+      pZoomIndicator.addClass("hidden-indicator");
+    }
+
+    pZoomButton.click(() => {
+      if (options.pZoom == 1) {
+        options.origMenuTop = document.getElementById("pina-main").offsetTop;
+        // console.log("origMenuTop", options.origMenuTop);
+      }
+
+      options.pZoom += options.pZoomStep;
+
+      // console.log("pZoom", options.pZoom);
+
+      var calculus = 1 / options.pZoom;
+      options.mZoom = calculus;
+      // console.log("mZoom", options.mZoom);
+
+      if (options.pZoom > options.maxPZoomLevel) {
+        options.pZoom = options.minPZoomLevel;
+        options.mZoom = options.minPZoomLevel;
+      }
+      apply();
+      pZoomIndicator.addClass("button-indicator");
+      pZoomIndicator.removeClass("hidden-indicator");
+      setTimeout(pZoomRemoveClass, 2000);
+    });
+
     // Mouse cursor workaround
 
     cursorWorkaround.hide();
@@ -318,26 +461,88 @@
         }
 
         cursorWorkaround.css({
-          left: e.pageX / options.zoom,
-          top: e.pageY / options.zoom,
+          left: e.pageX / options.fZoom,
+          top: e.pageY / options.fZoom,
         });
       });
     }
 
-    // position menu on absolute right
-    if ($("body").css("margin") != "")
-      $(".open-accessibility-collapsed").css(
-        "right",
-        "-" + $("body").css("margin")
-      );
+    // -------------
+    // Contrast button click
 
-    // Initialize
-    //applyTextZoom(options.textSelector, 1);
+    contrastButton.click(() => {
+      options.contrast += 50;
+
+      if (options.contrast > 150) {
+        options.contrast = 50;
+      }
+      apply();
+    });
+
+    // -------------
+    // Invert button click
+
+    invertButton.click(() => {
+      options.invert = !options.invert;
+      apply();
+    });
+
+    // -------------
+    // Grayscale button click
+
+    monochromeButton.click(() => {
+      options.grayscale += 100;
+      if (options.grayscale > 100) {
+        options.grayscale = 0;
+      }
+      apply();
+    });
+
+    // -------------
+    // Links button click
+
+    linksButton.click(() => {
+      options.highlightedLinks = !options.highlightedLinks;
+      apply();
+    });
+
+    // -------------
+    // Animation stop button click
+
+    animationButton.click(() => {
+      // console.log("options", options);
+      options.isAnimStopped = !options.isAnimStopped;
+      apply();
+    });
+
+    // -------------
+    // Reset button click
+
+    resetButton.click(() => {
+      options = $.extend({}, initialOptions);
+      options.isMenuOpened = false;
+      apply();
+    });
+
+    // position menu on absolute right
+    // if ($("body").css("margin") != "")
+    //   $(".open-accessibility-collapsed").css(
+    //     "right",
+    //     "-" + $("body").css("margin")
+    //   );
 
     apply();
 
     function apply() {
+      if (screenHeight < 1080) {
+        $(".open-accessibility-menu-buttons").addClass("low-res-screen");
+        $("#pina-container").css("width", "262px");
+      }
       // ----------------
+      var newLocApply = localStorage.getItem("ptdl");
+      console.log("JS apply get ptdl", newLocApply);
+      options.gZoom = newLocApply;
+      // alert(options.gZoom);
 
       if (options.isMenuOpened) {
         expandButton.fadeOut(300);
@@ -353,54 +558,171 @@
         container.addClass("open-accessibility-collapsed");
       }
 
-      // ----------------
-      // Filters
+      // ----------
+      // Toolbar Side
 
-      var filters = [];
-      if (options.invert) {
-        filters.push("invert(1)");
+      if (options.toolbarSide) {
+        document.getElementById("empties-side").style.right = "0px";
+        document.getElementById("empties-side").style.direction = "rtl";
+        document.getElementById("filler").style.direction = "rtl";
+        document.getElementById("lbexpand").style.borderRadius =
+          "50% 0% 0% 50%";
+        document.getElementById("side-switch").style.margin = "0 0 0 45px";
+        document.getElementById("oals").style.margin = "1px 0 0 25px";
 
-        if (
-          typeof body.css("background-color") == "undefined" ||
-          body.css("background-color") == "rgba(0, 0, 0, 0)"
-        )
-          body.css("background-color", "#ffffff");
-
-        if (
-          body.attr("data-open-accessibility-background-color-original") == ""
-        ) {
-          body.attr(
-            "data-open-accessibility-background-color-original",
-            body.css("background-color")
-          );
-          body.css(
-            "background-color",
-            invertColor(body.css("background-color"))
-          );
-        }
+        document
+          .getElementById("pt-font-zoomin")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-font-zoomout")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-page-zoomin")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-cursor")
+          .setAttribute("viewBox", "0 0 70 70");
+        document
+          .getElementById("pt-contrast")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-invert")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-monochrome")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-links")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-pause")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-revert")
+          .setAttribute("viewBox", "30 20 70 70");
       } else {
-        body.css(
-          "background-color",
-          body.attr("data-open-accessibility-background-color-original")
-        );
-        body.attr("data-open-accessibility-background-color-original", "");
-      }
+        document.getElementById("empties-side").style.left = "0px";
+        document.getElementById("empties-side").style.direction = "ltr";
+        document.getElementById("filler").style.direction = "ltr";
+        document.getElementById("lbexpand").style.borderRadius =
+          "0% 50% 50% 0%";
+        document.getElementById("side-switch").style.margin = "0 45px 0 0";
+        document.getElementById("oals").style.margin = "1px 25px 0 0";
 
-      filters.push("contrast(" + options.contrast + "%)");
-      filters.push("brightness(" + options.brightness + "%)");
-      filters.push("grayscale(" + options.grayscale + "%)");
-      var filterValue = filters.join(" ");
-      html.css("filter", filterValue);
-      html.css("-ms-filter", filterValue);
-      html.css("-moz-filter", filterValue);
-      html.css("-webkit-filter", filterValue);
-      html.css("-o-filter", filterValue);
+        document
+          .getElementById("pt-font-zoomin")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-font-zoomout")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-page-zoomin")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-cursor")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-contrast")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-invert")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-monochrome")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-links")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-pause")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-revert")
+          .setAttribute("viewBox", "52 20 70 70");
+      }
+      // ----------
+      // Selected language
+
+      var selectedLanguage = options.localization;
+      document.getElementById("lang-sel").value = selectedLanguage;
 
       // ----------
-      // Zoom
-      applyTextZoom(options.textSelector, options.zoom);
+      // Text Zoom
 
-      //$('.open-accessibility-zoom').css('transform', 'scale(' + options.zoom + ')');
+      applyFontZoom(options.fontSelector, options.fZoom);
+      var fZoomInd = "x " + options.fZoom.toFixed(1);
+
+      document.getElementById("fZoomIn-indicator").innerHTML = fZoomInd;
+      document.getElementById("fZoomOut-indicator").innerHTML = fZoomInd;
+
+      if (options.fZoom > options.minFZoomLevel) {
+        fZoomInButton.addClass("button-pressed");
+
+        document
+          .getElementById("font-zoom-in-button")
+          .setAttribute("aria-pressed", "true");
+      } else {
+        fZoomInButton.removeClass("button-pressed");
+        document
+          .getElementById("font-zoom-in-button")
+          .setAttribute("aria-pressed", "false");
+      }
+
+      if (options.fZoom >= options.maxFZoomLevel) {
+        fZoomInButton.addClass("disabled-button");
+        document
+          .getElementById("font-zoom-in-button")
+          .setAttribute("aria-disabled", "true");
+      } else {
+        fZoomInButton.removeClass("disabled-button");
+        document
+          .getElementById("font-zoom-in-button")
+          .setAttribute("aria-disabled", "false");
+        fZoomInButton.addClass("open-accessibility-menu-button");
+      }
+
+      if (options.fZoom <= options.minFZoomLevel) {
+        fZoomOutButton.removeClass("button-pressed");
+        fZoomOutButton.addClass("disabled-button");
+        document
+          .getElementById("font-zoom-out-button")
+          .setAttribute("aria-disabled", "true");
+      } else {
+        fZoomOutButton.removeClass("disabled-button");
+        document
+          .getElementById("font-zoom-out-button")
+          .setAttribute("aria-disabled", "false");
+        fZoomOutButton.addClass("open-accessibility-menu-button");
+      }
+
+      // Page Zoom
+
+      $("body").css("zoom", options.pZoom);
+      $(".empty").not(".fill").css("zoom", options.mZoom);
+
+      var setMenuTop = options.origMenuTop * options.mZoom + "px";
+      document.getElementById("pina-main").style.top = setMenuTop;
+
+      var pZoomInd = "x " + options.pZoom.toFixed(1);
+      document.getElementById("pZoom-indicator").innerHTML = pZoomInd;
+
+      if (options.pZoom > options.minPZoomLevel) {
+        pZoomButton.addClass("button-pressed");
+
+        document
+          .getElementById("page-zoom-button")
+          .setAttribute("aria-pressed", "true");
+      } else {
+        pZoomButton.removeClass("button-pressed");
+
+        document
+          .getElementById("page-zoom-button")
+          .setAttribute("aria-pressed", "false");
+      }
+      // $("*").not(".open-accessibility *").css(
+      //   "transform",
+      //   "scale(" + options.zoom + ")"
+      // );
 
       // ----------
       // Cursor
@@ -408,14 +730,214 @@
       if (options.cursor) {
         html.addClass("open-accessibility-cursor");
 
+        cursorButton.addClass("button-pressed");
+        document
+          .getElementById("cursor-button")
+          .setAttribute("aria-pressed", "true");
         if (!googleChrome) {
           cursorWorkaround.show();
         }
       } else {
         html.removeClass("open-accessibility-cursor");
+        cursorButton.removeClass("button-pressed");
+        document
+          .getElementById("cursor-button")
+          .setAttribute("aria-pressed", "false");
+
         if (!googleChrome) {
           cursorWorkaround.hide();
         }
+      }
+
+      // ----------------
+      // Filters
+
+      var filters = [];
+
+      // Contrast
+
+      if (options.contrast > 100) {
+        $("*")
+          .not(".empty")
+          .not(".empties")
+          .not("#filler")
+          .not("#lbexpand")
+          // .not("#pina-container")
+          .not(".open-accessibility-menu-button")
+          .not(".open-accessibility-menu-button svg")
+          .not(".open-accessibility-menu-button span")
+          .not(".button-icon")
+          .not(".open-accessibility-expand-button")
+          .not(".first-line")
+          .not(".open-accessibility-expand-button svg")
+          .not("#open-accessibility-footer-logo")
+          .not(".open-accessibility")
+          .not("a")
+          .addClass("dc");
+        $("*").removeClass("lc");
+
+        $("#lbexpand").css("background-color", "#fff");
+        $("#expand-image").css("fill", "#114761");
+
+        $("#open-accessibility-footer-logo").css(
+          "background-color",
+          "transparent"
+        );
+
+        $(".open-accessibility-menu-button span").addClass("dc-button");
+        contrastButton.addClass("button-pressed");
+
+        document
+          .getElementById("contrast-button")
+          .setAttribute("aria-pressed", "true");
+      } else if (options.contrast < 100) {
+        $("*")
+          .not(".empty")
+          .not(".empties")
+          .not("#filler")
+          .not("#lbexpand")
+          .not("#pina-container")
+          .not(".open-accessibility-menu-button")
+          .not(".open-accessibility-menu-button svg")
+          .not(".open-accessibility-menu-button span")
+          .not(".button-icon")
+          .not(".open-accessibility-expand-button")
+          .not(".first-line")
+          .not(".open-accessibility-expand-button svg")
+          .not("#open-accessibility-footer-logo")
+          .not(".open-accessibility-menu-disclaimer")
+          .not("#open-accessibility-footer-logo svg")
+          .not(".open-accessibility")
+          .not("a")
+          .addClass("lc");
+        $("*").removeClass("dc");
+
+        $("#lbexpand").css("background-color", "#114761");
+        $("#expand-image").css("fill", "#fff");
+        $("#open-accessibility-footer-logo").css("background-color", "#114761");
+
+        $("*").removeClass("dc-button");
+        document
+          .getElementById("contrast-button")
+          .setAttribute("aria-pressed", "true");
+      } else {
+        $("*").removeClass("dc");
+        $("*").removeClass("lc");
+
+        $("#lbexpand").css("background-color", "#41c1eb");
+        $("#expand-image").css("fill", "#fff");
+
+        $("#open-accessibility-footer-logo").css("background-color", "#114761");
+
+        // $("#accDec").css("color", "#fff");
+
+        contrastButton.removeClass("button-pressed");
+
+        document
+          .getElementById("contrast-button")
+          .setAttribute("aria-pressed", "false");
+      }
+
+      // console.log("c", options.contrast);
+
+      // Invert
+
+      if (options.invert) {
+        invertButton.addClass("button-pressed");
+        filters.push("invert(1)");
+
+        //   if (
+        //     typeof html.css("background-color") == "undefined" ||
+        //     html.css("background-color") == "rgba(0, 0, 0, 0)"
+        //   )
+        //     html.css("background-color", "#ffffff");
+
+        //   if (
+        //     html.attr("data-open-accessibility-background-color-original") == ""
+        //   ) {
+        //     html.attr(
+        //       "data-open-accessibility-background-color-original",
+        //       html.css("background-color")
+        //     );
+        //     html.css(
+        //       "background-color",
+        //       invertColor(html.css("background-color"))
+        //     );
+        //   }
+      } else {
+        invertButton.removeClass("button-pressed");
+
+        //   html.css(
+        //     "background-color",
+        //     html.attr("data-open-accessibility-background-color-original")
+        //   );
+        //   html.attr("data-open-accessibility-background-color-original", "");
+      }
+
+      // Grayscale
+
+      if (options.grayscale == 100) {
+        monochromeButton.addClass("button-pressed");
+        var bgc = document.body.style.backgroundColor;
+        // console.log("bgc", bgc);
+      } else {
+        monochromeButton.removeClass("button-pressed");
+      }
+
+      filters.push("contrast(" + 100 + "%)");
+      filters.push("brightness(" + options.brightness + "%)");
+      filters.push("grayscale(" + options.grayscale + "%)");
+      var filterValue = filters.join(" ");
+      // console.log("filterValue", filterValue);
+      html.css("filter", filterValue);
+      html.css("-ms-filter", filterValue);
+      html.css("-moz-filter", filterValue);
+      html.css("-webkit-filter", filterValue);
+      html.css("-o-filter", filterValue);
+
+      // Link Highlight
+
+      if (options.highlightedLinks) {
+        $("a:not(a:has(img))")
+          .not(".open-accessibility *")
+          .addClass("highlight-links");
+        $("a img").addClass("highlight-links");
+        // $(".open-accessibility-menu-footer").addClass("highlight-links");
+        // $(".open-accessibility-menu-footer svg").addClass(
+        //   "highlight-links-footer-img"
+        // );
+
+        linksButton.addClass("button-pressed");
+        document
+          .getElementById("links-button")
+          .setAttribute("aria-pressed", "true");
+      } else {
+        $("a:not(a:has(img))").removeClass("highlight-links");
+        $("a img").removeClass("highlight-links");
+        $(".open-accessibility-menu-footer").removeClass("highlight-links");
+        $(".open-accessibility-menu-footer svg").removeClass(
+          "highlight-links-footer-img"
+        );
+
+        linksButton.removeClass("button-pressed");
+        document
+          .getElementById("links-button")
+          .setAttribute("aria-pressed", "false");
+      }
+
+      // Animation Stop
+      if (options.isAnimStopped) {
+        $("*").not(".open-accessibility *").addClass("paused");
+        animationButton.addClass("button-pressed");
+        document
+          .getElementById("stop-anim-button")
+          .setAttribute("aria-pressed", "true");
+      } else {
+        $("*").removeClass("paused");
+        animationButton.removeClass("button-pressed");
+        document
+          .getElementById("stop-anim-button")
+          .setAttribute("aria-pressed", "false");
       }
 
       setUserOptions(options);

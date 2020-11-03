@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
     <title>רכיב הנגשה</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -23,20 +25,89 @@
       $(function () {
         $("body").openAccessibility({
           isMenuOpened: false,
-          localization: ["he"],
+          accessibilityDecleration: "https://pina.co.il/הצהרת-נגישות/",
+          // localization: ["he"],
         });
       });
     </script>
+    <style>
+      .anim {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: relative;
+        animation-name: example;
+        animation-duration: 4s;
+        animation-delay: 2s;
+        border-radius: 50%;
+      }
+
+      @keyframes example {
+        0% {
+          background-color: red;
+          left: 0px;
+          top: 0px;
+        }
+        25% {
+          background-color: yellow;
+          left: 200px;
+          top: 0px;
+        }
+        50% {
+          background-color: blue;
+          left: 200px;
+          top: 200px;
+        }
+        75% {
+          background-color: green;
+          left: 0px;
+          top: 200px;
+        }
+        100% {
+          background-color: red;
+          left: 0px;
+          top: 0px;
+        }
+      }
+      .pageImages {
+        background-color: lightgreen;
+      }
+    </style>
   </head>
 
-  <body>
-    <div>
-      <h1 style="color: blue;">
-        שלום עולם
-      </h1>
-      <h2>
-        hello world
-      </h2>
+  <body style="background-color: lightcoral">
+    <header></header>
+    <main>
+      <h1 style="color: blue">שלום עולם</h1>
+      <h2>hello world</h2>
+      <div><a href="www.ynet.co.il">ynet</a></div>
+      <div><a href="www.google.com">google</a></div>
+      <div><a href="www.amazon.com">Amazon</a></div>
+      <div class="anim"></div>
+      <div class="pageImages">
+        <img
+          src="./misc/118860939_1571823466543488_8890648245741509424_o.jpg"
+          alt="Cute Dogs"
+          height="300"
+        />
+        <img src="./src/svgs/footerpina.svg" alt="Cute Dogs2" width="300" />
+        <a href="default.asp">
+          <img src="./src/svgs/footerpina.svg" alt="Cute Kitten" width="300" />
+        </a>
+        <a href="https://en.wikipedia.org/wiki/Kitten">
+          <img src="./misc/kitten.jpg" alt="Cute Kitten2" height="300" />
+        </a>
+        <a href="http://example.com" target="_blank">
+          <img
+            src="./misc/118860939_1571823466543488_8890648245741509424_o.jpg"
+            alt="example of image without a border"
+            style="border: 0"
+            height="300"
+          />
+        </a>
+      </div>
+      <div class="anim"></div>
+
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lorem mi,
         lobortis at dui imperdiet, pharetra porttitor turpis. Vestibulum vitae
@@ -45,32 +116,33 @@
         eleifend. Quisque in consectetur lectus, id cursus ligula. Morbi
         molestie bibendum lorem, at faucibus leo ullamcorper sit amet. Donec sit
         amet dui tincidunt, vestibulum magna id, egestas orci. Sed scelerisque
-        congue nunc ut elementum. Nulla feugiat dui vel metus luctus, sit amet
-        hendrerit urna commodo. Curabitur sed odio eget libero malesuada congue
-        id quis mi. Vivamus viverra ipsum in consequat porttitor. Praesent
-        ultrices, elit fermentum hendrerit pulvinar, dolor lacus euismod enim,
-        sit amet eleifend tellus ex sit amet sapien. Sed ut lectus massa. Cras
-        est dolor, consectetur eget erat cursus, iaculis consectetur augue.
-        Fusce vitae justo vitae nibh laoreet rutrum in sed libero. Mauris
-        laoreet leo et tortor hendrerit, a suscipit ex placerat. Praesent arcu
-        turpis, scelerisque id luctus sit amet, euismod sit amet nunc. Ut
-        ultrices felis justo, vel maximus mauris fermentum sed. Phasellus
-        egestas purus iaculis, rhoncus erat ac, aliquet felis. Proin felis nisi,
-        lacinia sed purus a, pellentesque gravida lorem. Vivamus justo dolor,
-        egestas nec risus eu, varius lacinia felis. Praesent venenatis quis urna
-        ut sodales. Donec suscipit, enim eget dictum mollis, nulla nulla aliquet
-        justo, vel dignissim magna enim nec nulla. Ut elementum dui augue, sit
-        amet dictum augue finibus eget. Aenean ut mauris a quam malesuada
-        laoreet quis ut dui. Quisque tristique velit nisi, in viverra enim
-        varius eu. Pellentesque et lectus nec ipsum rutrum tempus in et orci.
-        Duis pellentesque iaculis pretium. Aliquam feugiat magna purus, pulvinar
-        convallis felis facilisis sagittis. Phasellus non elit urna. Sed
-        lobortis eget ex non tristique. Nunc euismod arcu sodales turpis aliquam
-        pharetra. Nulla facilisis nulla vel quam molestie rhoncus nec sed ante.
-        Nam fermentum porttitor dui sed maximus. Vivamus aliquam venenatis
-        condimentum. Phasellus a lobortis velit, vel mattis sapien. Sed non
-        vehicula sem, nec congue erat. Donec convallis erat et eros mattis
-        ultricies. Suspendisse ut diam et ex ornare finibus in eu risus.
+        congue nunc ut elementum. <a href="www.gsmarena.com">GSMArena</a> Nulla
+        feugiat dui vel metus luctus, sit amet hendrerit urna commodo. Curabitur
+        sed odio eget libero malesuada congue id quis mi. Vivamus viverra ipsum
+        in consequat porttitor. Praesent ultrices, elit fermentum hendrerit
+        pulvinar, dolor lacus euismod enim, sit amet eleifend tellus ex sit amet
+        sapien. Sed ut lectus massa. Cras est dolor, consectetur eget erat
+        cursus, iaculis consectetur augue. Fusce vitae justo vitae nibh laoreet
+        rutrum in sed libero. Mauris laoreet leo et tortor hendrerit, a suscipit
+        ex placerat. Praesent arcu turpis, scelerisque id luctus sit amet,
+        euismod sit amet nunc. Ut ultrices felis justo, vel maximus mauris
+        fermentum sed. Phasellus egestas purus iaculis, rhoncus erat ac, aliquet
+        felis. Proin felis nisi, lacinia sed purus a, pellentesque gravida
+        lorem. Vivamus justo dolor, egestas nec risus eu, varius lacinia felis.
+        Praesent venenatis quis urna ut sodales. Donec suscipit, enim eget
+        dictum mollis, nulla nulla aliquet justo, vel dignissim magna enim nec
+        nulla. Ut elementum dui augue, sit amet dictum augue finibus eget.
+        Aenean ut mauris a quam malesuada laoreet quis ut dui. Quisque tristique
+        velit nisi, in viverra enim varius eu. Pellentesque et lectus nec ipsum
+        rutrum tempus in et orci. Duis pellentesque iaculis pretium. Aliquam
+        feugiat magna purus, pulvinar convallis felis facilisis sagittis.
+        Phasellus non elit urna. Sed lobortis eget ex non tristique.
+        <a href="www.walla.co.il">walla</a> Nunc euismod arcu sodales turpis
+        aliquam pharetra. Nulla facilisis nulla vel quam molestie rhoncus nec
+        sed ante. Nam fermentum porttitor dui sed maximus. Vivamus aliquam
+        venenatis condimentum. Phasellus a lobortis velit, vel mattis sapien.
+        Sed non vehicula sem, nec congue erat. Donec convallis erat et eros
+        mattis ultricies. Suspendisse ut diam et ex ornare finibus in eu risus.
         Maecenas ut nisi non ante sodales fermentum at vel arcu. Pellentesque
         luctus et ipsum eu ornare. Nulla hendrerit quam non consequat pulvinar.
         Pellentesque pellentesque gravida nibh, at porta metus tincidunt nec.
@@ -97,24 +169,25 @@
         ultricies arcu. In iaculis nibh nec purus mattis fringilla eget in
         nulla. Ut nunc diam, dictum molestie diam et, viverra tincidunt tellus.
         In et leo sed neque commodo tempus. Donec est lectus, porta et mi ut,
-        dignissim dignissim felis. Aliquam sed vulputate sem, vel rhoncus dui.
-        Quisque eleifend euismod metus ullamcorper ornare. Nunc sodales tortor
-        eget ipsum maximus, at blandit augue vulputate. Nulla facilisi. Donec
-        maximus leo sed enim semper fermentum. Pellentesque scelerisque, est
-        vitae pulvinar dapibus, dui magna gravida sapien, et lacinia velit dui
-        in diam. Donec sed diam massa. Donec auctor, dolor tincidunt porttitor
-        dignissim, mauris neque cursus mauris, et suscipit nisi velit non nisi.
-        Aliquam erat volutpat. Nam augue ligula, auctor quis luctus a, feugiat
-        non massa. Nam tempor nisl tempor lacinia dictum. Duis imperdiet in elit
-        id dignissim. Cras ultricies aliquet erat eu consequat. Suspendisse sit
-        amet mauris eget enim congue tempus. Vestibulum ante ipsum primis in
-        faucibus orci luctus et ultrices posuere cubilia curae; Vivamus
-        dignissim at turpis ut rutrum. Proin suscipit risus ac ornare tempus. Ut
-        gravida semper enim vitae tempus. Mauris pharetra suscipit sodales. Ut
-        sed eros in metus gravida ornare ut ut eros. Donec lobortis, sem gravida
-        porttitor vehicula, metus libero porttitor nunc, tempor ornare urna nibh
-        eu nunc. Aenean in massa et justo ullamcorper faucibus. Suspendisse
-        lobortis volutpat convallis. Etiam eget lacus vitae augue iaculis dictum
+        dignissim <a href="www.zap.co.il">zap</a> dignissim felis. Aliquam sed
+        vulputate sem, vel rhoncus dui. Quisque eleifend euismod metus
+        ullamcorper ornare. Nunc sodales tortor eget ipsum maximus, at blandit
+        augue vulputate. Nulla facilisi. Donec maximus leo sed enim semper
+        fermentum. Pellentesque scelerisque, est vitae pulvinar dapibus, dui
+        magna gravida sapien, et lacinia velit dui in diam. Donec sed diam
+        massa. Donec auctor, dolor tincidunt porttitor dignissim, mauris neque
+        cursus mauris, et suscipit nisi velit non nisi. Aliquam erat volutpat.
+        Nam augue ligula, auctor quis luctus a, feugiat non massa. Nam tempor
+        nisl tempor lacinia dictum. Duis imperdiet in elit id dignissim. Cras
+        ultricies aliquet erat eu consequat. Suspendisse sit amet mauris eget
+        enim congue tempus. Vestibulum ante ipsum primis in faucibus orci luctus
+        et ultrices posuere cubilia curae; Vivamus dignissim at turpis ut
+        rutrum. Proin suscipit risus ac ornare tempus. Ut gravida semper enim
+        vitae tempus. Mauris pharetra suscipit sodales. Ut sed eros in metus
+        gravida ornare ut ut eros. Donec lobortis, sem gravida porttitor
+        vehicula, metus libero porttitor nunc, tempor ornare urna nibh eu nunc.
+        Aenean in massa et justo ullamcorper faucibus. Suspendisse lobortis
+        volutpat convallis. Etiam eget lacus vitae augue iaculis dictum
         condimentum eu tortor. Curabitur semper justo nibh, vitae sagittis risus
         pharetra in. Sed eget nisi a ante cursus semper at ac mauris. Duis vitae
         dui sed mi porttitor ultricies. Suspendisse sagittis elit at nisi
@@ -445,77 +518,9 @@
         ac luctus arcu. Interdum et malesuada fames ac ante ipsum primis in
         faucibus. Suspendisse efficitur sollicitudin leo, a congue nunc suscipit
         non. In et elit tellus. Sed sed erat ligula. Nam quis ex viverra,
-        dapibus diam quis, laoreet orci. Sed vitae pulvinar turpis, a dignissim
-        tellus. Vivamus lacinia justo nec congue vulputate. Mauris augue ipsum,
-        consequat vitae massa sit amet, malesuada hendrerit risus. Etiam pretium
-        ac neque eu molestie. Sed imperdiet tellus ac gravida bibendum. Ut
-        pharetra ullamcorper nulla, eget fermentum dui consequat vel. Cras metus
-        ligula, tempus at justo quis, tempor cursus nibh. Mauris in turpis nisl.
-        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-        inceptos himenaeos. Pellentesque ac sem a lectus rutrum congue quis a
-        nisi. Aliquam erat volutpat. Aenean malesuada malesuada massa.
-        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-        cubilia curae; Quisque interdum massa ut lacus posuere, sit amet posuere
-        nisl ullamcorper. Suspendisse finibus ipsum nec purus feugiat, vitae
-        feugiat tellus tincidunt. Maecenas auctor, sem sed viverra dictum,
-        libero sapien convallis mauris, id accumsan risus ex ac quam. Donec nisi
-        lacus, hendrerit mollis rhoncus iaculis, consectetur sed nisl. Lorem
-        ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut
-        dapibus nunc. Donec feugiat leo diam, dictum semper eros accumsan at.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam augue
-        erat, pretium quis purus id, facilisis euismod orci. Nullam sit amet
-        lorem mauris. Praesent rutrum massa sed enim consequat, non sollicitudin
-        eros bibendum. Donec et vulputate libero. In sit amet est nec mi mattis
-        finibus. Sed rutrum, felis ac varius congue, lectus augue auctor justo,
-        sed finibus sem purus ac nibh. Duis metus ipsum, tempor sollicitudin
-        maximus ut, egestas ut ante. Aliquam ac ultrices velit. Suspendisse at
-        ornare purus, sed sagittis enim. Integer vehicula quam lacus, vitae
-        commodo lacus venenatis lobortis. Etiam volutpat euismod tincidunt. Ut
-        varius, augue ut vehicula luctus, sem neque venenatis lectus, ut
-        pulvinar dui mauris eleifend ipsum. Cras elementum interdum sodales. Sed
-        imperdiet aliquam metus, sed tempor nulla faucibus eget. Nulla in dolor
-        bibendum, dapibus magna et, iaculis erat. Nullam lacinia diam sit amet
-        diam scelerisque, et rutrum leo dapibus. Nulla nec aliquet risus, eu
-        posuere mauris. Nam gravida eu lectus vel tristique. Ut consequat elit a
-        velit fringilla, malesuada mollis tellus vestibulum. Suspendisse
-        potenti. Aliquam fringilla, lacus ac interdum efficitur, erat nulla
-        laoreet dui, id vulputate lacus nunc ultrices tellus. Vestibulum justo
-        turpis, molestie eget ante eu, pulvinar pulvinar turpis. Proin ut mollis
-        sapien. Class aptent taciti sociosqu ad litora torquent per conubia
-        nostra, per inceptos himenaeos. Nunc convallis turpis eget velit pretium
-        ornare. Vestibulum pharetra condimentum sodales. Suspendisse id lectus
-        ac massa vehicula sollicitudin. Praesent semper in enim vitae porttitor.
-        Sed tempus maximus elit, sed sollicitudin velit maximus sed. Vivamus nec
-        tristique leo. Aliquam tincidunt risus et maximus rhoncus. Morbi iaculis
-        mauris nec justo malesuada tincidunt. Sed suscipit et nisi condimentum
-        lacinia. Nullam sed ante faucibus, laoreet sapien eget, cursus magna.
-        Curabitur a suscipit ipsum. Duis eleifend luctus diam eu molestie. Morbi
-        eros sem, cursus molestie interdum ut, tincidunt et augue. Vivamus
-        consectetur tellus in leo venenatis, non ullamcorper dolor mattis.
-        Mauris est quam, volutpat sed pulvinar et, convallis at tellus. Ut vitae
-        tortor laoreet augue iaculis ultricies vitae eget tortor. Nam ipsum
-        magna, laoreet non enim nec, elementum lacinia justo. Nulla odio lacus,
-        blandit ut orci nec, rutrum scelerisque nisi. Nulla pretium nibh a lacus
-        scelerisque, ut ultrices neque aliquet. Praesent aliquam velit ut
-        venenatis consectetur. Phasellus non libero mi. Vivamus eu cursus velit,
-        sed bibendum lacus. Fusce facilisis, felis in dictum aliquet, elit
-        tortor tempus felis, eu laoreet dui dui vel erat. Phasellus aliquam
-        risus vel enim elementum convallis. Maecenas consequat odio nibh. Etiam
-        ornare euismod sodales. Praesent urna massa, pulvinar vitae erat non,
-        gravida vehicula magna. Curabitur neque augue, faucibus ullamcorper dui
-        at, eleifend tempor justo. Aenean ornare turpis et urna semper, eu
-        accumsan diam placerat. Ut ultrices diam turpis, ut eleifend nisl
-        condimentum in. Morbi eu metus malesuada, venenatis velit nec, suscipit
-        dolor. Nunc laoreet ligula laoreet tellus accumsan hendrerit. Vivamus
-        quis erat eu ex vestibulum rhoncus ut eu ligula. Generated 50
-        paragraphs, 4872 words, 32721 bytes of Lorem Ipsum
+        dapibus diam quis, laoreet orci.
       </p>
-    </div>
-
-    <style>
-      h1 {
-        font-size: 20px !important;
-      }
-    </style>
+    </main>
+    <footer></footer>
   </body>
 </html>

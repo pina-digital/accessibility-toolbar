@@ -1,76 +1,350 @@
-<div class="open-accessibility-cursor-workaround"></div>
-<div class="open-accessibility open-accessibility-collapsed">
-  <div class="open-accessibility-container">
-    <div class="open-accessibility-expand-button">
-      @@include('../svgs/expand.svg')
-    </div>
+<script>
+  var fill = document.querySelector(".fill");
+  var empties = document.querySelectorAll(".empty");
 
-    <div class="open-accessibility-menu">
-      <div class="open-accessibility-close-button">
-        @@include('../svgs/close.svg')
-      </div>
+  // ================================
+  // appending the fill div to the position from local storage
 
+  var initLoc = localStorage.getItem("ptdl");
+  console.log("initLoc", initLoc);
+  var initLocID = "#patd" + initLoc;
+  $(initLocID).append(fill);
+
+  // Fill Listeneres
+  fill.addEventListener("dragstart", dragStart);
+  fill.addEventListener("dragend", dragEnd);
+
+  // Loop through empties and call drag events
+  for (const empty of empties) {
+    empty.addEventListener("dragover", dragOver);
+    empty.addEventListener("dragenter", dragEnter);
+    empty.addEventListener("dragleave", dragLeave);
+    empty.addEventListener("drop", dragDrop);
+  }
+
+  // Drag Functions
+  function dragStart() {
+    this.className += " hold";
+    setTimeout(() => (this.className = "invisible"), 0);
+  }
+
+  function dragEnd() {
+    this.className = "fill";
+  }
+
+  function dragOver(e) {
+    e.preventDefault();
+  }
+
+  function dragEnter(e) {
+    e.preventDefault();
+    this.className += " hovered";
+  }
+
+  function dragLeave() {
+    this.className = "empty";
+  }
+
+  function dragDrop() {
+    this.className = "empty";
+    this.append(fill);
+    console.log("D&D divName", this.id);
+    var newLoc = this.id.substring(4);
+    console.log("D&D divNum", newLoc);
+
+    localStorage.setItem("ptdl", newLoc);
+    console.log("D&D ptdlSet", newLoc);
+    // $.getscript("./open-accessibility-babel.js", function () {
+    //   apply();
+    // });
+    // apply();
+  }
+</script>
+
+<div class="empties" id="empties-side">
+  <div class="empty" id="patd0"></div>
+  <div class="empty" id="patd1"></div>
+  <div class="empty" id="patd2"></div>
+  <div class="empty" id="patd3"></div>
+  <div class="empty" id="patd4"></div>
+  <div class="empty" id="patd5"></div>
+  <div class="empty" id="patd6">
+    <div class="fill" id="filler" draggable="true">
+      <div class="open-accessibility-cursor-workaround"></div>
       <div
-        class="open-accessibility-menu-button open-accessibility-zoom-in-button"
+        class="open-accessibility open-accessibility-collapsed"
+        id="pina-main"
+        role="toolbar"
+        aria-orientation="vertical"
       >
-        @@include('../svgs/zoom-in.svg')
-        <span data-lang="zoom-in">הגדלת גופן</span>
-      </div>
+        <div class="open-accessibility-container" id="pina-container">
+          <div
+            class="open-accessibility-expand-button"
+            role="button"
+            id="lbexpand"
+            aria-label="האיש הנגיש"
+            tabindex="0"
+          >
+            @@include('../svgs/expand.svg')
+            <!-- <span data-lang="expand"></span> -->
+          </div>
 
-      <div
-        class="open-accessibility-menu-button open-accessibility-zoom-out-button"
-      >
-        @@include('../svgs/zoom-out.svg')
-        <span data-lang="zoom-out">הקטנת גופן</span>
-      </div>
+          <div class="open-accessibility-menu">
+            <div class="open-accessibility-top-row">
+              <div
+                class="open-accessibility-close-button"
+                role="button"
+                id="lbclose"
+                aria-label="סגירה"
+                tabindex="0"
+              >
+                @@include('../svgs/close.svg')
+              </div>
+              <div class="open-accessibility-side-switch" id="side-switch">
+                <label
+                  class="l-switch"
+                  role="switch"
+                  aria-label="מיקום תוסף"
+                  tabindex="0"
+                  ><input type="checkbox" id="togBtn" />
+                  <div class="slider round">
+                    <span data-lang="toolbar-align-right" class="on">ימין</span
+                    ><span data-lang="toolbar-align-left" class="off"
+                      >שמאל</span
+                    >
+                  </div></label
+                >
+              </div>
+              <div class="open-accessibility-language-selector" id="oals">
+                <form action="/action_page.php">
+                  <!-- <label for="lang">lior</label> -->
+                  <select
+                    name="lang"
+                    aria-label="בחירת שפה"
+                    id="lang-sel"
+                    role="listbox"
+                    tabindex="0"
+                    onmousedown="this.value='';"
+                  >
+                    <option id="he" value="he">עברית</option>
+                    <option id="en" value="en">English</option>
+                    <option id="ru" value="ru">Pусский</option>
+                    <option id="ar" value="ar">عربى</option>
+                    <option id="es" value="es">Español</option>
+                    <option id="fr" value="fr">Française</option>
+                  </select>
+                </form>
+              </div>
+            </div>
+            <div class="open-accessibility-menu-buttons">
+              <div
+                class="open-accessibility-menu-button open-accessibility-font-zoom-in-button"
+                id="font-zoom-in-button"
+                role="button"
+                aria-pressed="false"
+                aria-disabled="false"
+                tabindex="0"
+              >
+                <div class="first-line">
+                  <div class="hidden-indicator" id="fZoomIn-indicator"></div>
+                  <div class="button-icon">
+                    @@include('../svgs/font-zoom-in.svg')
+                  </div>
+                </div>
+                <span data-lang="font-zoom-in" id="lbfzoomin">הגדלת גופן</span>
+              </div>
 
-      <div
-        class="open-accessibility-menu-button open-accessibility-invert-button"
-      >
-        @@include('../svgs/invert.svg')
-        <span data-lang="invert">היפוך צבעים</span>
-      </div>
+              <div
+                class="open-accessibility-menu-button open-accessibility-font-zoom-out-button"
+                id="font-zoom-out-button"
+                role="button"
+                aria-pressed="false"
+                aria-disabled="true"
+                tabindex="0"
+              >
+                <div class="first-line">
+                  <div class="hidden-indicator" id="fZoomOut-indicator"></div>
+                  <div class="button-icon">
+                    @@include('../svgs/font-zoom-out2.svg')
+                  </div>
+                </div>
+                <span data-lang="font-zoom-out" id="lbfzoomout"
+                  >הקטנת גופן</span
+                >
+              </div>
 
-      <div
-        class="open-accessibility-menu-button open-accessibility-cursor-button"
-      >
-        @@include('../svgs/cursor.svg')
-        <span data-lang="bigger-cursor">הגדלת סמן</span>
-      </div>
+              <div
+                class="open-accessibility-menu-button open-accessibility-page-zoom-button"
+                id="page-zoom-button"
+                role="button"
+                aria-pressed="false"
+                tabindex="0"
+              >
+                <div class="first-line">
+                  <div class="hidden-indicator" id="pZoom-indicator"></div>
+                  <div class="button-icon">
+                    @@include('../svgs/zoom-in.svg')
+                  </div>
+                </div>
+                <span data-lang="page-zoom" id="lbpzoom">הגדלת תצוגה</span>
+              </div>
 
-      <div
-        class="open-accessibility-menu-button open-accessibility-brightness-button"
-      >
-        @@include('../svgs/brightness.svg')
-        <span data-lang="brightness">בהירות</span>
-      </div>
+              <div
+                class="open-accessibility-menu-button open-accessibility-cursor-button"
+                id="cursor-button"
+                role="button"
+                aria-pressed="false"
+                tabindex="0"
+              >
+                <div class="first-line">
+                  <div class="hidden-indicator" id="cursor-indicator"></div>
+                  <div class="button-icon">@@include('../svgs/cursor.svg')</div>
+                </div>
+                <span data-lang="bigger-cursor" id="lbcursor">הגדלת סמן</span>
+              </div>
 
-      <div
-        class="open-accessibility-menu-button open-accessibility-contrast-button"
-      >
-        @@include('../svgs/contrast.svg')
-        <span data-lang="contrast">ניגודיות</span>
-      </div>
+              <div
+                class="open-accessibility-menu-button open-accessibility-contrast-button"
+                id="contrast-button"
+                role="button"
+                aria-pressed="false"
+                tabindex="0"
+              >
+                <div class="first-line">
+                  <div class="hidden-indicator" id="contrast-indicator"></div>
+                  <div class="button-icon">
+                    @@include('../svgs/contrast.svg')
+                  </div>
+                </div>
+                <span data-lang="contrast" id="lbcontrast">ניגודיות</span>
+              </div>
 
-      <div
-        class="open-accessibility-menu-button open-accessibility-monochrome-button"
-      >
-        @@include('../svgs/monochrome.svg')
-        <span data-lang="grayscale">גווני אפור</span>
-      </div>
+              <div
+                class="open-accessibility-menu-button open-accessibility-invert-button"
+                id="invert-button"
+                role="button"
+                aria-pressed="false"
+                tabindex="0"
+              >
+                <div class="first-line">
+                  <div class="hidden-indicator" id="invert-indicator"></div>
+                  <div class="button-icon">@@include('../svgs/invert.svg')</div>
+                </div>
+                <span id="lbinvert" data-lang="invert" id="lbinvert"
+                  >היפוך צבעים</span
+                >
+              </div>
 
-      <div
-        class="open-accessibility-menu-button open-accessibility-reset-button"
-      >
-        @@include('../svgs/revert.svg')
-        <span data-lang="reset">בטל שינויים</span>
-      </div>
+              <div
+                class="open-accessibility-menu-button open-accessibility-monochrome-button"
+                id="monochrome-button"
+                role="button"
+                aria-pressed="false"
+                tabindex="0"
+              >
+                <div class="first-line">
+                  <div class="hidden-indicator" id="monochrome-indicator"></div>
+                  <div class="button-icon">
+                    @@include('../svgs/monochrome.svg')
+                  </div>
+                </div>
+                <span data-lang="monochrome" id="lbmonochrome">גווני אפור</span>
+              </div>
 
-      <div class="open-accessibility-menu-footer">
-        <a href="https://pina.co.il" target="_blank">
-          @@include('../svgs/footerpina.svg')
-        </a>
+              <div
+                class="open-accessibility-menu-button open-accessibility-links-button"
+                id="links-button"
+                role="button"
+                aria-pressed="false"
+                tabindex="0"
+              >
+                <div class="first-line">
+                  <div class="hidden-indicator" id="links-indicator"></div>
+                  <div class="button-icon">@@include('../svgs/link.svg')</div>
+                </div>
+                <span data-lang="links-highlight" id="lblink"
+                  >הדגשת לינקים</span
+                >
+              </div>
+
+              <div
+                class="open-accessibility-menu-button open-accessibility-animation-button"
+                id="stop-anim-button"
+                role="button"
+                aria-pressed="false"
+                tabindex="0"
+              >
+                <div class="first-line">
+                  <div class="hidden-indicator" id="animation-indicator"></div>
+                  <div class="button-icon">@@include('../svgs/pause.svg')</div>
+                </div>
+                <span data-lang="animation-stop" id="lbpause"
+                  >עצירת אנימציות</span
+                >
+              </div>
+
+              <div
+                class="open-accessibility-menu-button open-accessibility-reset-button"
+                id="reset-button"
+                role="button"
+                aria-pressed="false"
+                tabindex="0"
+              >
+                <div class="first-line">
+                  <div class="hidden-indicator" id="reset-indicator"></div>
+                  <div class="button-icon">@@include('../svgs/revert.svg')</div>
+                </div>
+                <span data-lang="reset" id="lbrevert">בטל שינויים</span>
+              </div>
+            </div>
+            <!-- <div class="bottom-links">
+              <div class="open-accessibility-menu-disclaimer">
+                <a
+                  href="#"
+                  data-lang="accessibility-statement"
+                  id="accDec"
+                  target="_blank"
+                  role="link"
+                  aria-label="הצהרת נגישות"
+                  tabindex="0"
+                  >הצהרת נגישות
+                </a>
+              </div>
+            </div> -->
+            <div class="open-accessibility-menu-footer">
+              <a
+                href="https://pina.co.il"
+                target="_blank"
+                role="link"
+                aria-label="לוגו פינה"
+                tabindex="0"
+              >
+                <div id="open-accessibility-footer-logo">
+                  @@include('../svgs/footerpina2.svg')
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+  <div class="empty" id="patd7"></div>
+  <div class="empty" id="patd8"></div>
+  <div class="empty" id="patd9"></div>
+  <div class="empty" id="patd10"></div>
+  <div class="empty" id="patd11"></div>
+  <div class="empty" id="patd12"></div>
+  <div class="empty" id="patd13"></div>
+  <div class="empty" id="patd14"></div>
+  <div class="empty" id="patd15"></div>
+  <div class="empty" id="patd16"></div>
+  <div class="empty" id="patd17"></div>
+  <div class="empty" id="patd18"></div>
+  <div class="empty" id="patd19"></div>
+  <div class="empty" id="patd20"></div>
+  <div class="empty" id="patd21"></div>
+  <div class="empty" id="patd22"></div>
+  <div class="empty" id="patd23"></div>
+  <div class="empty" id="patd24"></div>
 </div>
