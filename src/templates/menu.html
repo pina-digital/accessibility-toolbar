@@ -44,12 +44,12 @@
   function dragLeave() {
     this.className = "empty";
   }
-
+  var newLoc;
   function dragDrop() {
     this.className = "empty";
     this.append(fill);
     console.log("D&D divName", this.id);
-    var newLoc = this.id.substring(4);
+    newLoc = this.id.substring(4);
     console.log("D&D divNum", newLoc);
 
     localStorage.setItem("ptdl", newLoc);
@@ -59,6 +59,25 @@
     // });
     // apply();
   }
+
+  // If after switching displays resulution and both the
+  // display resolution is under 768 and the toolbar location
+  // div number is greater than 11 than a new div location is
+  // calculated
+  var screenHeight;
+  var parentDiv;
+  $(window).on("load resize", function () {
+    screenHeight = this.screen.height;
+    parentDiv = fill.parentElement.id.substring(4);
+    parentDivID = "#patd" + newLoc;
+    if (screenHeight < 768 && parentDiv >= 12) {
+      $("#patd11").append(fill);
+    } else {
+      $(parentDivID).append(fill);
+      // console.log("newLoc", newLoc);
+      localStorage.setItem("ptdl", newLoc);
+    }
+  });
 </script>
 
 <div class="empties" id="empties-side">
@@ -67,8 +86,7 @@
   <div class="empty" id="patd2"></div>
   <div class="empty" id="patd3"></div>
   <div class="empty" id="patd4"></div>
-  <div class="empty" id="patd5"></div>
-  <div class="empty" id="patd6">
+  <div class="empty" id="patd5">
     <div class="fill" id="filler" draggable="true">
       <div class="open-accessibility-cursor-workaround"></div>
       <div
@@ -298,19 +316,19 @@
               </div>
             </div>
             <!-- <div class="bottom-links">
-              <div class="open-accessibility-menu-disclaimer">
-                <a
-                  href="#"
-                  data-lang="accessibility-statement"
-                  id="accDec"
-                  target="_blank"
-                  role="link"
-                  aria-label="הצהרת נגישות"
-                  tabindex="0"
-                  >הצהרת נגישות
-                </a>
-              </div>
-            </div> -->
+            <div class="open-accessibility-menu-disclaimer">
+              <a
+                href="#"
+                data-lang="accessibility-statement"
+                id="accDec"
+                target="_blank"
+                role="link"
+                aria-label="הצהרת נגישות"
+                tabindex="0"
+                >הצהרת נגישות
+              </a>
+            </div>
+          </div> -->
             <div class="open-accessibility-menu-footer">
               <a
                 href="https://pina.co.il"
@@ -329,6 +347,7 @@
       </div>
     </div>
   </div>
+  <div class="empty" id="patd6"></div>
   <div class="empty" id="patd7"></div>
   <div class="empty" id="patd8"></div>
   <div class="empty" id="patd9"></div>

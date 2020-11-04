@@ -165,7 +165,7 @@
       origMenuTop: window.innerHeight * 0.25,
       localization: ["he"],
       toolbarSide: true,
-      gZoom: 6,
+      gZoom: 5,
       // accessibilityDecleration: "",
     };
 
@@ -204,18 +204,21 @@
     var pZoomIndicator = $("#pZoom-indicator");
     var fZoomInIndicator = $("#fZoomIn-indicator");
     var fZoomOutIndicator = $("#fZoomOut-indicator");
-    var screenHeight = window.screen.height;
+
     // Initialize
     applyFontZoom(options.fontSelector, 1);
+
     // Set icon size
     container.addClass(getIconClass(options.iconSize));
 
+    // -------------
     // Set Langauges
     var languages = getLanguages(options.localization, options.localizationMap);
     translateTheme(languages[Object.keys(languages)[0]]);
 
     html.addClass("open-accessibility-font-Zoom");
 
+    // -------------
     // Adding Enter or Space trigger to Toolbar Buttons
     $(
       ".open-accessibility-expand-button,.open-accessibility-close-button,.open-accessibility-menu-button, .l-switch, .open-accessibility-language-selector, .open-accessibility-menu-footer"
@@ -228,8 +231,15 @@
     });
 
     // -------------
+    // Getting the window height
+    var screenHeight;
+    $(window).on("load resize", function () {
+      screenHeight = this.screen.height;
+      apply();
+    });
+
+    // -------------
     // Setting the accessibility declaration's url
-    // console.log("111", options.accessibilityDecleration);
     $("#accDec").attr("href", options.accessibilityDecleration);
 
     // -------------
@@ -239,7 +249,6 @@
 
     // -------------
     // Menu open button click
-
     expandButton.click(() => {
       options.isMenuOpened = true;
       apply();
@@ -247,7 +256,6 @@
 
     // -------------
     // Menu close button click
-
     closeButton.click(() => {
       options.isMenuOpened = false;
       apply();
@@ -255,7 +263,6 @@
 
     // -------------
     // Click outside of the menu -> close
-
     $(document).click((event) => {
       if (!$(event.target).closest(".open-accessibility").length) {
         if (options.isMenuOpened) {
@@ -371,7 +378,6 @@
 
     // -------------
     // Text Zoom in button click
-
     function fZoomInRemoveClass() {
       fZoomInIndicator.removeClass("button-indicator");
       fZoomInIndicator.addClass("hidden-indicator");
@@ -392,7 +398,6 @@
 
     // -------------
     // Text Zoom out button click
-
     function fZoomOutRemoveClass() {
       fZoomOutIndicator.removeClass("button-indicator");
       fZoomOutIndicator.addClass("hidden-indicator");
@@ -412,14 +417,13 @@
 
     // -------------
     // Cursor button click
-
     cursorButton.click(() => {
       options.cursor = !options.cursor;
       apply();
     });
 
+    // -------------
     // Page zoom button click
-
     function pZoomRemoveClass() {
       pZoomIndicator.removeClass("button-indicator");
       pZoomIndicator.addClass("hidden-indicator");
@@ -449,8 +453,8 @@
       setTimeout(pZoomRemoveClass, 2000);
     });
 
+    // -------------
     // Mouse cursor workaround
-
     cursorWorkaround.hide();
 
     var googleChrome = isGoogleChrome();
@@ -469,7 +473,6 @@
 
     // -------------
     // Contrast button click
-
     contrastButton.click(() => {
       options.contrast += 50;
 
@@ -481,7 +484,6 @@
 
     // -------------
     // Invert button click
-
     invertButton.click(() => {
       options.invert = !options.invert;
       apply();
@@ -489,7 +491,6 @@
 
     // -------------
     // Grayscale button click
-
     monochromeButton.click(() => {
       options.grayscale += 100;
       if (options.grayscale > 100) {
@@ -500,7 +501,6 @@
 
     // -------------
     // Links button click
-
     linksButton.click(() => {
       options.highlightedLinks = !options.highlightedLinks;
       apply();
@@ -508,7 +508,6 @@
 
     // -------------
     // Animation stop button click
-
     animationButton.click(() => {
       // console.log("options", options);
       options.isAnimStopped = !options.isAnimStopped;
@@ -517,7 +516,6 @@
 
     // -------------
     // Reset button click
-
     resetButton.click(() => {
       options = $.extend({}, initialOptions);
       options.isMenuOpened = false;
@@ -534,24 +532,33 @@
     apply();
 
     function apply() {
+      // ----------------
+      // Setting the toolbar's buttons section height based on window height
       if (screenHeight < 1080) {
         $(".open-accessibility-menu-buttons").addClass("low-res-screen");
         $("#pina-container").css("width", "262px");
+      } else {
+        $(".open-accessibility-menu-buttons").removeClass("low-res-screen");
+        $("#pina-container").css("width", "256px");
       }
+
       // ----------------
+      // Setting the location of the expand button after drag&drop
       var newLocApply = localStorage.getItem("ptdl");
       console.log("JS apply get ptdl", newLocApply);
       options.gZoom = newLocApply;
       // alert(options.gZoom);
 
+      // ----------------
+      // Changing between menu closed/open classes
       if (options.isMenuOpened) {
-        expandButton.fadeOut(300);
-        menu.fadeIn(300);
+        expandButton.fadeOut(10);
+        menu.fadeIn(600);
 
         container.removeClass("open-accessibility-collapsed");
         container.addClass("open-accessibility-expanded");
       } else {
-        expandButton.fadeIn(300);
+        expandButton.fadeIn(10);
         menu.fadeOut(300);
 
         container.removeClass("open-accessibility-expanded");
@@ -560,14 +567,13 @@
 
       // ----------
       // Toolbar Side
-
       if (options.toolbarSide) {
         document.getElementById("empties-side").style.right = "0px";
         document.getElementById("empties-side").style.direction = "rtl";
         document.getElementById("filler").style.direction = "rtl";
         document.getElementById("lbexpand").style.borderRadius =
           "50% 0% 0% 50%";
-        document.getElementById("side-switch").style.margin = "0 0 0 45px";
+        document.getElementById("side-switch").style.margin = "0 2px 0 43px";
         document.getElementById("oals").style.margin = "1px 0 0 25px";
 
         document
@@ -606,7 +612,7 @@
         document.getElementById("filler").style.direction = "ltr";
         document.getElementById("lbexpand").style.borderRadius =
           "0% 50% 50% 0%";
-        document.getElementById("side-switch").style.margin = "0 45px 0 0";
+        document.getElementById("side-switch").style.margin = "0 43px 0 2px";
         document.getElementById("oals").style.margin = "1px 25px 0 0";
 
         document
@@ -642,13 +648,11 @@
       }
       // ----------
       // Selected language
-
       var selectedLanguage = options.localization;
       document.getElementById("lang-sel").value = selectedLanguage;
 
       // ----------
       // Text Zoom
-
       applyFontZoom(options.fontSelector, options.fZoom);
       var fZoomInd = "x " + options.fZoom.toFixed(1);
 
@@ -695,8 +699,8 @@
         fZoomOutButton.addClass("open-accessibility-menu-button");
       }
 
+      // ----------
       // Page Zoom
-
       $("body").css("zoom", options.pZoom);
       $(".empty").not(".fill").css("zoom", options.mZoom);
 

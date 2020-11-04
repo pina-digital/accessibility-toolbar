@@ -30,4 +30,12 @@ Bug fixs:
 * Changed toolbar design
 * Added menu buttons area scrolling option on low res displays
 
-
+2.0.1 (3/11/2020)
+* Fixed the transition display of opening/closing the toolbar
+* Added title to the footer logo svg
+* Fixed toolbar languages translation
+* Made the expand button/icon a little larger
+* A few minor design change and bug fixes
+* Added auto detection to screen height change
+* Added a function that checks if the screen resolution is too high for the toolbar location it changes it
+* Fixed a bug related to toolbar font size
