@@ -1,1 +1,7 @@
-<svg id="pt-page-zoomin" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="lbpzoom" viewBox="30 20 70 70"><title><span data-lang="zoom-in">הגדלת תצוגה</span></title><g><path class="pt-button-image" d="M84.53,50.55H82.77l-.62-.6a14.33,14.33,0,1,0-1.55,1.56l.6.62v1.75L92.31,65l3.31-3.31Zm-13.33,0a10,10,0,1,1,10-10A10,10,0,0,1,71.2,50.55Zm5.55-8.89H72.31v4.45H70.08V41.66H65.64V39.44h4.44V35h2.23v4.45h4.44Z"/></g></svg>
+<svg id="pt-page-zoomin" xmlns="http://www.w3.org/2000/svg" 
+    role="img" aria-labelledby="lbpzoom" viewBox="30 20 70 70">
+    <title><span data-lang="zoom-in">הגדלת תצוגה</span></title>
+    <g>
+        <path class="pt-button-image" d="M84.53,50.55H82.77l-.62-.6a14.33,14.33,0,1,0-1.55,1.56l.6.62v1.75L92.31,65l3.31-3.31Zm-13.33,0a10,10,0,1,1,10-10A10,10,0,0,1,71.2,50.55Zm5.55-8.89H72.31v4.45H70.08V41.66H65.64V39.44h4.44V35h2.23v4.45h4.44Z"/>
+    </g>
+</svg>

@@ -30,7 +30,7 @@ Bug fixs:
 * Changed toolbar design
 * Added menu buttons area scrolling option on low res displays
 
-2.0.1 (3/11/2020)
+2.0.1 (4/11/2020)
 * Fixed the transition display of opening/closing the toolbar
 * Added title to the footer logo svg
 * Fixed toolbar languages translation
@@ -39,3 +39,16 @@ Bug fixs:
 * Added auto detection to screen height change
 * Added a function that checks if the screen resolution is too high for the toolbar location it changes it
 * Fixed a bug related to toolbar font size
+
+2.02 (4/11/2020)
+* Cleaned unneccessary css lines
+* Fixed "disapearing" select value issue when touching the select without choosing item
+
+2.03 (9/11/2020)
+* Changes expand button's color to main color (dark)
+* Added remove images button
+* Added focus button
+* Added readable font button
+* Added headings button
+* Fixed fue color bugs when swithching contrast modes
+* Changed the undo button's icon

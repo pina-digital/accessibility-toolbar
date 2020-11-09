@@ -166,6 +166,10 @@
       localization: ["he"],
       toolbarSide: true,
       gZoom: 5,
+      imagesRemove: false,
+      focus: false,
+      fontReadable: false,
+      headings: false,
       // accessibilityDecleration: "",
     };
 
@@ -197,6 +201,10 @@
     var contrastButton = $(".open-accessibility-contrast-button");
     var linksButton = $(".open-accessibility-links-button");
     var animationButton = $(".open-accessibility-animation-button");
+    var imagesButton = $(".open-accessibility-imgRemove-button");
+    var focusButton = $(".open-accessibility-focus-button");
+    var fontReadableButton = $(".open-accessibility-fontReadable-button");
+    var headingsButton = $(".open-accessibility-headings-button");
     var resetButton = $(".open-accessibility-reset-button");
     var cursorWorkaround = $(".open-accessibility-cursor-workaround");
     var languageSelector = $("#lang-sel");
@@ -515,6 +523,38 @@
     });
 
     // -------------
+    // Images remove button click
+    imagesButton.click(() => {
+      options.imagesRemove = !options.imagesRemove;
+      // console.log("imagesRemove", options.imagesRemove);
+      apply();
+    });
+
+    // -------------
+    // Focus strip button click
+    focusButton.click(() => {
+      options.focus = !options.focus;
+      // console.log("focus", options.focus);
+      apply();
+    });
+
+    // -------------
+    // Readable font button click
+    fontReadableButton.click(() => {
+      options.fontReadable = !options.fontReadable;
+      // console.log("fontReadable", options.fontReadable);
+      apply();
+    });
+
+    // -------------
+    // Headings button click
+    headingsButton.click(() => {
+      options.headings = !options.headings;
+      console.log("headings", options.headings);
+      apply();
+    });
+
+    // -------------
     // Reset button click
     resetButton.click(() => {
       options = $.extend({}, initialOptions);
@@ -587,7 +627,7 @@
           .setAttribute("viewBox", "30 20 70 70");
         document
           .getElementById("pt-cursor")
-          .setAttribute("viewBox", "0 0 70 70");
+          .setAttribute("viewBox", "0 5 60 60");
         document
           .getElementById("pt-contrast")
           .setAttribute("viewBox", "30 20 70 70");
@@ -604,8 +644,24 @@
           .getElementById("pt-pause")
           .setAttribute("viewBox", "30 20 70 70");
         document
+          .getElementById("pt-images-remove")
+          .setAttribute("viewBox", "0 -4 70 70");
+        document
+          .getElementById("pt-focus")
+          .setAttribute("viewBox", "0 -4 70 70");
+        document
+          .getElementById("pt-font-readable")
+          .setAttribute("viewBox", "-15 -9 55 55");
+        document
+          .getElementById("fr-11")
+          .setAttribute("transform", "translate(11.04 13.97)");
+        document
+          .getElementById("pt-headings")
+          .setAttribute("viewBox", "-14 -4 55 55");
+        document
           .getElementById("pt-revert")
-          .setAttribute("viewBox", "30 20 70 70");
+          .setAttribute("viewBox", "2 -4 65 65");
+        // .setAttribute("viewBox", "30 15 70 70");
       } else {
         document.getElementById("empties-side").style.left = "0px";
         document.getElementById("empties-side").style.direction = "ltr";
@@ -626,7 +682,7 @@
           .setAttribute("viewBox", "52 20 70 70");
         document
           .getElementById("pt-cursor")
-          .setAttribute("viewBox", "52 20 70 70");
+          .setAttribute("viewBox", "20 5 60 60");
         document
           .getElementById("pt-contrast")
           .setAttribute("viewBox", "52 20 70 70");
@@ -643,8 +699,24 @@
           .getElementById("pt-pause")
           .setAttribute("viewBox", "52 20 70 70");
         document
+          .getElementById("pt-images-remove")
+          .setAttribute("viewBox", "22 -4 70 70");
+        document
+          .getElementById("pt-focus")
+          .setAttribute("viewBox", "22 -4 70 70");
+        document
+          .getElementById("pt-font-readable")
+          .setAttribute("viewBox", "3 -9 55 55");
+        document
+          .getElementById("fr-11")
+          .setAttribute("transform", "translate(1.04 13.97)");
+        document
+          .getElementById("pt-headings")
+          .setAttribute("viewBox", "32 -4 55 55");
+        document
           .getElementById("pt-revert")
-          .setAttribute("viewBox", "52 20 70 70");
+          .setAttribute("viewBox", "22 -4 65 65");
+        // .setAttribute("viewBox", "52 15 70 70");
       }
       // ----------
       // Selected language
@@ -732,25 +804,25 @@
       // Cursor
 
       if (options.cursor) {
-        html.addClass("open-accessibility-cursor");
+        $("*").addClass("open-accessibility-cursor");
 
         cursorButton.addClass("button-pressed");
         document
           .getElementById("cursor-button")
           .setAttribute("aria-pressed", "true");
-        if (!googleChrome) {
-          cursorWorkaround.show();
-        }
+        // if (!googleChrome) {
+        //   cursorWorkaround.show();
+        // }
       } else {
-        html.removeClass("open-accessibility-cursor");
+        $("*").removeClass("open-accessibility-cursor");
         cursorButton.removeClass("button-pressed");
         document
           .getElementById("cursor-button")
           .setAttribute("aria-pressed", "false");
 
-        if (!googleChrome) {
-          cursorWorkaround.hide();
-        }
+        // if (!googleChrome) {
+        //   cursorWorkaround.hide();
+        // }
       }
 
       // ----------------
@@ -766,7 +838,8 @@
           .not(".empties")
           .not("#filler")
           .not("#lbexpand")
-          // .not("#pina-container")
+          .not("#expand-image")
+          .not("#pina-container")
           .not(".open-accessibility-menu-button")
           .not(".open-accessibility-menu-button svg")
           .not(".open-accessibility-menu-button span")
@@ -782,11 +855,13 @@
 
         $("#lbexpand").css("background-color", "#fff");
         $("#expand-image").css("fill", "#114761");
-
         $("#open-accessibility-footer-logo").css(
           "background-color",
           "transparent"
         );
+        $("#pina-container").css("width", "260px");
+        $(".open-accessibility-menu").css("border", "2px solid white");
+        $(".open-accessibility-menu").css("border-radius", "10px");
 
         $(".open-accessibility-menu-button span").addClass("dc-button");
         contrastButton.addClass("button-pressed");
@@ -820,6 +895,10 @@
         $("#expand-image").css("fill", "#fff");
         $("#open-accessibility-footer-logo").css("background-color", "#114761");
 
+        $("#pina-container").css("width", "256px");
+        $(".open-accessibility-menu").css("border", "none");
+        $(".open-accessibility-menu").css("border-radius", "0px");
+
         $("*").removeClass("dc-button");
         document
           .getElementById("contrast-button")
@@ -828,7 +907,7 @@
         $("*").removeClass("dc");
         $("*").removeClass("lc");
 
-        $("#lbexpand").css("background-color", "#41c1eb");
+        $("#lbexpand").css("background-color", "#114761");
         $("#expand-image").css("fill", "#fff");
 
         $("#open-accessibility-footer-logo").css("background-color", "#114761");
@@ -942,6 +1021,173 @@
         document
           .getElementById("stop-anim-button")
           .setAttribute("aria-pressed", "false");
+      }
+
+      // Images Remove
+      if (options.imagesRemove) {
+        imagesButton.addClass("button-pressed");
+        document
+          .getElementById("img-remove-button")
+          .setAttribute("aria-pressed", "true");
+
+        $("img")
+          .not(".empty")
+          .not(".empties")
+          .not("#filler")
+          .not("#lbexpand")
+          .not("#lbclose svg")
+          .not("#pina-container")
+          .not(".open-accessibility-menu-button")
+          .not(".open-accessibility-menu-button svg")
+          .not(".open-accessibility-menu-button span")
+          .not(".button-icon")
+          .not(".open-accessibility-expand-button")
+          .not(".first-line")
+          .not(".open-accessibility-expand-button svg")
+          .not("#open-accessibility-footer-logo")
+          .not(".open-accessibility-menu-disclaimer")
+          .not("#open-accessibility-footer-logo svg")
+          .not(".open-accessibility")
+          .not("a img")
+          .not("a svg")
+          .hide();
+        $("svg")
+          .not(".empty")
+          .not(".empties")
+          .not("#filler")
+          .not("#lbexpand")
+          .not("#lbclose svg")
+          .not("#pina-container")
+          .not(".open-accessibility-menu-button")
+          .not(".open-accessibility-menu-button svg")
+          .not(".open-accessibility-menu-button span")
+          .not(".button-icon")
+          .not(".open-accessibility-expand-button")
+          .not(".first-line")
+          .not(".open-accessibility-expand-button svg")
+          .not("#open-accessibility-footer-logo")
+          .not(".open-accessibility-menu-disclaimer")
+          .not("#open-accessibility-footer-logo svg")
+          .not(".open-accessibility")
+          .hide();
+
+        $("*").addClass("no-bg-image");
+      } else {
+        imagesButton.removeClass("button-pressed");
+        document
+          .getElementById("img-remove-button")
+          .setAttribute("aria-pressed", "false");
+
+        $("img").show();
+        $("svg").show();
+
+        $("*").removeClass("no-bg-image");
+      }
+
+      // Focus strip
+      if (options.focus) {
+        focusButton.addClass("button-pressed");
+        document
+          .getElementById("img-remove-button")
+          .setAttribute("aria-pressed", "true");
+
+        var focusDiv =
+          '<div id="prefollower"></div><div id="follower"></div><div id="parafollower"></div>';
+        $("body").append(focusDiv);
+
+        $("html").bind("mousemove", function (e) {
+          var h = window.innerHeight;
+          var hh = document.body.scrollHeight;
+
+          if (e.pageY <= 100) {
+            $("#prefollower").css({ height: 0 });
+            $("#parafollower").css({ top: 201 });
+          } else if (e.pageY + 100 > hh) {
+            $("#prefollower").css({ bottom: e.pageY - 100 });
+            $("#parafollower").css({ height: 0 });
+          } else {
+            if (hh > h) {
+              var pageYY = hh - (e.pageY + 100);
+            } else {
+              var pageYY = h - (e.pageY + 100);
+            }
+            $("#prefollower").css({ height: e.pageY - 100 });
+            $("#parafollower").css({ top: e.pageY + 100 });
+            $("#parafollower").css({ height: pageYY + 37 });
+            console.log("pageYY", pageYY);
+          }
+
+          console.log("cursor location", e.pageY);
+          console.log("window height", h);
+          console.log("scroll height", hh);
+
+          $("#prefollower").css("background", "rgba(0,0,0,0.7)");
+          $("#parafollower").css("background", "rgba(0,0,0,0.7)");
+        });
+      } else {
+        focusButton.removeClass("button-pressed");
+        document
+          .getElementById("focus-button")
+          .setAttribute("aria-pressed", "false");
+
+        $("html").off("mousemove");
+        $("#prefollower").remove();
+        $("#follower").remove();
+        $("#parafollower").remove();
+        // $("#prefollower").css("background", "none");
+        // $("#parafollower").css("background", "none");
+      }
+
+      if (options.fontReadable) {
+        $("*")
+          .not(".empty")
+          .not(".empties")
+          .not("#filler")
+          .not("#lbexpand")
+          // .not("#pina-container")
+          .not(".open-accessibility-menu-button")
+          .not(".open-accessibility-menu-button svg")
+          .not(".open-accessibility-menu-button span")
+          .not(".button-icon")
+          .not(".open-accessibility-expand-button")
+          .not(".first-line")
+          .not(".open-accessibility-expand-button svg")
+          .not("#open-accessibility-footer-logo")
+          .not(".open-accessibility")
+          .not(".on, .off")
+          .not("a")
+          .addClass("readable-font");
+
+        fontReadableButton.addClass("button-pressed");
+
+        document
+          .getElementById("fontr-button")
+          .setAttribute("aria-pressed", "true");
+      } else {
+        $("*").removeClass("readable-font");
+
+        fontReadableButton.removeClass("button-pressed");
+
+        document
+          .getElementById("fontr-button")
+          .setAttribute("aria-pressed", "false");
+      }
+
+      // Headings highlight
+      if (options.headings) {
+        headingsButton.addClass("button-pressed");
+        document
+          .getElementById("headings-button")
+          .setAttribute("aria-pressed", "true");
+
+        $("h1, h2, h3, h4, h5, h6").addClass("heading-highlight");
+      } else {
+        headingsButton.removeClass("button-pressed");
+        document
+          .getElementById("headings-button")
+          .setAttribute("aria-pressed", "false");
+
+        $("h1, h2, h3, h4, h5, h6").removeClass("heading-highlight");
       }
 
       setUserOptions(options);
