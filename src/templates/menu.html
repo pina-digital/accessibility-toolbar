@@ -122,7 +122,7 @@
                 <label
                   class="l-switch"
                   role="switch"
-                  aria-label="מיקום תוסף"
+                  aria-label="צד תוסף"
                   tabindex="0"
                   ><input type="checkbox" id="togBtn" />
                   <div class="slider round">
@@ -142,8 +142,9 @@
                     id="lang-sel"
                     role="listbox"
                     tabindex="0"
-                    onmousedown="this.value='';"
                   >
+                    <!-- onmousedown="this.value=this.value;" -->
+
                     <option id="he" value="he">עברית</option>
                     <option id="en" value="en">English</option>
                     <option id="ru" value="ru">Pусский</option>
@@ -300,6 +301,67 @@
                   >עצירת אנימציות</span
                 >
               </div>
+              <div
+                class="open-accessibility-menu-button open-accessibility-imgRemove-button"
+                id="img-remove-button"
+                role="button"
+                aria-pressed="false"
+                tabindex="0"
+              >
+                <div class="first-line">
+                  <div class="hidden-indicator" id="images-indicator"></div>
+                  <div class="button-icon">
+                    @@include('../svgs/remove-images.svg')
+                  </div>
+                </div>
+                <span data-lang="images-remove" id="lbimgrmv">הסרת תמונות</span>
+              </div>
+
+              <div
+                class="open-accessibility-menu-button open-accessibility-focus-button"
+                id="focus-button"
+                role="button"
+                aria-pressed="false"
+                tabindex="0"
+              >
+                <div class="first-line">
+                  <div class="hidden-indicator" id="focus-indicator"></div>
+                  <div class="button-icon">@@include('../svgs/focus.svg')</div>
+                </div>
+                <span data-lang="focus" id="lbfocus">מיקוד ריכוז</span>
+              </div>
+
+              <div
+                class="open-accessibility-menu-button open-accessibility-fontReadable-button"
+                id="fontr-button"
+                role="button"
+                aria-pressed="false"
+                tabindex="0"
+              >
+                <div class="first-line">
+                  <div class="hidden-indicator" id="fontr-indicator"></div>
+                  <div class="button-icon">
+                    @@include('../svgs/font-readable.svg')
+                  </div>
+                </div>
+                <span data-lang="font" id="lbfontr">גופן קריא</span>
+              </div>
+
+              <div
+                class="open-accessibility-menu-button open-accessibility-headings-button"
+                id="headings-button"
+                role="button"
+                aria-pressed="false"
+                tabindex="0"
+              >
+                <div class="first-line">
+                  <div class="hidden-indicator" id="headings-indicator"></div>
+                  <div class="button-icon">
+                    @@include('../svgs/headings.svg')
+                  </div>
+                </div>
+                <span data-lang="headings" id="lbheadings">הדגשת כותרות</span>
+              </div>
 
               <div
                 class="open-accessibility-menu-button open-accessibility-reset-button"
@@ -310,25 +372,28 @@
               >
                 <div class="first-line">
                   <div class="hidden-indicator" id="reset-indicator"></div>
-                  <div class="button-icon">@@include('../svgs/revert.svg')</div>
+                  <div class="button-icon">
+                    @@include('../svgs/revert2.svg')
+                  </div>
                 </div>
                 <span data-lang="reset" id="lbrevert">בטל שינויים</span>
               </div>
             </div>
             <!-- <div class="bottom-links">
-            <div class="open-accessibility-menu-disclaimer">
-              <a
-                href="#"
-                data-lang="accessibility-statement"
-                id="accDec"
-                target="_blank"
-                role="link"
-                aria-label="הצהרת נגישות"
-                tabindex="0"
-                >הצהרת נגישות
-              </a>
-            </div>
-          </div> -->
+              <div class="open-accessibility-menu-disclaimer">
+                <a
+                  href="#"
+                  data-lang="accessibility-statement"
+                  id="accDec"
+                  target="_blank"
+                  role="link"
+                  aria-label="הצהרת נגישות"
+                  tabindex="0"
+                >
+                  <span data-lang="accessibility-statement">הצהרת נגישות</span>
+                </a>
+              </div>
+            </div> -->
             <div class="open-accessibility-menu-footer">
               <a
                 href="https://pina.co.il"

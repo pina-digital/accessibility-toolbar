@@ -1,0 +1,11 @@
+<svg id="pt-fontr" xmlns="http://www.w3.org/2000/svg" viewBox="-15 -4 55 55"
+    role="img" aria-labelledby="lbfontr">
+    <defs><style>.fr-1{font-size:17.13px;font-family:BrushScriptMT, Brush Script MT;}.fr-2{fill:#fff;}</style></defs>
+    <g>
+        <path class="pt-button-image" d="M52.15,5.83,42.5,31.31h3.8L49,23.59H59.63l2.85,7.72h3.81v-.37L56.06,5.83Zm-2.07,15L54.25,8.51l4.46,12.34Z" transform="translate(-31.78 -2.81)"/>
+        <text class="pt-button-image fr-1" transform="translate(11.04 13.97)">A</text>
+        <rect class="pt-button-image" x="39.31" y="3.76" width="1.33" height="15.76" rx="0.67" transform="translate(-27.47 30.31) rotate(-47.3)"/>
+        <rect class="pt-button-image fr-2" x="38.84" y="4.68" width="0.95" height="15.65" transform="translate(-28.31 30.11) rotate(-47.3)"/>
+        <rect class="pt-button-image fr-2" x="40.34" y="3.22" width="0.75" height="15.55" transform="translate(-26.75 30.65) rotate(-47.3)"/>
+    <g>
+</svg>

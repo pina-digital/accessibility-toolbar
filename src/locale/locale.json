@@ -15,7 +15,11 @@
     "toolbar-align-right": "ימין",
     "toolbar-align-left": "שמאל",
     "accessibility-statement": "הצהרת נגישות",
-    "pina-logo": "פינה פתרונות דיגיטליים"
+    "pina-logo": "פינה פתרונות דיגיטליים",
+    "images-remove": "הסתרת תמונות",
+    "focus": "מיקוד ריכוז",
+    "font": "גופן קריא",
+    "headings": "הדגשת כותרות"
   },
   "en": {
     "expand": "The Accessible Guy",
@@ -27,14 +31,17 @@
     "page-zoom": "Bigger Display",
     "contrast": "Contrast",
     "monochrome": "Grayscale",
-    "links-highlight": "Links Highlight",
-    "animation-stop": "Animation Stop",
+    "links-highlight": "Highlight Links",
+    "animation-stop": "Stop Animation",
     "reset": "Undo Changes",
     "toolbar-align-right": "Right",
     "toolbar-align-left": "Left",
     "accessibility-statement": "Access. Statement",
-    "pina-logo": "Pina Digital Solutions"
-
+    "pina-logo": "Pina Digital Solutions",
+    "images-remove": "Hide Images",
+    "focus": "Concentration Focus",
+    "font": "Readable Font",
+    "headings": "Highlight Headings"
   },
   "ru": {
     "expand": "The Accessible Guy",
@@ -52,7 +59,11 @@
     "toolbar-align-right": "Право",
     "toolbar-align-left": "Налево",
     "accessibility-statement": "Доступность Заявл.",
-    "pina-logo": "Пина Цифровые Решения"
+    "pina-logo": "Пина Цифровые Решения",
+    "images-remove": "Скрыть Kартинки",
+    "focus": "Концентрация Внимания",
+    "font": "Читаемый Шрифт",
+    "headings": "Выделить Заголовки"
   },
   "ar": {
     "expand": "The Accessible Guy",
@@ -70,7 +81,11 @@
     "toolbar-align-right": "يمين",
     "toolbar-align-left": "اليسار",
     "accessibility-statement": "بيان إمكانية الوصول",
-    "pina-logo": "بينا الحلول الرقمية"
+    "pina-logo": "بينا الحلول الرقمية",
+    "images-remove": "إخفاء الصور",
+    "focus": "تركيز الانتباه",
+    "font": "خط قابل للقراءة",
+    "headings": "تسليط الضوء على العناوين"
   },
   "es": {
     "expand": "El Chico Accesible",
@@ -88,7 +103,11 @@
     "toolbar-align-right": "Derecho",
     "toolbar-align-left": "Izquierdo",
     "accessibility-statement": "Dec. de Accesibilidad",
-    "pina-logo": "Pina Digital Solutions"
+    "pina-logo": "Pina Digital Solutions",
+    "images-remove": "Ocultar Imágenes",
+    "focus": "Enfoque de Concentración",
+    "font": "Fuente Legible",
+    "headings": "Destacar Encabezados"
   },
   "fr": {
     "expand": "Le Gars Accessible",
@@ -106,6 +125,10 @@
     "toolbar-align-right": "Droit",
     "toolbar-align-left": "Gauche",
     "accessibility-statement": "Déc. d'Accessibilité",
-    "pina-logo": "Pina Digital Solutions"
+    "pina-logo": "Pina Digital Solutions",
+    "images-remove": "Masquer les Images",
+    "focus": "Focus de Concentration",
+    "font": "Police Lisible",
+    "headings": "Mettre en Évidence les Titres"
   }
  }
