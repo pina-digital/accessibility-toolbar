@@ -408,7 +408,10 @@
   // animation: none !important;
 }
 .bottom-links {
-  float: right;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  // float: right;
   width: 100%;
   margin-bottom: 3px;
 }
@@ -416,7 +419,7 @@
 .open-accessibility-menu-disclaimer {
   float: right;
   width: 120px;
-  margin: 0 66px;
+  margin-right: 66px;
   // height: 18px !important;
   text-align: center;
   background-color: #114761;
@@ -439,6 +442,10 @@
       text-decoration: underline;
     }
   }
+}
+.toolbar-version {
+  margin-left: 15px;
+  font-size: 10px;
 }
 
 .open-accessibility-menu-footer {
