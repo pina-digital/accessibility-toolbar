@@ -16,7 +16,7 @@
     "toolbar-align-left": "שמאל",
     "accessibility-statement": "הצהרת נגישות",
     "pina-logo": "פינה פתרונות דיגיטליים",
-    "images-remove": "הסרת תמונות",
+    "images-remove": "הסתרת תמונות",
     "focus": "מיקוד ריכוז",
     "font": "גופן קריא",
     "headings": "הדגשת כותרות"
@@ -38,8 +38,10 @@
     "toolbar-align-left": "Left",
     "accessibility-statement": "Access. Statement",
     "pina-logo": "Pina Digital Solutions",
-    "images-remove": "Remove Images",
-    "focus": ""
+    "images-remove": "Hide Images",
+    "focus": "Concentration Focus",
+    "font": "Readable Font",
+    "headings": "Highlight Headings"
   },
   "ru": {
     "expand": "The Accessible Guy",
@@ -58,8 +60,10 @@
     "toolbar-align-left": "Налево",
     "accessibility-statement": "Доступность Заявл.",
     "pina-logo": "Пина Цифровые Решения",
-    "images-remove": "",
-    "focus": ""
+    "images-remove": "Скрыть Kартинки",
+    "focus": "Концентрация Внимания",
+    "font": "Читаемый Шрифт",
+    "headings": "Выделить Заголовки"
   },
   "ar": {
     "expand": "The Accessible Guy",
@@ -78,8 +82,10 @@
     "toolbar-align-left": "اليسار",
     "accessibility-statement": "بيان إمكانية الوصول",
     "pina-logo": "بينا الحلول الرقمية",
-    "images-remove": "",
-    "focus": ""
+    "images-remove": "إخفاء الصور",
+    "focus": "تركيز الانتباه",
+    "font": "خط قابل للقراءة",
+    "headings": "تسليط الضوء على العناوين"
   },
   "es": {
     "expand": "El Chico Accesible",
@@ -98,8 +104,10 @@
     "toolbar-align-left": "Izquierdo",
     "accessibility-statement": "Dec. de Accesibilidad",
     "pina-logo": "Pina Digital Solutions",
-    "images-remove": "",
-    "focus": ""
+    "images-remove": "Ocultar Imágenes",
+    "focus": "Enfoque de Concentración",
+    "font": "Fuente Legible",
+    "headings": "Destacar Encabezados"
   },
   "fr": {
     "expand": "Le Gars Accessible",
@@ -118,7 +126,9 @@
     "toolbar-align-left": "Gauche",
     "accessibility-statement": "Déc. d'Accessibilité",
     "pina-logo": "Pina Digital Solutions",
-    "images-remove": "",
-    "focus": ""
+    "images-remove": "Masquer les Images",
+    "focus": "Focus de Concentration",
+    "font": "Police Lisible",
+    "headings": "Mettre en Évidence les Titres"
   }
  }

@@ -170,12 +170,12 @@
       focus: false,
       fontReadable: false,
       headings: false,
-      // accessibilityDecleration: "",
+      // accessibilityDeclaration: "",
     };
 
     var userOptions = getUserOptions();
     var initialOptions = $.extend({}, defaultOptions, customOptions);
-    var options = $.extend({}, initialOptions, userOptions, customOptions);
+    var options = $.extend({}, initialOptions, customOptions, userOptions);
 
     if (!options.isMobileEnabled && isMobileBrowser()) {
       console.log("disabling accessibility plugin due to mobile browser");
@@ -248,7 +248,7 @@
 
     // -------------
     // Setting the accessibility declaration's url
-    $("#accDec").attr("href", options.accessibilityDecleration);
+    $("#accDec").attr("href", options.accessibilityDeclaration);
 
     // -------------
     // Setting the initial div position of the toolbar into local storage
@@ -320,65 +320,40 @@
       var selectedLanguage = options.localization;
 
       if (selectedLanguage == "sp") {
-        $(function () {
-          $("body").openAccessibility({
-            isMenuOpened: true,
-            localization: ["sp"],
-          });
-        });
+        // $(function () {
+        //   languages = getLanguages(
+        //     options.localization,
+        //     options.localizationMap
+        //   );
+        //   translateTheme(languages[Object.keys(languages)[0]]);
+        // });
       } else if (selectedLanguage == "he") {
-        $(function () {
-          $("body").openAccessibility({
-            isMenuOpened: true,
-            localization: ["he"],
-          });
-
-          location.reload();
-        });
+        options.localization = ["he"];
+        languages = getLanguages(options.localization, options.localizationMap);
+        translateTheme(languages[Object.keys(languages)[0]]);
       } else if (selectedLanguage == "en") {
-        $(function () {
-          $("body").openAccessibility({
-            isMenuOpened: true,
-            localization: ["en"],
-          });
-          location.reload();
-        });
+        options.localization = ["en"];
+        languages = getLanguages(options.localization, options.localizationMap);
+        translateTheme(languages[Object.keys(languages)[0]]);
       } else if (selectedLanguage == "ru") {
-        $(function () {
-          $("body").openAccessibility({
-            isMenuOpened: true,
-            localization: ["ru"],
-          });
-
-          location.reload();
-        });
+        options.localization = ["ru"];
+        languages = getLanguages(options.localization, options.localizationMap);
+        translateTheme(languages[Object.keys(languages)[0]]);
       } else if (selectedLanguage == "ar") {
-        $(function () {
-          $("body").openAccessibility({
-            isMenuOpened: true,
-            localization: ["ar"],
-          });
-
-          location.reload();
-        });
+        options.localization = ["ar"];
+        languages = getLanguages(options.localization, options.localizationMap);
+        translateTheme(languages[Object.keys(languages)[0]]);
       } else if (selectedLanguage == "es") {
-        $(function () {
-          $("body").openAccessibility({
-            isMenuOpened: true,
-            localization: ["es"],
-          });
-
-          location.reload();
-        });
+        options.localization = ["es"];
+        languages = getLanguages(options.localization, options.localizationMap);
+        translateTheme(languages[Object.keys(languages)[0]]);
       } else if (selectedLanguage == "fr") {
-        $(function () {
-          $("body").openAccessibility({
-            isMenuOpened: true,
-            localization: ["fr"],
-          });
-
-          location.reload();
-        });
+        // $(function () {
+        options.localization = ["fr"];
+        languages = getLanguages(options.localization, options.localizationMap);
+        translateTheme(languages[Object.keys(languages)[0]]);
+        // location.reload();
+        // });
       }
       options.isMenuOpened = true;
       apply();
@@ -614,7 +589,7 @@
         document.getElementById("lbexpand").style.borderRadius =
           "50% 0% 0% 50%";
         document.getElementById("side-switch").style.margin = "0 2px 0 43px";
-        document.getElementById("oals").style.margin = "1px 0 0 25px";
+        document.getElementById("oals").style.margin = "0 0 0 25px";
 
         document
           .getElementById("pt-font-zoomin")
@@ -636,19 +611,19 @@
           .setAttribute("viewBox", "30 20 70 70");
         document
           .getElementById("pt-monochrome")
-          .setAttribute("viewBox", "30 20 70 70");
+          .setAttribute("viewBox", "30 20 65 65");
         document
           .getElementById("pt-links")
-          .setAttribute("viewBox", "30 20 70 70");
+          .setAttribute("viewBox", "30 17 65 65");
         document
           .getElementById("pt-pause")
-          .setAttribute("viewBox", "30 20 70 70");
+          .setAttribute("viewBox", "32 20 65 65");
         document
           .getElementById("pt-images-remove")
           .setAttribute("viewBox", "0 -4 70 70");
         document
           .getElementById("pt-focus")
-          .setAttribute("viewBox", "0 -4 70 70");
+          .setAttribute("viewBox", "2 -4 70 70");
         document
           .getElementById("pt-font-readable")
           .setAttribute("viewBox", "-15 -9 55 55");
@@ -657,7 +632,7 @@
           .setAttribute("transform", "translate(11.04 13.97)");
         document
           .getElementById("pt-headings")
-          .setAttribute("viewBox", "-14 -4 55 55");
+          .setAttribute("viewBox", "-12 -4 55 55");
         document
           .getElementById("pt-revert")
           .setAttribute("viewBox", "2 -4 65 65");
@@ -669,7 +644,7 @@
         document.getElementById("lbexpand").style.borderRadius =
           "0% 50% 50% 0%";
         document.getElementById("side-switch").style.margin = "0 43px 0 2px";
-        document.getElementById("oals").style.margin = "1px 25px 0 0";
+        document.getElementById("oals").style.margin = "0 25px 0 0";
 
         document
           .getElementById("pt-font-zoomin")
@@ -691,13 +666,13 @@
           .setAttribute("viewBox", "52 20 70 70");
         document
           .getElementById("pt-monochrome")
-          .setAttribute("viewBox", "52 20 70 70");
+          .setAttribute("viewBox", "52 20 65 65");
         document
           .getElementById("pt-links")
-          .setAttribute("viewBox", "52 20 70 70");
+          .setAttribute("viewBox", "52 17 65 65");
         document
           .getElementById("pt-pause")
-          .setAttribute("viewBox", "52 20 70 70");
+          .setAttribute("viewBox", "52 20 65 65");
         document
           .getElementById("pt-images-remove")
           .setAttribute("viewBox", "22 -4 70 70");
@@ -1102,19 +1077,24 @@
           if (e.pageY <= 100) {
             $("#prefollower").css({ height: 0 });
             $("#parafollower").css({ top: 201 });
-          } else if (e.pageY + 100 > hh) {
+          } else if (e.pageY + 100 >= hh) {
             $("#prefollower").css({ bottom: e.pageY - 100 });
+            $("#parafollower").css({ top: hh });
             $("#parafollower").css({ height: 0 });
           } else {
-            if (hh > h) {
-              var pageYY = hh - (e.pageY + 100);
-            } else {
-              var pageYY = h - (e.pageY + 100);
-            }
+            // if (hh > h) {
+            var paraHeight = hh - (e.pageY + 100);
             $("#prefollower").css({ height: e.pageY - 100 });
             $("#parafollower").css({ top: e.pageY + 100 });
-            $("#parafollower").css({ height: pageYY + 37 });
-            console.log("pageYY", pageYY);
+            $("#parafollower").css({ height: paraHeight + 37 });
+            // } else {
+            //   var pageYY = h - (e.pageY + 100);
+            //   $("#prefollower").css({ height: e.pageY - 100 });
+            //   $("#parafollower").css({ top: e.pageY + 100 });
+            //   $("#parafollower").css({ height: pageYY });
+            // }
+
+            console.log("paraHeight", paraHeight);
           }
 
           console.log("cursor location", e.pageY);
@@ -1137,7 +1117,7 @@
         // $("#prefollower").css("background", "none");
         // $("#parafollower").css("background", "none");
       }
-
+      // Readable font
       if (options.fontReadable) {
         $("*")
           .not(".empty")
@@ -1154,7 +1134,11 @@
           .not(".open-accessibility-expand-button svg")
           .not("#open-accessibility-footer-logo")
           .not(".open-accessibility")
+          .not(".l-switch")
           .not(".on, .off")
+          .not("#lang-sel")
+          .not("#fr-11")
+          .not(".hh")
           .not("a")
           .addClass("readable-font");
 

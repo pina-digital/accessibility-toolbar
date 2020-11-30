@@ -52,3 +52,14 @@ Bug fixs:
 * Added headings button
 * Fixed fue color bugs when swithching contrast modes
 * Changed the undo button's icon
+
+2.04 (12/11/2020)
+* Fixed menu buttons' icon position
+* Fixed WP visual compatability issues
+* Added language translation to the new features from last update
+
+2.05 (17/11/2020)
+* Changed appearance of highlighted links
+
+2.06 (30/11/2020)
+* Changed the localization (language select) behaviour
