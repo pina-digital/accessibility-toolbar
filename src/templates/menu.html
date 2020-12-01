@@ -1,11 +1,33 @@
 <script>
+  var LOCAL_STORAGE_OPTIONS_KEY = "open-accessibility-config";
+
+  function getUserOptions2() {
+    var data;
+    try {
+      data = localStorage.getItem(LOCAL_STORAGE_OPTIONS_KEY);
+      data = JSON.parse(data);
+    } catch (e) {}
+
+    if (data && typeof data === "object") {
+      return data;
+    } else {
+      return {};
+    }
+  }
+
+  function setUserOptions2(options) {
+    localStorage.setItem(LOCAL_STORAGE_OPTIONS_KEY, JSON.stringify(options));
+  }
+
   var fill = document.querySelector(".fill");
   var empties = document.querySelectorAll(".empty");
 
   // ================================
   // appending the fill div to the position from local storage
-
-  var initLoc = localStorage.getItem("ptdl");
+  var userOptions2 = getUserOptions2();
+  // console.log("userOptions2", userOptions2);
+  var initLoc = userOptions2.toolbarVertPos;
+  // var initLoc = localStorage.getItem("ptdl");
   console.log("initLoc", initLoc);
   var initLocID = "#patd" + initLoc;
   $(initLocID).append(fill);
@@ -52,8 +74,15 @@
     newLoc = this.id.substring(4);
     console.log("D&D divNum", newLoc);
 
-    localStorage.setItem("ptdl", newLoc);
-    console.log("D&D ptdlSet", newLoc);
+    userOptions2 = getUserOptions2();
+    console.log("userOptions2", userOptions2.toolbarVertPos);
+    userOptions2.toolbarVertPos = newLoc;
+    console.log("userOptions22", userOptions2.toolbarVertPos);
+    setUserOptions2(userOptions2);
+    var userOptions3 = getUserOptions2();
+    console.log("userOptions222", userOptions3.toolbarVertPos);
+    // localStorage.setItem("ptdl", newLoc);
+    // console.log("D&D ptdlSet", newLoc);
     // $.getscript("./open-accessibility-babel.js", function () {
     //   apply();
     // });
@@ -380,7 +409,10 @@
               </div>
             </div>
             <div class="bottom-links">
-              <div class="open-accessibility-menu-disclaimer">
+              <div
+                class="open-accessibility-menu-disclaimer"
+                id="menu-disclaimer"
+              >
                 <a
                   href="#"
                   data-lang="accessibility-statement"
@@ -393,7 +425,9 @@
                   <span data-lang="accessibility-statement">הצהרת נגישות</span>
                 </a>
               </div>
-              <div class="toolbar-version">v2.07</div>
+              <div class="open-accessibility-menu-version" id="menu-version">
+                v2.08
+              </div>
             </div>
             <div class="open-accessibility-menu-footer">
               <a

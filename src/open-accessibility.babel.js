@@ -142,7 +142,7 @@
     customOptions = customOptions || {};
 
     var defaultOptions = {
-      isMenuOpened: true,
+      // isMenuOpened: true,
       highlightedLinks: false,
       isMobileEnabled: true,
       grayscale: 0,
@@ -163,9 +163,9 @@
       isAnimStopped: false,
       iconSize: "s", // supported sizes are s(mall), m(edium), l(arge)
       origMenuTop: window.innerHeight * 0.25,
-      localization: ["he"],
-      toolbarSide: true,
-      gZoom: 5,
+      // localization: ["he"],
+      // toolbarSide: true,
+      // toolbarVertPos: "5",
       imagesRemove: false,
       focus: false,
       fontReadable: false,
@@ -174,9 +174,14 @@
     };
 
     var userOptions = getUserOptions();
-    var initialOptions = $.extend({}, defaultOptions, customOptions);
-    var options = $.extend({}, initialOptions, customOptions, userOptions);
+    console.log("userOptions", userOptions);
+    console.log("defaultOptions", defaultOptions);
 
+    var initialOptions = $.extend({}, defaultOptions, customOptions);
+    console.log("initialOptions", initialOptions);
+
+    var options = $.extend({}, initialOptions, customOptions, userOptions);
+    console.log("options", options);
     if (!options.isMobileEnabled && isMobileBrowser()) {
       console.log("disabling accessibility plugin due to mobile browser");
       return;
@@ -251,11 +256,6 @@
     $("#accDec").attr("href", options.accessibilityDeclaration);
 
     // -------------
-    // Setting the initial div position of the toolbar into local storage
-    localStorage.setItem("ptdl", options.gZoom);
-    // console.log("options.gZoom", options.gZoom);
-
-    // -------------
     // Menu open button click
     expandButton.click(() => {
       options.isMenuOpened = true;
@@ -297,16 +297,6 @@
 
     toolbarSwitch.change(function () {
       options.toolbarSide = !options.toolbarSide;
-
-      // var x = document.getElementById("togBtn").checked;
-      // console.log("checkbox", x);
-      // if ((x = false)) {
-      //   x = true;
-      // } else {
-      //   if ((x = true)) {
-      //     x = false;
-      //   }
-      // }
       apply();
     });
 
@@ -316,18 +306,10 @@
     // $("#lang-sel").change(function () {
     languageSelector.change(function () {
       options.localization = $(this).val();
-      console.log("optionssss.localization", options.localization);
+      // console.log("options.localization", options.localization);
       var selectedLanguage = options.localization;
 
-      if (selectedLanguage == "sp") {
-        // $(function () {
-        //   languages = getLanguages(
-        //     options.localization,
-        //     options.localizationMap
-        //   );
-        //   translateTheme(languages[Object.keys(languages)[0]]);
-        // });
-      } else if (selectedLanguage == "he") {
+      if (selectedLanguage == "he") {
         options.localization = ["he"];
         languages = getLanguages(options.localization, options.localizationMap);
         translateTheme(languages[Object.keys(languages)[0]]);
@@ -399,7 +381,7 @@
     });
 
     // -------------
-    // Cursor button click
+    // Bigger Cursor button click
     cursorButton.click(() => {
       options.cursor = !options.cursor;
       apply();
@@ -525,24 +507,21 @@
     // Headings button click
     headingsButton.click(() => {
       options.headings = !options.headings;
-      console.log("headings", options.headings);
+      // console.log("headings", options.headings);
       apply();
     });
 
     // -------------
     // Reset button click
     resetButton.click(() => {
+      var newUserOptions = getUserOptions();
       options = $.extend({}, initialOptions);
-      options.isMenuOpened = false;
+      options.localization = newUserOptions.localization;
+      options.toolbarSide = newUserOptions.toolbarSide;
+
+      // options.isMenuOpened = false;
       apply();
     });
-
-    // position menu on absolute right
-    // if ($("body").css("margin") != "")
-    //   $(".open-accessibility-collapsed").css(
-    //     "right",
-    //     "-" + $("body").css("margin")
-    //   );
 
     apply();
 
@@ -556,13 +535,6 @@
         $(".open-accessibility-menu-buttons").removeClass("low-res-screen");
         $("#pina-container").css("width", "256px");
       }
-
-      // ----------------
-      // Setting the location of the expand button after drag&drop
-      var newLocApply = localStorage.getItem("ptdl");
-      console.log("JS apply get ptdl", newLocApply);
-      options.gZoom = newLocApply;
-      // alert(options.gZoom);
 
       // ----------------
       // Changing between menu closed/open classes
@@ -636,7 +608,8 @@
         document
           .getElementById("pt-revert")
           .setAttribute("viewBox", "2 -4 65 65");
-        // .setAttribute("viewBox", "30 15 70 70");
+        document.getElementById("menu-disclaimer").style.margin = "0 66px 0 0";
+        document.getElementById("menu-version").style.margin = "0 0 0 15px";
       } else {
         document.getElementById("empties-side").style.left = "0px";
         document.getElementById("empties-side").style.direction = "ltr";
@@ -691,8 +664,10 @@
         document
           .getElementById("pt-revert")
           .setAttribute("viewBox", "22 -4 65 65");
-        // .setAttribute("viewBox", "52 15 70 70");
+        document.getElementById("menu-disclaimer").style.margin = "0 0 0 66px";
+        document.getElementById("menu-version").style.margin = "0 15px 0 0";
       }
+
       // ----------
       // Selected language
       var selectedLanguage = options.localization;
@@ -770,13 +745,9 @@
           .getElementById("page-zoom-button")
           .setAttribute("aria-pressed", "false");
       }
-      // $("*").not(".open-accessibility *").css(
-      //   "transform",
-      //   "scale(" + options.zoom + ")"
-      // );
 
       // ----------
-      // Cursor
+      // Bigger Cursor
 
       if (options.cursor) {
         $("*").addClass("open-accessibility-cursor");
@@ -880,6 +851,8 @@
           .setAttribute("aria-pressed", "true");
       } else {
         $("*").removeClass("dc");
+        $("*").removeClass("dc-button");
+
         $("*").removeClass("lc");
 
         $("#lbexpand").css("background-color", "#114761");
