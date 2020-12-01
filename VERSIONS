@@ -66,3 +66,8 @@ Bug fixs:
 
 2.07 (30/11/2020)
 * Added version indicator
+
+2.08 (1/12/2020)
+* Fixed a bug related to reset button and contrast button
+* Added the option to set toolbar language and side as initial options
+* Fixed the menu buttons and Accessibility Disclaimer button location when changing toolbar side

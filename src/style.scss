@@ -105,6 +105,10 @@
   z-index: 999;
 }
 
+.open-accessibility-menu {
+  width: 256px;
+}
+
 .open-accessibility-top-row {
   display: flex;
   align-items: center;
@@ -419,7 +423,7 @@
 .open-accessibility-menu-disclaimer {
   float: right;
   width: 120px;
-  margin-right: 66px;
+  // margin-right: 66px;
   // height: 18px !important;
   text-align: center;
   background-color: #114761;
@@ -443,8 +447,8 @@
     }
   }
 }
-.toolbar-version {
-  margin-left: 15px;
+.open-accessibility-menu-version {
+  // margin-left: 15px;
   font-size: 10px;
 }
 
