@@ -162,7 +162,7 @@
       invert: false,
       isAnimStopped: false,
       iconSize: "s", // supported sizes are s(mall), m(edium), l(arge)
-      origMenuTop: window.innerHeight * 0.25,
+      // origMenuTop: window.innerHeight * 0.25,
       // localization: ["he"],
       // toolbarSide: true,
       // toolbarVertPos: "5",
@@ -174,14 +174,14 @@
     };
 
     var userOptions = getUserOptions();
-    console.log("userOptions", userOptions);
-    console.log("defaultOptions", defaultOptions);
+    // console.log("userOptions", userOptions);
+    // console.log("defaultOptions", defaultOptions);
 
     var initialOptions = $.extend({}, defaultOptions, customOptions);
-    console.log("initialOptions", initialOptions);
+    // console.log("initialOptions", initialOptions);
 
     var options = $.extend({}, initialOptions, customOptions, userOptions);
-    console.log("options", options);
+    // console.log("options", options);
     if (!options.isMobileEnabled && isMobileBrowser()) {
       console.log("disabling accessibility plugin due to mobile browser");
       return;
@@ -223,6 +223,89 @@
 
     // Set icon size
     container.addClass(getIconClass(options.iconSize));
+
+    // Setting Toolbar's Main Color to var in style.scss
+    let root = document.documentElement;
+    root.style.setProperty("--main-color", options.mainColor);
+
+    // $(".hovered").css("border-color", options.mainColor);
+    // $("#lbexpand").focus(function () {
+    //   $(this).css({
+    //     outline: "3px dashed " + options.mainColor,
+    //   });
+    // });
+    // $("#lbexpand").blur(function () {
+    //   $(this).css({ outline: "none" });
+    // });
+    // $(".open-accessibility-close-button").css("fill", options.mainColor);
+    // $(".open-accessibility-close-button").focus(function () {
+    //   $(this).css({ boxShadow: "0 0 1.5px 1px " + options.mainColor });
+    // });
+    // $(".open-accessibility-close-button").blur(function () {
+    //   $(this).css({ boxShadow: "none" });
+    // });
+    // $(".open-accessibility-menu-version").css("color", options.mainColor);
+    // $(".slider").css("border-color", options.mainColor);
+    // $(".on").css("color", options.mainColor);
+    // $(".off").css("color", options.mainColor);
+    // $(".l-switch").focus(function () {
+    //   $(this).css({ boxShadow: "0 0 1.5px 1px " + options.mainColor });
+    // });
+    // $(".l-switch").blur(function () {
+    //   $(this).css({ boxShadow: "none" });
+    // });
+    // $(".round").css("background-color", options.mainColor);
+    // $("#lang-sel").css("color", options.mainColor);
+    // $("#lang-sel > option").css("color", options.mainColor);
+    // $("#lang-sel").focus(function () {
+    //   $(this).css({ boxShadow: "0 0 1.5px 1px " + options.mainColor });
+    // });
+    // $("#lang-sel").blur(function () {
+    //   $(this).css({ boxShadow: "none" });
+    // });
+    // $(".open-accessibility-menu-button").css({
+    //   fill: options.mainColor,
+    //   color: options.mainColor,
+    // });
+    // $(".open-accessibility-close-button").hover(
+    //   function () {
+    //     $(this).css("background-color", options.mainColor);
+    //     $(this).css("color", "#fff");
+    //     $(this).css("fill", "#fff");
+    //   },
+    //   function () {
+    //     $(this).css("background-color", "transparent");
+    //     $(this).css("color", options.mainColor);
+    //     $(this).css("fill", options.mainColor);
+    //   }
+    // );
+    // $(".open-accessibility-menu-button").hover(
+    //   function () {
+    //     $(this).css("background-color", options.mainColor);
+    //     $(this).css("color", "#fff");
+    //     $(this).css("fill", "#fff");
+    //   },
+    //   function () {
+    //     var hoverAriaPressed = $(this)[0].attributes[3].value;
+    //     if (hoverAriaPressed == "true") {
+    //       $(this).css("background-color", options.mainColor);
+    //       $(this).css("color", "transparent");
+    //       $(this).css("fill", "transparent");
+    //     } else {
+    //       $(this).css("background-color", "transparent");
+    //       $(this).css("color", options.mainColor);
+    //       $(this).css("fill", options.mainColor);
+    //     }
+    //   }
+    // );
+    // $(".open-accessibility-menu-button").focus(function () {
+    //   $(this).css({ boxShadow: "0 0 1.5px 1px " + options.mainColor });
+    // });
+    // $(".open-accessibility-menu-button").blur(function () {
+    //   $(this).css({ boxShadow: "none" });
+    // });
+    // $(".button-indicator").css("background-color", options.mainColor);
+    // $("#menu-disclaimer").css("background-color", options.mainColor);
 
     // -------------
     // Set Langauges
@@ -395,10 +478,10 @@
     }
 
     pZoomButton.click(() => {
-      if (options.pZoom == 1) {
-        options.origMenuTop = document.getElementById("pina-main").offsetTop;
-        // console.log("origMenuTop", options.origMenuTop);
-      }
+      // if (options.pZoom == 1) {
+      //   options.origMenuTop = document.getElementById("pina-main").offsetTop;
+      //   // console.log("origMenuTop", options.origMenuTop);
+      // }
 
       options.pZoom += options.pZoomStep;
 
@@ -518,8 +601,15 @@
       options = $.extend({}, initialOptions);
       options.localization = newUserOptions.localization;
       options.toolbarSide = newUserOptions.toolbarSide;
+      // $(".open-accessibility-menu-button").css({
+      //   fill: options.mainColor,
+      //   color: options.mainColor,
+      //   backgroundColor: "transparent",
+      // });
 
       // options.isMenuOpened = false;
+      options.isMenuOpened = true;
+
       apply();
     });
 
@@ -531,9 +621,11 @@
       if (screenHeight < 1080) {
         $(".open-accessibility-menu-buttons").addClass("low-res-screen");
         $("#pina-container").css("width", "262px");
+        $(".open-accessibility-menu-footer").css("width", "262px");
       } else {
         $(".open-accessibility-menu-buttons").removeClass("low-res-screen");
         $("#pina-container").css("width", "256px");
+        $(".open-accessibility-menu-footer").css("width", "256px");
       }
 
       // ----------------
@@ -683,12 +775,15 @@
 
       if (options.fZoom > options.minFZoomLevel) {
         fZoomInButton.addClass("button-pressed");
+        // $("#font-zoom-in-button").css("background-color", options.mainColor);
 
         document
           .getElementById("font-zoom-in-button")
           .setAttribute("aria-pressed", "true");
       } else {
         fZoomInButton.removeClass("button-pressed");
+        // $("#font-zoom-in-button").css("background-color", "transparent");
+
         document
           .getElementById("font-zoom-in-button")
           .setAttribute("aria-pressed", "false");
@@ -719,6 +814,10 @@
           .getElementById("font-zoom-out-button")
           .setAttribute("aria-disabled", "false");
         fZoomOutButton.addClass("open-accessibility-menu-button");
+        // $("#font-zoom-in-button").css({
+        //   fill: options.mainColor,
+        //   color: options.mainColor,
+        // });
       }
 
       // ----------
@@ -726,8 +825,8 @@
       $("body").css("zoom", options.pZoom);
       $(".empty").not(".fill").css("zoom", options.mZoom);
 
-      var setMenuTop = options.origMenuTop * options.mZoom + "px";
-      document.getElementById("pina-main").style.top = setMenuTop;
+      // var setMenuTop = options.origMenuTop * options.mZoom + "px";
+      // document.getElementById("pina-main").style.top = setMenuTop;
 
       var pZoomInd = "x " + options.pZoom.toFixed(1);
       document.getElementById("pZoom-indicator").innerHTML = pZoomInd;
@@ -785,10 +884,14 @@
           .not("#filler")
           .not("#lbexpand")
           .not("#expand-image")
+          .not("#lbclose")
+          .not("#pt-close")
           .not("#pina-container")
           .not(".open-accessibility-menu-button")
           .not(".open-accessibility-menu-button svg")
           .not(".open-accessibility-menu-button span")
+          .not(".button-indicator")
+          .not(".hidden-indicator")
           .not(".button-icon")
           .not(".open-accessibility-expand-button")
           .not(".first-line")
@@ -800,7 +903,7 @@
         $("*").removeClass("lc");
 
         $("#lbexpand").css("background-color", "#fff");
-        $("#expand-image").css("fill", "#114761");
+        $("#expand-image").css("fill", options.mainColor);
         $("#open-accessibility-footer-logo").css(
           "background-color",
           "transparent"
@@ -821,25 +924,36 @@
           .not(".empties")
           .not("#filler")
           .not("#lbexpand")
+          .not("#expand-image")
+          .not("#lbclose")
+          .not("#pt-close")
           .not("#pina-container")
+          .not(".on")
+          .not("#lang-sel")
           .not(".open-accessibility-menu-button")
           .not(".open-accessibility-menu-button svg")
           .not(".open-accessibility-menu-button span")
+          .not(".button-indicator")
+          .not(".hidden-indicator")
           .not(".button-icon")
           .not(".open-accessibility-expand-button")
           .not(".first-line")
           .not(".open-accessibility-expand-button svg")
           .not("#open-accessibility-footer-logo")
           .not(".open-accessibility-menu-disclaimer")
+          .not("#menu-version")
           .not("#open-accessibility-footer-logo svg")
           .not(".open-accessibility")
           .not("a")
           .addClass("lc");
         $("*").removeClass("dc");
 
-        $("#lbexpand").css("background-color", "#114761");
+        $("#lbexpand").css("background-color", options.mainColor);
         $("#expand-image").css("fill", "#fff");
-        $("#open-accessibility-footer-logo").css("background-color", "#114761");
+        $("#open-accessibility-footer-logo").css(
+          "background-color",
+          options.mainColor
+        );
 
         $("#pina-container").css("width", "256px");
         $(".open-accessibility-menu").css("border", "none");
@@ -855,10 +969,13 @@
 
         $("*").removeClass("lc");
 
-        $("#lbexpand").css("background-color", "#114761");
+        $("#lbexpand").css("background-color", options.mainColor);
         $("#expand-image").css("fill", "#fff");
 
-        $("#open-accessibility-footer-logo").css("background-color", "#114761");
+        $("#open-accessibility-footer-logo").css(
+          "background-color",
+          options.mainColor
+        );
 
         // $("#accDec").css("color", "#fff");
 
@@ -1090,29 +1207,43 @@
         // $("#prefollower").css("background", "none");
         // $("#parafollower").css("background", "none");
       }
+
       // Readable font
       if (options.fontReadable) {
         $("*")
           .not(".empty")
           .not(".empties")
           .not("#filler")
+          .not(".open-accessibility-container")
           .not("#lbexpand")
+          .not(".open-accessibility-close-button")
+          .not("#pt-close")
           // .not("#pina-container")
+          .not(".open-accessibility-side-switch")
+          .not(".open-accessibility-language-selector")
+          .not(".open-accessibility-menu")
+          .not(".open-accessibility-menu-buttons")
           .not(".open-accessibility-menu-button")
+          .not(".open-accessibility-top-row")
+          .not(".button-indicator, .hidden-indicator")
           .not(".open-accessibility-menu-button svg")
           .not(".open-accessibility-menu-button span")
           .not(".button-icon")
           .not(".open-accessibility-expand-button")
           .not(".first-line")
           .not(".open-accessibility-expand-button svg")
+          .not(".open-accessibility-menu-footer")
           .not("#open-accessibility-footer-logo")
           .not(".open-accessibility")
+          .not(".open-accessibility-menu-disclaimer")
+          .not(".open-accessibility-menu-version")
           .not(".l-switch")
           .not(".on, .off")
           .not("#lang-sel")
           .not("#fr-11")
           .not(".hh")
           .not("a")
+          .not(".bottom-links")
           .addClass("readable-font");
 
         fontReadableButton.addClass("button-pressed");

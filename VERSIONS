@@ -71,3 +71,9 @@ Bug fixs:
 * Fixed a bug related to reset button and contrast button
 * Added the option to set toolbar language and side as initial options
 * Fixed the menu buttons and Accessibility Disclaimer button location when changing toolbar side
+
+2.09 (3/12/2020)
+* Fixed the mouse to be pointer when Bigger Cursor button is clicked and hovering over links/buttons?
+* Added the option to set Toolbar's main color
+* Fixed the Toolbar's top row heights issues
+* Fixed Toolbar footer logo's width when switching between screen resolutions
