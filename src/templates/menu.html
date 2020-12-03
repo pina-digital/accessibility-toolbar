@@ -75,18 +75,12 @@
     console.log("D&D divNum", newLoc);
 
     userOptions2 = getUserOptions2();
-    console.log("userOptions2", userOptions2.toolbarVertPos);
+    // console.log("userOptions2", userOptions2.toolbarVertPos);
     userOptions2.toolbarVertPos = newLoc;
-    console.log("userOptions22", userOptions2.toolbarVertPos);
+    // console.log("userOptions22", userOptions2.toolbarVertPos);
     setUserOptions2(userOptions2);
     var userOptions3 = getUserOptions2();
-    console.log("userOptions222", userOptions3.toolbarVertPos);
-    // localStorage.setItem("ptdl", newLoc);
-    // console.log("D&D ptdlSet", newLoc);
-    // $.getscript("./open-accessibility-babel.js", function () {
-    //   apply();
-    // });
-    // apply();
+    // console.log("userOptions222", userOptions3.toolbarVertPos);
   }
 
   // If after switching displays resulution and both the
@@ -98,13 +92,14 @@
   $(window).on("load resize", function () {
     screenHeight = this.screen.height;
     parentDiv = fill.parentElement.id.substring(4);
+    // alert(parentDiv);
     parentDivID = "#patd" + newLoc;
     if (screenHeight < 768 && parentDiv >= 12) {
       $("#patd11").append(fill);
     } else {
       $(parentDivID).append(fill);
       // console.log("newLoc", newLoc);
-      localStorage.setItem("ptdl", newLoc);
+      // localStorage.setItem("ptdl", newLoc);
     }
   });
 </script>
@@ -133,7 +128,6 @@
             tabindex="0"
           >
             @@include('../svgs/expand.svg')
-            <!-- <span data-lang="expand"></span> -->
           </div>
 
           <div class="open-accessibility-menu">
@@ -164,7 +158,7 @@
               </div>
               <div class="open-accessibility-language-selector" id="oals">
                 <form action="/action_page.php">
-                  <!-- <label for="lang">lior</label> -->
+                  <!-- <label for="lang"></label> -->
                   <select
                     name="lang"
                     aria-label="בחירת שפה"
@@ -393,19 +387,19 @@
               </div>
 
               <div
-                class="open-accessibility-menu-button open-accessibility-reset-button"
-                id="reset-button"
+                class="open-accessibility-menu-button open-accessibility-revert-button"
+                id="revert-button"
                 role="button"
                 aria-pressed="false"
                 tabindex="0"
               >
                 <div class="first-line">
-                  <div class="hidden-indicator" id="reset-indicator"></div>
+                  <div class="hidden-indicator" id="revert-indicator"></div>
                   <div class="button-icon">
                     @@include('../svgs/revert2.svg')
                   </div>
                 </div>
-                <span data-lang="reset" id="lbrevert">בטל שינויים</span>
+                <span data-lang="revert" id="lbrevert">בטל שינויים</span>
               </div>
             </div>
             <div class="bottom-links">
@@ -426,7 +420,7 @@
                 </a>
               </div>
               <div class="open-accessibility-menu-version" id="menu-version">
-                v2.08
+                v2.10
               </div>
             </div>
             <div class="open-accessibility-menu-footer">
