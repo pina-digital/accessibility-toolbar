@@ -77,3 +77,7 @@ Bug fixs:
 * Added the option to set Toolbar's main color
 * Fixed the Toolbar's top row heights issues
 * Fixed Toolbar footer logo's width when switching between screen resolutions
+
+2.10 (3/12/2020)
+* Added the option to delete the initial customOptions in the index.html
+* Fixed language translation to some toolbar images issue

@@ -174,18 +174,43 @@
     };
 
     var userOptions = getUserOptions();
-    // console.log("userOptions", userOptions);
-    // console.log("defaultOptions", defaultOptions);
+    console.log("userOptions", userOptions);
+    console.log("defaultOptions", defaultOptions);
 
     var initialOptions = $.extend({}, defaultOptions, customOptions);
-    // console.log("initialOptions", initialOptions);
+    console.log("initialOptions", initialOptions);
 
     var options = $.extend({}, initialOptions, customOptions, userOptions);
-    // console.log("options", options);
+    console.log("options", options);
     if (!options.isMobileEnabled && isMobileBrowser()) {
       console.log("disabling accessibility plugin due to mobile browser");
       return;
     }
+
+    $("#saveChangesButton").click(function saveChanges() {
+      var updated_local_storage_options_key = localStorage.getItem(
+        LOCAL_STORAGE_OPTIONS_KEY
+      );
+      updated_local_storage_options_key = JSON.parse(
+        updated_local_storage_options_key
+      );
+      delete updated_local_storage_options_key.mainColor;
+      delete updated_local_storage_options_key.accessibilityDeclaration;
+      delete updated_local_storage_options_key.isMenuOpened;
+      delete updated_local_storage_options_key.localization;
+      delete updated_local_storage_options_key.toolbarSide;
+      delete updated_local_storage_options_key.toolbarVertPos;
+      console.log(
+        "updated_local_storage_options_key",
+        updated_local_storage_options_key
+      );
+      localStorage.setItem(
+        LOCAL_STORAGE_OPTIONS_KEY,
+        JSON.stringify(updated_local_storage_options_key)
+      );
+      location.reload();
+      return false;
+    });
 
     // -------------
 
@@ -210,7 +235,7 @@
     var focusButton = $(".open-accessibility-focus-button");
     var fontReadableButton = $(".open-accessibility-fontReadable-button");
     var headingsButton = $(".open-accessibility-headings-button");
-    var resetButton = $(".open-accessibility-reset-button");
+    var revertButton = $(".open-accessibility-revert-button");
     var cursorWorkaround = $(".open-accessibility-cursor-workaround");
     var languageSelector = $("#lang-sel");
     var toolbarSwitch = $("#togBtn");
@@ -595,8 +620,8 @@
     });
 
     // -------------
-    // Reset button click
-    resetButton.click(() => {
+    // revert button click
+    revertButton.click(() => {
       var newUserOptions = getUserOptions();
       options = $.extend({}, initialOptions);
       options.localization = newUserOptions.localization;
