@@ -108,7 +108,7 @@
   position: relative;
   height: 40px;
   width: 40px;
-  z-index: 9999999;
+  z-index: 999;
 }
 
 .open-accessibility-menu {
@@ -467,9 +467,8 @@
   display: flex;
   flex-direction: column;
   top: 0px;
-  right: 0px;
-  z-index: 1;
-  width: 0px;
+  // right: 0px;
+  z-index: 9999999;
 }
 
 .empty {

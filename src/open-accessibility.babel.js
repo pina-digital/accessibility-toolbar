@@ -730,7 +730,6 @@
       } else {
         document.getElementById("empties-side").style.left = "0px";
         document.getElementById("empties-side").style.direction = "ltr";
-        // document.getElementById("empties-side").style.width = "50px";
         document.getElementById("filler").style.direction = "ltr";
         document.getElementById("lbexpand").style.borderRadius =
           "0% 50% 50% 0%";
