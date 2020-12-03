@@ -81,3 +81,6 @@ Bug fixs:
 2.10 (3/12/2020)
 * Added the option to delete the initial customOptions in the index.html
 * Fixed language translation to some toolbar images issue
+
+2.11 (3/12/2020)
+* Fixed a bug related to the toolbar being at the left side
