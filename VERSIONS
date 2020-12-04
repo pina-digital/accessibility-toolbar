@@ -84,3 +84,11 @@ Bug fixs:
 
 2.11 (3/12/2020)
 * Fixed a bug related to the toolbar being at the left side
+
+2.12 (4/12/2020)
+* Cleaned the style.scss file a little
+* Deleted some unneccessary files
+* Fixed a bug that disabled links when switching toolbar's side
+* Fixed menu width bug when in dark contrast
+* Added Toolbar code to a variable (in menu.html) in order to Append it on customOptions div location
+* Added Portuguese language to language select
