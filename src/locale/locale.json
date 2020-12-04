@@ -130,5 +130,27 @@
     "focus": "Focus de Concentration",
     "font": "Police Lisible",
     "headings": "Mettre en Évidence les Titres"
+  },
+  "pt": {
+    "expand": "",
+    "close": "",
+    "font-zoom-out": "",
+    "font-zoom-in": "",
+    "invert": "",
+    "bigger-cursor": "",
+    "page-zoom": "",
+    "contrast": "",
+    "monochrome": "",
+    "links-highlight": "",
+    "animation-stop": "",
+    "revert": "",
+    "toolbar-align-right": "",
+    "toolbar-align-left": "",
+    "accessibility-statement": "",
+    "pina-logo": "Pina Digital Solutions",
+    "images-remove": "",
+    "focus": "",
+    "font": "",
+    "headings": ""
   }
  }

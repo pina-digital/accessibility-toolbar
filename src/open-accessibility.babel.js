@@ -406,6 +406,7 @@
     toolbarSwitch.change(function () {
       options.toolbarSide = !options.toolbarSide;
       apply();
+      // location.reload();
     });
 
     // -------------
@@ -673,6 +674,8 @@
       // Toolbar Side
       if (options.toolbarSide) {
         document.getElementById("empties-side").style.right = "0px";
+        document.getElementById("empties-side").style.removeProperty("left");
+
         document.getElementById("empties-side").style.direction = "rtl";
         document.getElementById("filler").style.direction = "rtl";
         document.getElementById("lbexpand").style.borderRadius =
@@ -729,6 +732,8 @@
         document.getElementById("menu-version").style.margin = "0 0 0 15px";
       } else {
         document.getElementById("empties-side").style.left = "0px";
+        document.getElementById("empties-side").style.removeProperty("right");
+
         document.getElementById("empties-side").style.direction = "ltr";
         document.getElementById("filler").style.direction = "ltr";
         document.getElementById("lbexpand").style.borderRadius =
@@ -933,7 +938,7 @@
           "background-color",
           "transparent"
         );
-        $("#pina-container").css("width", "260px");
+        $("#pina-container").css("width", "262px");
         $(".open-accessibility-menu").css("border", "2px solid white");
         $(".open-accessibility-menu").css("border-radius", "10px");
 

@@ -21,33 +21,17 @@
     border-radius: 5px;
   }
 }
-.open-accessibility-expand-button {
-  fill: #fff;
-  cursor: pointer;
-  position: absolute;
-  line-height: 80px;
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  // color: #fff;
-  svg {
-    width: 30px;
-    height: 50px;
-  }
-}
 
 #lbexpand {
-  // background-color: #41c1eb;
-  // border-radius: 50% 0% 0% 50%;
   &:hover {
     transform: scale(1, 1) translate3d(0, 0, 0);
     box-shadow: rgba(0, 0, 0, 0.145098) 0px 0px 4.72988px 0px,
       rgba(0, 0, 0, 0.294118) 0px 4.72988px 9.45976px 0px;
   }
-}
-#lbexpand:focus {
-  outline: 3px dashed var(--main-color);
-  border-radius: 5px;
+  &:focus {
+    outline: 3px dashed var(--main-color);
+    border-radius: 5px;
+  }
 }
 
 .open-accessibility {
@@ -60,11 +44,15 @@
     width: 40px;
     height: 40px;
     .open-accessibility-expand-button {
-      line-height: 40px;
-      width: 40px;
-      height: 40px;
-      svg {
-        width: 24px;
+      fill: #fff;
+      cursor: pointer;
+      position: absolute;
+      line-height: 80px;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      & svg {
+        width: 25px;
         height: 40px;
       }
     }
@@ -81,16 +69,10 @@
     display: flex;
     position: fixed;
     top: 80px;
-    // right: 5px;
     width: 256px;
-    // width: 450px;
-    // height: 582.5px;
-    // height: 585.5px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    // color: #114761;
     background-color: #fff;
-    // border: 1px solid #fff;
     transform: scale(1, 1) translate3d(0, 0, 0);
   }
 }
@@ -98,7 +80,6 @@
   .open-accessibility-container {
     width: 80px;
     height: 80px;
-    // color: #fff;
     font-size: 16px !important;
     right: 0;
   }
@@ -106,8 +87,8 @@
 
 .fill {
   position: relative;
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   z-index: 999;
 }
 
@@ -139,15 +120,10 @@
   }
   & option {
     color: var(--main-color);
-    // &:hover {
-    //   background-color: #114768;
-    //   color: white;
-    // }
   }
 }
 
 .open-accessibility-menu-buttons {
-  // height: 300px;
   overflow-y: auto;
   scrollbar-face-color: ThreeDFace !important;
   padding-top: 1px;
@@ -233,22 +209,11 @@
   }
 }
 
-// .open-accessibility-menu-button:focus {
-//   outline: none;
-//   box-shadow: 0 0 1.5px 1px #114761;
-// }
-
 .button-pressed {
   background-color: var(--main-color);
   color: #fff !important;
   fill: #fff !important;
 }
-
-// .button-pressed-dark {
-//   background-color: #114761;
-//   color: #114761 !important;
-//   fill: #114761 !important;
-// }
 
 .disabled-button {
   fill: lightgray !important;
@@ -263,7 +228,6 @@
   height: 18px !important;
   color: #fff;
   font-size: 9px;
-  // font-size: 0.5rem;
   font-weight: bold;
   background-color: var(--main-color);
   padding: 2px 6px 0 6px !important;
@@ -438,14 +402,11 @@
 }
 .open-accessibility-menu-version {
   color: var(--main-color);
-  // margin-left: 15px;
   font-size: 10px;
 }
 
 .open-accessibility-menu-footer {
   float: right;
-  // width: 260px;
-  // height: 40px !important;
   box-sizing: border-box;
   // transition: background-color 0.1s;
   direction: ltr;
@@ -467,14 +428,14 @@
   display: flex;
   flex-direction: column;
   top: 0px;
-  // right: 0px;
-  z-index: 9999999;
+  width: 0;
+  // z-index: 9999999;
 }
 
 .empty {
   display: inline-block;
   height: 50px !important;
-  width: 50px !important;
+  width: 0;
   background: transparent;
 }
 
@@ -690,7 +651,6 @@ input:checked + .slider .off {
   position: absolute;
   display: block;
   width: 100%;
-  /* z-index: 999; */
   left: 0;
   top: 0;
 }
@@ -705,7 +665,6 @@ input:checked + .slider .off {
   display: block;
   width: 100%;
   left: 0;
-  /* z-index: 999; */
 }
 
 .readable-font {
@@ -714,11 +673,5 @@ input:checked + .slider .off {
 
 .heading-highlight {
   outline: 2px solid #114761;
-  /* border-radius: 5px; */
   outline-offset: 2px !important;
-
-  /* border: #114761 solid 1px;
-  border-radius: 5px;
-  padding: 2px 0;
-  box-shadow: 0px 0px 0px 1px #fff inset; */
 }
