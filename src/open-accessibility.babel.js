@@ -946,7 +946,9 @@
           "background-color",
           "transparent"
         );
-        $("#pina-container").css("width", "262px");
+        $("#pina-container").css("width", "260px");
+        $(".open-accessibility-menu").css("width", "260px");
+
         $(".open-accessibility-menu").css("border", "2px solid white");
         $(".open-accessibility-menu").css("border-radius", "10px");
 
@@ -994,6 +996,8 @@
         );
 
         $("#pina-container").css("width", "256px");
+        $(".open-accessibility-menu").css("width", "256px");
+
         $(".open-accessibility-menu").css("border", "none");
         $(".open-accessibility-menu").css("border-radius", "0px");
 
