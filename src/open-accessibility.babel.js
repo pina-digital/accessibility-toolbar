@@ -642,6 +642,14 @@
     apply();
 
     function apply() {
+      var userOptions = getUserOptions();
+      // console.log("userOptions", userOptions);
+      // console.log("initialOptions111", initialOptions);
+
+      var options2 = $.extend({}, options, userOptions);
+      // console.log("options2", options2);
+      options.toolbarVertPos = options2.toolbarVertPos;
+      // console.log("optionstest", options);
       // ----------------
       // Setting the toolbar's buttons section height based on window height
       if (screenHeight < 1080) {
