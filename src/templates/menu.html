@@ -207,12 +207,16 @@
   }
 
   function zeroWidthDivs() {
-    $(".empty").css("width", "0px");
+    $(".empty").css("width", "4px");
+    $(".empty").css("z-index", "999999");
+
+    $(".empty").css("border", "1px solid red");
     $("#empties-side").css("width", "0px");
   }
 
   function NormalWidthDivs() {
     $(".empty").css("width", "50px");
+    $(".empty").css("z-index", "999999");
     $("#empties-side").css("width", "50px");
   }
   // Drag Functions
@@ -243,17 +247,18 @@
   function dragDrop() {
     this.className = "empty";
     this.append(fill);
-    console.log("D&D divName", this.id);
+    // console.log("D&D divName", this.id);
     newLoc = this.id.substring(4);
-    console.log("D&D divNum", newLoc);
+    // console.log("D&D divNum", newLoc);
 
     userOptions2 = getUserOptions2();
-    console.log("userOptions2", userOptions2.toolbarVertPos);
+    // console.log("userOptions2", userOptions2.toolbarVertPos);
     userOptions2.toolbarVertPos = newLoc;
     // console.log("userOptions22", userOptions2.toolbarVertPos);
     setUserOptions2(userOptions2);
-    var userOptions3 = getUserOptions2();
-    console.log("userOptions222", userOptions3.toolbarVertPos);
+    // // test
+    // var userOptions3 = getUserOptions2();
+    // console.log("userOptions222", userOptions3.toolbarVertPos);
 
     zeroWidthDivs();
 
@@ -603,7 +608,7 @@
                 </a>
               </div>
               <div class="open-accessibility-menu-version" id="menu-version">
-                v2.12
+                v2.13
               </div>
             </div>
             <div class="open-accessibility-menu-footer">

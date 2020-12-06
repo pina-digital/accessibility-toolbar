@@ -92,3 +92,6 @@ Bug fixs:
 * Fixed menu width bug when in dark contrast
 * Added Toolbar code to a variable (in menu.html) in order to Append it on customOptions div location
 * Added Portuguese language to language select
+
+2.13 (6/12/2020)
+* Fixed a bug that changed toolbar vertical position after switching toolbar side
