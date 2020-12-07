@@ -171,6 +171,7 @@
       fontReadable: false,
       headings: false,
       // accessibilityDeclaration: "",
+      mainColor: "#114761",
     };
 
     var userOptions = getUserOptions();
@@ -252,6 +253,19 @@
     // Setting Toolbar's Main Color to var in style.scss
     let root = document.documentElement;
     root.style.setProperty("--main-color", options.mainColor);
+
+    $("#open-accessibility-footer-logo").hover(
+      function () {
+        $(this).css("background-color", "#e6e6e6");
+        $(".pw").css("fill", options.mainColor);
+        // $(this).css("fill", "#fff");
+      },
+      function () {
+        $(this).css("background-color", options.mainColor);
+        $(".pw").css("fill", "#fff");
+        // $(this).css("fill", options.mainColor);
+      }
+    );
 
     // $(".hovered").css("border-color", options.mainColor);
     // $("#lbexpand").focus(function () {
@@ -439,13 +453,15 @@
         languages = getLanguages(options.localization, options.localizationMap);
         translateTheme(languages[Object.keys(languages)[0]]);
       } else if (selectedLanguage == "fr") {
-        // $(function () {
         options.localization = ["fr"];
         languages = getLanguages(options.localization, options.localizationMap);
         translateTheme(languages[Object.keys(languages)[0]]);
-        // location.reload();
-        // });
+      } else if (selectedLanguage == "pt") {
+        options.localization = ["pt"];
+        languages = getLanguages(options.localization, options.localizationMap);
+        translateTheme(languages[Object.keys(languages)[0]]);
       }
+
       options.isMenuOpened = true;
       apply();
     });
@@ -947,7 +963,7 @@
           "transparent"
         );
         $("#pina-container").css("width", "260px");
-        $(".open-accessibility-menu").css("width", "260px");
+        // $(".open-accessibility-menu").css("width", "260px");
 
         $(".open-accessibility-menu").css("border", "2px solid white");
         $(".open-accessibility-menu").css("border-radius", "10px");
@@ -996,7 +1012,7 @@
         );
 
         $("#pina-container").css("width", "256px");
-        $(".open-accessibility-menu").css("width", "256px");
+        // $(".open-accessibility-menu").css("width", "256px");
 
         $(".open-accessibility-menu").css("border", "none");
         $(".open-accessibility-menu").css("border-radius", "0px");
@@ -1138,25 +1154,25 @@
           .setAttribute("aria-pressed", "true");
 
         $("img")
-          .not(".empty")
-          .not(".empties")
-          .not("#filler")
-          .not("#lbexpand")
-          .not("#lbclose svg")
-          .not("#pina-container")
-          .not(".open-accessibility-menu-button")
-          .not(".open-accessibility-menu-button svg")
-          .not(".open-accessibility-menu-button span")
-          .not(".button-icon")
-          .not(".open-accessibility-expand-button")
-          .not(".first-line")
-          .not(".open-accessibility-expand-button svg")
-          .not("#open-accessibility-footer-logo")
-          .not(".open-accessibility-menu-disclaimer")
-          .not("#open-accessibility-footer-logo svg")
-          .not(".open-accessibility")
-          .not("a img")
-          .not("a svg")
+          // .not(".empty")
+          // .not(".empties")
+          // .not("#filler")
+          // .not("#lbexpand")
+          // .not("#lbclose svg")
+          // .not("#pina-container")
+          // .not(".open-accessibility-menu-button")
+          // .not(".open-accessibility-menu-button svg")
+          // .not(".open-accessibility-menu-button span")
+          // .not(".button-icon")
+          // .not(".open-accessibility-expand-button")
+          // .not(".first-line")
+          // .not(".open-accessibility-expand-button svg")
+          // .not("#open-accessibility-footer-logo")
+          // .not(".open-accessibility-menu-disclaimer")
+          // .not("#open-accessibility-footer-logo svg")
+          // .not(".open-accessibility")
+          // .not("a img")
+          // .not("a svg")
           .hide();
         $("svg")
           .not(".empty")

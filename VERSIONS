@@ -97,4 +97,12 @@ Bug fixs:
 * Fixed a bug that changed toolbar vertical position after switching toolbar side
 
 2.14 (6/12/2020)
-*
+* Fixed scss bugs after rollback
+
+2.15 (6/12/2020)
+* Changed Expand Button size
+
+2.16 (6/12/2020)
+* Changed the Pina footer logo hover effect
+* Changed the Expand Buttos size back to smaller size
+* Added a default color to defaultOptions
