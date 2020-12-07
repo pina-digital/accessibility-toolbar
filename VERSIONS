@@ -106,3 +106,6 @@ Bug fixs:
 * Changed the Pina footer logo hover effect
 * Changed the Expand Buttos size back to smaller size
 * Added a default color to defaultOptions
+
+2.17 (7/12/2020)
+* Fixed the Accessibity Declaration link

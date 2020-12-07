@@ -180,6 +180,7 @@
 
     var initialOptions = $.extend({}, defaultOptions, customOptions);
     console.log("initialOptions", initialOptions);
+    console.log("customOptions", customOptions);
 
     var options = $.extend({}, initialOptions, customOptions, userOptions);
     console.log("options", options);
@@ -267,6 +268,7 @@
       }
     );
 
+    $("#acc-stat-url").href = options.accessibilityDeclaration;
     // $(".hovered").css("border-color", options.mainColor);
     // $("#lbexpand").focus(function () {
     //   $(this).css({
