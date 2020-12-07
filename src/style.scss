@@ -1,7 +1,9 @@
 :root {
   --main-color: #114761;
 }
-
+.pageImages {
+  border: 1px solid red;
+}
 .open-accessibility-close-button {
   fill: var(--main-color);
   box-sizing: border-box;
@@ -25,20 +27,18 @@
   fill: #fff;
   cursor: pointer;
   position: absolute;
-  line-height: 80px;
-  width: 50px;
-  height: 50px;
+  line-height: 60px;
+  width: 40px;
+  height: 40px;
   text-align: center;
   // color: #fff;
   svg {
-    width: 30px;
-    height: 50px;
+    width: 24px;
+    height: 40px;
   }
 }
 
 #lbexpand {
-  // background-color: #41c1eb;
-  // border-radius: 50% 0% 0% 50%;
   &:hover {
     transform: scale(1, 1) translate3d(0, 0, 0);
     box-shadow: rgba(0, 0, 0, 0.145098) 0px 0px 4.72988px 0px,
@@ -60,7 +60,7 @@
     width: 40px;
     height: 40px;
     .open-accessibility-expand-button {
-      line-height: 40px;
+      line-height: 60px;
       width: 40px;
       height: 40px;
       svg {
@@ -423,13 +423,13 @@
   // transition: background-color 0.1s;
   direction: ltr;
   width: 100%;
-  &:hover {
-    opacity: 0.7;
-  }
+  // &:hover {
+  //   opacity: 0.7;
+  // }
 }
 
 #open-accessibility-footer-logo {
-  background-color: var(--main-color);
+  // background-color: var(--main-color);
   & svg {
     height: 100%;
   }
