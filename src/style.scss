@@ -99,8 +99,8 @@
 
 .fill {
   position: relative;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   z-index: 999;
 }
 
@@ -376,6 +376,13 @@
   // -ms-animation: none !important;
   // animation: none !important;
 }
+
+.hide-images {
+  opacity: 0;
+  visibility: hidden;
+  background-image: none !important;
+}
+
 .bottom-links {
   display: flex;
   align-items: flex-end;
@@ -445,7 +452,7 @@
 
 .empty {
   display: inline-block;
-  height: 50px !important;
+  height: 40px !important;
   width: 0;
   background: transparent;
 }
@@ -646,16 +653,6 @@ input:checked + .slider .off {
  */
 .bigger-cursor {
   cursor: url(./svgs/cursor.svg);
-}
-
-.no-bg-image {
-  background-image: none !important;
-
-  /* position: absolute; 
-  overflow: hidden; 
-  clip: rect(0 0 0 0); 
-  height: 1px; width: 1px; 
-  margin: -1px; padding: 0; border: 0;  */
 }
 
 #prefollower {
