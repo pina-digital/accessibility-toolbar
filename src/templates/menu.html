@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   var LOCAL_STORAGE_OPTIONS_KEY = "open-accessibility-config";
 
   function getUserOptions2() {
@@ -30,6 +30,9 @@
   // var initLoc = localStorage.getItem("ptdl");
   // console.log("initLoc", initLoc);
   var initLocID = "#patd" + initLoc;
+  console.log("initLocID", initLocID);
+  // location.reload();
+
   $(initLocID).append(fill);
 
   // Fill Listeneres
@@ -50,8 +53,8 @@
   }
 
   function NormalWidthDivs() {
-    $(".empty").css("width", "50px");
-    $("#empties-side").css("width", "50px");
+    $(".empty").css("width", "40px");
+    $("#empties-side").css("width", "40px");
   }
   // Drag Functions
   function dragStart() {
@@ -95,13 +98,6 @@
     // console.log("userOptions222", userOptions3.toolbarVertPos);
 
     zeroWidthDivs();
-
-    // empties.forEach((empty) => {
-    //   // console.log(empty);
-    //   if (empty.innerHTML == "") {
-    //     console.log("empty", empty);
-    //   }
-    // });
   }
 
   // If after switching displays resulution and both the
@@ -113,7 +109,6 @@
   $(window).on("load resize", function () {
     screenHeight = this.screen.height;
     parentDiv = fill.parentElement.id.substring(4);
-    // alert(parentDiv);
     parentDivID = "#patd" + newLoc;
     if (screenHeight < 768 && parentDiv >= 12) {
       $("#patd11").append(fill);
@@ -123,7 +118,7 @@
       // localStorage.setItem("ptdl", newLoc);
     }
   });
-</script>
+</script> -->
 
 <div class="empties" id="empties-side">
   <div class="empty" id="patd0"></div>
@@ -442,7 +437,7 @@
                 </a>
               </div>
               <div class="open-accessibility-menu-version" id="menu-version">
-                v2.16
+                v2.19
               </div>
             </div>
             <div class="open-accessibility-menu-footer">
@@ -482,4 +477,5 @@
   <div class="empty" id="patd22"></div>
   <div class="empty" id="patd23"></div>
   <div class="empty" id="patd24"></div>
+  <div class="empty" id="patd25"></div>
 </div>

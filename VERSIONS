@@ -106,3 +106,17 @@ Bug fixs:
 * Changed the Pina footer logo hover effect
 * Changed the Expand Buttos size back to smaller size
 * Added a default color to defaultOptions
+
+2.17 (7/12/2020)
+* Fixed the Accessibity Declaration link
+
+2.18 (7/12/2020)
+* Fixed Toolbar's divs size when dragging
+* Fixed initial Toolbar's vertical position issue
+* Improved Toolbar's vertical position change in different resolutions
+
+2.19 (8/12/2020)
+* Optimized the Hide Images function
+
+2.20 (8/12/2020)
+*

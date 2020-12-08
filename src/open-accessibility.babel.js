@@ -175,14 +175,15 @@
     };
 
     var userOptions = getUserOptions();
-    console.log("userOptions", userOptions);
-    console.log("defaultOptions", defaultOptions);
+    // console.log("userOptions", userOptions);
+    // console.log("defaultOptions", defaultOptions);
 
     var initialOptions = $.extend({}, defaultOptions, customOptions);
-    console.log("initialOptions", initialOptions);
+    // console.log("initialOptions", initialOptions);
+    // console.log("customOptions", customOptions);
 
     var options = $.extend({}, initialOptions, customOptions, userOptions);
-    console.log("options", options);
+    // console.log("options", options);
     if (!options.isMobileEnabled && isMobileBrowser()) {
       console.log("disabling accessibility plugin due to mobile browser");
       return;
@@ -254,6 +255,7 @@
     let root = document.documentElement;
     root.style.setProperty("--main-color", options.mainColor);
 
+    // Setting Toolbar's footer logo hover behaviour
     $("#open-accessibility-footer-logo").hover(
       function () {
         $(this).css("background-color", "#e6e6e6");
@@ -266,85 +268,6 @@
         // $(this).css("fill", options.mainColor);
       }
     );
-
-    // $(".hovered").css("border-color", options.mainColor);
-    // $("#lbexpand").focus(function () {
-    //   $(this).css({
-    //     outline: "3px dashed " + options.mainColor,
-    //   });
-    // });
-    // $("#lbexpand").blur(function () {
-    //   $(this).css({ outline: "none" });
-    // });
-    // $(".open-accessibility-close-button").css("fill", options.mainColor);
-    // $(".open-accessibility-close-button").focus(function () {
-    //   $(this).css({ boxShadow: "0 0 1.5px 1px " + options.mainColor });
-    // });
-    // $(".open-accessibility-close-button").blur(function () {
-    //   $(this).css({ boxShadow: "none" });
-    // });
-    // $(".open-accessibility-menu-version").css("color", options.mainColor);
-    // $(".slider").css("border-color", options.mainColor);
-    // $(".on").css("color", options.mainColor);
-    // $(".off").css("color", options.mainColor);
-    // $(".l-switch").focus(function () {
-    //   $(this).css({ boxShadow: "0 0 1.5px 1px " + options.mainColor });
-    // });
-    // $(".l-switch").blur(function () {
-    //   $(this).css({ boxShadow: "none" });
-    // });
-    // $(".round").css("background-color", options.mainColor);
-    // $("#lang-sel").css("color", options.mainColor);
-    // $("#lang-sel > option").css("color", options.mainColor);
-    // $("#lang-sel").focus(function () {
-    //   $(this).css({ boxShadow: "0 0 1.5px 1px " + options.mainColor });
-    // });
-    // $("#lang-sel").blur(function () {
-    //   $(this).css({ boxShadow: "none" });
-    // });
-    // $(".open-accessibility-menu-button").css({
-    //   fill: options.mainColor,
-    //   color: options.mainColor,
-    // });
-    // $(".open-accessibility-close-button").hover(
-    //   function () {
-    //     $(this).css("background-color", options.mainColor);
-    //     $(this).css("color", "#fff");
-    //     $(this).css("fill", "#fff");
-    //   },
-    //   function () {
-    //     $(this).css("background-color", "transparent");
-    //     $(this).css("color", options.mainColor);
-    //     $(this).css("fill", options.mainColor);
-    //   }
-    // );
-    // $(".open-accessibility-menu-button").hover(
-    //   function () {
-    //     $(this).css("background-color", options.mainColor);
-    //     $(this).css("color", "#fff");
-    //     $(this).css("fill", "#fff");
-    //   },
-    //   function () {
-    //     var hoverAriaPressed = $(this)[0].attributes[3].value;
-    //     if (hoverAriaPressed == "true") {
-    //       $(this).css("background-color", options.mainColor);
-    //       $(this).css("color", "transparent");
-    //       $(this).css("fill", "transparent");
-    //     } else {
-    //       $(this).css("background-color", "transparent");
-    //       $(this).css("color", options.mainColor);
-    //       $(this).css("fill", options.mainColor);
-    //     }
-    //   }
-    // );
-    // $(".open-accessibility-menu-button").focus(function () {
-    //   $(this).css({ boxShadow: "0 0 1.5px 1px " + options.mainColor });
-    // });
-    // $(".open-accessibility-menu-button").blur(function () {
-    //   $(this).css({ boxShadow: "none" });
-    // });
-    // $(".button-indicator").css("background-color", options.mainColor);
-    // $("#menu-disclaimer").css("background-color", options.mainColor);
 
     // -------------
     // Set Langauges
@@ -1154,26 +1077,27 @@
           .setAttribute("aria-pressed", "true");
 
         $("img")
-          // .not(".empty")
-          // .not(".empties")
-          // .not("#filler")
-          // .not("#lbexpand")
-          // .not("#lbclose svg")
-          // .not("#pina-container")
-          // .not(".open-accessibility-menu-button")
-          // .not(".open-accessibility-menu-button svg")
-          // .not(".open-accessibility-menu-button span")
-          // .not(".button-icon")
-          // .not(".open-accessibility-expand-button")
-          // .not(".first-line")
-          // .not(".open-accessibility-expand-button svg")
-          // .not("#open-accessibility-footer-logo")
-          // .not(".open-accessibility-menu-disclaimer")
-          // .not("#open-accessibility-footer-logo svg")
-          // .not(".open-accessibility")
-          // .not("a img")
-          // .not("a svg")
-          .hide();
+          .not(".empty")
+          .not(".empties")
+          .not("#filler")
+          .not("#lbexpand")
+          .not("#lbclose svg")
+          .not("#pina-container")
+          .not(".open-accessibility-menu-button")
+          .not(".open-accessibility-menu-button svg")
+          .not(".open-accessibility-menu-button span")
+          .not(".button-icon")
+          .not(".open-accessibility-expand-button")
+          .not(".first-line")
+          .not(".open-accessibility-expand-button svg")
+          .not("#open-accessibility-footer-logo")
+          .not(".open-accessibility-menu-disclaimer")
+          .not("#open-accessibility-footer-logo svg")
+          .not(".open-accessibility")
+          .not("a img")
+          .not("a svg")
+          .addClass("hide-images");
+        // .hide();
         $("svg")
           .not(".empty")
           .not(".empties")
@@ -1192,19 +1116,24 @@
           .not(".open-accessibility-menu-disclaimer")
           .not("#open-accessibility-footer-logo svg")
           .not(".open-accessibility")
-          .hide();
-
-        $("*").addClass("no-bg-image");
+          .addClass("hide-images");
+        // .hide();
+        // $("#asd123").attr("src", "#");
+        $("img[src]").addClass("hide-images");
+        // $("*").addClass("no-bg-image");
       } else {
         imagesButton.removeClass("button-pressed");
         document
           .getElementById("img-remove-button")
           .setAttribute("aria-pressed", "false");
 
-        $("img").show();
-        $("svg").show();
+        $("img").removeClass("hide-images");
+        // .show();
+        $("svg").removeClass("hide-images");
+        // .show();
+        $("img[src]").removeClass("hide-images");
 
-        $("*").removeClass("no-bg-image");
+        // $("*").removeClass("no-bg-image");
       }
 
       // Focus strip
@@ -1354,5 +1283,125 @@
 
       return "rgb(" + r + "," + g + "," + b + ")";
     }
+
+    // function getUserOptions2() {
+    //   var data;
+    //   try {
+    //     data = localStorage.getItem(LOCAL_STORAGE_OPTIONS_KEY);
+    //     data = JSON.parse(data);
+    //   } catch (e) {}
+
+    //   if (data && typeof data === "object") {
+    //     return data;
+    //   } else {
+    //     return {};
+    //   }
+    // }
+
+    // function setUserOptions2(options) {
+    //   localStorage.setItem(LOCAL_STORAGE_OPTIONS_KEY, JSON.stringify(options));
+    // }
+
+    // ================================
+    // Drag & Drop features and applying initial Toolbar vertical position
+    var fill = document.querySelector(".fill");
+    var empties = document.querySelectorAll(".empty");
+
+    // appending the fill div to the position from local storage
+    var userOptions2 = getUserOptions();
+    // console.log("userOptions2", userOptions2);
+    var initLoc = userOptions2.toolbarVertPos;
+    // console.log("initLoc", initLoc);
+    var initLocID = "#patd" + initLoc;
+    // console.log("initLocID", initLocID);
+    // location.reload();
+    $(initLocID).append(fill);
+
+    // Fill Listeneres
+    fill.addEventListener("dragstart", dragStart);
+    fill.addEventListener("dragend", dragEnd);
+
+    // Loop through empties and call drag events
+    for (const empty of empties) {
+      empty.addEventListener("dragover", dragOver);
+      empty.addEventListener("dragenter", dragEnter);
+      empty.addEventListener("dragleave", dragLeave);
+      empty.addEventListener("drop", dragDrop);
+    }
+
+    function zeroWidthDivs() {
+      $(".empty").css("width", "0px");
+      $("#empties-side").css("width", "0px");
+    }
+
+    function NormalWidthDivs() {
+      $(".empty").css("width", "40px");
+      $("#empties-side").css("width", "40px");
+    }
+    // Drag Functions
+    function dragStart() {
+      NormalWidthDivs();
+      this.className += " hold";
+      setTimeout(() => (this.className = "invisible"), 0);
+    }
+
+    function dragEnd() {
+      this.className = "fill";
+    }
+
+    function dragOver(e) {
+      e.preventDefault();
+    }
+
+    function dragEnter(e) {
+      e.preventDefault();
+      this.className += " hovered";
+    }
+
+    function dragLeave() {
+      this.className = "empty";
+    }
+    var newLoc;
+
+    function dragDrop() {
+      this.className = "empty";
+      this.append(fill);
+      // console.log("D&D divName", this.id);
+      newLoc = this.id.substring(4);
+      // console.log("D&D divNum", newLoc);
+
+      userOptions2 = getUserOptions();
+      // console.log("userOptions2", userOptions2.toolbarVertPos);
+      userOptions2.toolbarVertPos = newLoc;
+      // console.log("userOptions22", userOptions2.toolbarVertPos);
+
+      setUserOptions(userOptions2);
+
+      zeroWidthDivs();
+    }
+
+    // If after switching displays resulution and both the
+    // display resolution is under 768 and the toolbar location
+    // div number is greater than 11 than a new div location is
+    // calculated
+    var windowHeight;
+    var lowerResPos;
+    var lowerResPosID;
+
+    $(window).on("load resize", function () {
+      console.log(this);
+      windowHeight = this.innerHeight;
+      console.log("windowHeight", windowHeight);
+
+      if (windowHeight < 768 && options.toolbarVertPos >= 20) {
+        lowerResPos = parseInt(windowHeight / 40) - 1;
+        lowerResPosID = "#patd" + lowerResPos;
+
+        console.log("lowerResPos", lowerResPos);
+        $(lowerResPosID).append(fill);
+      } else {
+        $(options.toolbarVertPos).append(fill);
+      }
+    });
   };
 })(jQuery || $);
