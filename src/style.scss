@@ -379,8 +379,11 @@
 
 .hide-images {
   opacity: 0;
-  visibility: hidden;
+  visibility: hidden !important;
   background-image: none !important;
+  iframe {
+    visibility: hidden !important;
+  }
 }
 
 .bottom-links {

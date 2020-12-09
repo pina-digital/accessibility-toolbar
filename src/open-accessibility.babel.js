@@ -1057,17 +1057,19 @@
 
       // Animation Stop
       if (options.isAnimStopped) {
-        $("*").not(".open-accessibility *").addClass("paused");
         animationButton.addClass("button-pressed");
         document
           .getElementById("stop-anim-button")
           .setAttribute("aria-pressed", "true");
+
+        $("*").not(".open-accessibility *").not("img").addClass("paused");
       } else {
-        $("*").removeClass("paused");
         animationButton.removeClass("button-pressed");
         document
           .getElementById("stop-anim-button")
           .setAttribute("aria-pressed", "false");
+
+        $("*").removeClass("paused");
       }
 
       // Images Remove
@@ -1095,8 +1097,8 @@
           .not(".open-accessibility-menu-disclaimer")
           .not("#open-accessibility-footer-logo svg")
           .not(".open-accessibility")
-          .not("a img")
-          .not("a svg")
+          // .not("a img")
+          // .not("a svg")
           .addClass("hide-images");
         $("svg")
           .not(".empty")
@@ -1118,15 +1120,18 @@
           .not(".open-accessibility")
           .addClass("hide-images");
         $("img[src]").addClass("hide-images");
+        $("div[src]").addClass("hide-images");
+        $("iframe[src]").addClass("hide-images");
       } else {
         imagesButton.removeClass("button-pressed");
         document
           .getElementById("img-remove-button")
           .setAttribute("aria-pressed", "false");
 
-        $("img").removeClass("hide-images");
-        $("svg").removeClass("hide-images");
-        $("img[src]").removeClass("hide-images");
+        $("*").removeClass("hide-images");
+        // $("img").removeClass("hide-images");
+        // $("svg").removeClass("hide-images");
+        // $("img[src]").removeClass("hide-images");
       }
 
       // Focus strip

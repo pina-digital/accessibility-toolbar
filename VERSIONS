@@ -121,3 +121,7 @@ Bug fixs:
 2.20 (8/12/2020)
 * Deleted previous dist folder backups (moved them to Google Drive)
 * Adjusted Custom Options variable to match WordPress Plugin
+
+2.21 (9/12/2020)
+* Optimized Hide Pictures function to apply on iFrames
+* Optimized Animation Stop Function to not apply on imgs
