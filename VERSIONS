@@ -125,3 +125,6 @@ Bug fixs:
 2.21 (9/12/2020)
 * Optimized Hide Pictures function to apply on iFrames
 * Optimized Animation Stop Function to not apply on imgs
+
+2.22 (9/12/2020)
+* Deleted unneccessary data from menu.html
