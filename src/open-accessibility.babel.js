@@ -142,7 +142,6 @@
     customOptions = customOptions || {};
 
     var defaultOptions = {
-      // isMenuOpened: true,
       highlightedLinks: false,
       isMobileEnabled: true,
       grayscale: 0,
@@ -163,15 +162,17 @@
       isAnimStopped: false,
       iconSize: "s", // supported sizes are s(mall), m(edium), l(arge)
       // origMenuTop: window.innerHeight * 0.25,
-      // localization: ["he"],
-      // toolbarSide: true,
-      // toolbarVertPos: "5",
       imagesRemove: false,
       focus: false,
       fontReadable: false,
       headings: false,
-      // accessibilityDeclaration: "",
+      // Default Custom Settings
+      localization: ["he"],
+      toolbarSide: true,
+      toolbarVertPos: "5",
       mainColor: "#114761",
+      isMenuOpened: false,
+      accessibilityDeclaration: "",
     };
 
     var userOptions = getUserOptions();
@@ -1097,7 +1098,6 @@
           .not("a img")
           .not("a svg")
           .addClass("hide-images");
-        // .hide();
         $("svg")
           .not(".empty")
           .not(".empties")
@@ -1117,10 +1117,7 @@
           .not("#open-accessibility-footer-logo svg")
           .not(".open-accessibility")
           .addClass("hide-images");
-        // .hide();
-        // $("#asd123").attr("src", "#");
         $("img[src]").addClass("hide-images");
-        // $("*").addClass("no-bg-image");
       } else {
         imagesButton.removeClass("button-pressed");
         document
@@ -1128,12 +1125,8 @@
           .setAttribute("aria-pressed", "false");
 
         $("img").removeClass("hide-images");
-        // .show();
         $("svg").removeClass("hide-images");
-        // .show();
         $("img[src]").removeClass("hide-images");
-
-        // $("*").removeClass("no-bg-image");
       }
 
       // Focus strip
@@ -1171,12 +1164,12 @@
             //   $("#parafollower").css({ height: pageYY });
             // }
 
-            console.log("paraHeight", paraHeight);
+            // console.log("paraHeight", paraHeight);
           }
 
-          console.log("cursor location", e.pageY);
-          console.log("window height", h);
-          console.log("scroll height", hh);
+          // console.log("cursor location", e.pageY);
+          // console.log("window height", h);
+          // console.log("scroll height", hh);
 
           $("#prefollower").css("background", "rgba(0,0,0,0.7)");
           $("#parafollower").css("background", "rgba(0,0,0,0.7)");
@@ -1389,15 +1382,15 @@
     var lowerResPosID;
 
     $(window).on("load resize", function () {
-      console.log(this);
+      // console.log(this);
       windowHeight = this.innerHeight;
-      console.log("windowHeight", windowHeight);
+      // console.log("windowHeight", windowHeight);
 
       if (windowHeight < 768 && options.toolbarVertPos >= 20) {
         lowerResPos = parseInt(windowHeight / 40) - 1;
         lowerResPosID = "#patd" + lowerResPos;
 
-        console.log("lowerResPos", lowerResPos);
+        // console.log("lowerResPos", lowerResPos);
         $(lowerResPosID).append(fill);
       } else {
         $(options.toolbarVertPos).append(fill);
