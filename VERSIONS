@@ -130,4 +130,6 @@ Bug fixs:
 * Deleted unneccessary data from menu.html
 
 2.23 (9/12/2020)
-*
+* Removed transorm & transition sttributes from Animation Stop Function
+* Added a fixed height to the Toolbar's footer
+* Added a 100% width to the footer's svg
