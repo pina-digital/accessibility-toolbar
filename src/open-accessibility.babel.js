@@ -339,8 +339,7 @@
 
     // -------------
     // Toolbar side switch
-    document.getElementById("togBtn").checked = options.toolbarSide;
-
+    $("#togBtn").prop("checked", options.toolbarSide);
     toolbarSwitch.change(function () {
       options.toolbarSide = !options.toolbarSide;
       apply();
@@ -444,13 +443,7 @@
     }
 
     pZoomButton.click(() => {
-      // if (options.pZoom == 1) {
-      //   options.origMenuTop = document.getElementById("pina-main").offsetTop;
-      //   // console.log("origMenuTop", options.origMenuTop);
-      // }
-
       options.pZoom += options.pZoomStep;
-
       // console.log("pZoom", options.pZoom);
 
       var calculus = 1 / options.pZoom;
@@ -621,181 +614,98 @@
       // ----------
       // Toolbar Side
       if (options.toolbarSide) {
-        document.getElementById("empties-side").style.right = "0px";
+        $("#empties-side").css("right", "0px");
         document.getElementById("empties-side").style.removeProperty("left");
+        // $("#empties-side").removeProp("left");
+        // $("#empties-side").removeAttr("left");
+        $("#empties-side").css("direction", "rtl");
+        $("#filler").css("direction", "rtl");
+        $("#lbexpand").css("border-radius", "50% 0% 0% 50%");
 
-        document.getElementById("empties-side").style.direction = "rtl";
-        document.getElementById("filler").style.direction = "rtl";
-        document.getElementById("lbexpand").style.borderRadius =
-          "50% 0% 0% 50%";
-        document.getElementById("side-switch").style.margin = "0 2px 0 43px";
-        document.getElementById("oals").style.margin = "0 0 0 25px";
+        $("#side-switch").css("margin", "0 2px 0 43px");
+        $("#oals").css("margin", "0 0 0 25px");
 
-        document
-          .getElementById("pt-font-zoomin")
-          .setAttribute("viewBox", "30 20 70 70");
-        document
-          .getElementById("pt-font-zoomout")
-          .setAttribute("viewBox", "30 20 70 70");
-        document
-          .getElementById("pt-page-zoomin")
-          .setAttribute("viewBox", "30 20 70 70");
-        document
-          .getElementById("pt-cursor")
-          .setAttribute("viewBox", "0 5 60 60");
-        document
-          .getElementById("pt-contrast")
-          .setAttribute("viewBox", "30 20 70 70");
-        document
-          .getElementById("pt-invert")
-          .setAttribute("viewBox", "30 20 70 70");
-        document
-          .getElementById("pt-monochrome")
-          .setAttribute("viewBox", "30 20 65 65");
-        document
-          .getElementById("pt-links")
-          .setAttribute("viewBox", "30 17 65 65");
-        document
-          .getElementById("pt-pause")
-          .setAttribute("viewBox", "32 20 65 65");
-        document
-          .getElementById("pt-images-remove")
-          .setAttribute("viewBox", "0 -4 70 70");
-        document
-          .getElementById("pt-focus")
-          .setAttribute("viewBox", "2 -4 70 70");
-        document
-          .getElementById("pt-font-readable")
-          .setAttribute("viewBox", "-15 -9 55 55");
-        document
-          .getElementById("fr-11")
-          .setAttribute("transform", "translate(11.04 13.97)");
-        document
-          .getElementById("pt-headings")
-          .setAttribute("viewBox", "-12 -4 55 55");
-        document
-          .getElementById("pt-revert")
-          .setAttribute("viewBox", "2 -4 65 65");
-        document.getElementById("menu-disclaimer").style.margin = "0 66px 0 0";
-        document.getElementById("menu-version").style.margin = "0 0 0 15px";
+        $("#pt-font-zoomin").attr("viewBox", "30 20 70 70");
+        $("#pt-font-zoomout").attr("viewBox", "30 20 70 70");
+        $("#pt-page-zoomin").attr("viewBox", "30 20 70 70");
+        $("#pt-cursor").attr("viewBox", "0 5 60 60");
+        $("#pt-contrast").attr("viewBox", "30 20 70 70");
+        $("#pt-invert").attr("viewBox", "30 20 70 70");
+        $("#pt-monochrome").attr("viewBox", "30 20 65 65");
+        $("#pt-links").attr("viewBox", "30 17 65 65");
+        $("#pt-pause").attr("viewBox", "32 20 65 65");
+        $("#pt-images-remove").attr("viewBox", "0 -4 70 70");
+        $("#pt-focus").attr("viewBox", "2 -4 70 70");
+        $("#pt-font-readable").attr("viewBox", "-15 -9 55 55");
+        $("#fr-11").attr("transform", "translate(11.04 13.97)");
+        $("#pt-headings").attr("viewBox", "-12 -4 55 55");
+        $("#pt-revert").attr("viewBox", "2 -4 65 65");
+        $("#menu-disclaimer").css("margin", "0 66px 0 0");
+        $("#menu-version").css("margin", "0 0 0 15px");
       } else {
-        document.getElementById("empties-side").style.left = "0px";
+        $("#empties-side").css("left", "0px");
         document.getElementById("empties-side").style.removeProperty("right");
+        $("#empties-side").css("direction", "ltr");
+        $("#filler").css("direction", "ltr");
+        $("#lbexpand").css("border-radius", "0% 50% 50% 0%");
 
-        document.getElementById("empties-side").style.direction = "ltr";
-        document.getElementById("filler").style.direction = "ltr";
-        document.getElementById("lbexpand").style.borderRadius =
-          "0% 50% 50% 0%";
-        document.getElementById("side-switch").style.margin = "0 43px 0 2px";
-        document.getElementById("oals").style.margin = "0 25px 0 0";
+        $("#side-switch").css("margin", "0 43px 0 2px");
+        $("#oals").css("margin", "0 25px 0 0");
 
-        document
-          .getElementById("pt-font-zoomin")
-          .setAttribute("viewBox", "52 20 70 70");
-        document
-          .getElementById("pt-font-zoomout")
-          .setAttribute("viewBox", "52 20 70 70");
-        document
-          .getElementById("pt-page-zoomin")
-          .setAttribute("viewBox", "52 20 70 70");
-        document
-          .getElementById("pt-cursor")
-          .setAttribute("viewBox", "20 5 60 60");
-        document
-          .getElementById("pt-contrast")
-          .setAttribute("viewBox", "52 20 70 70");
-        document
-          .getElementById("pt-invert")
-          .setAttribute("viewBox", "52 20 70 70");
-        document
-          .getElementById("pt-monochrome")
-          .setAttribute("viewBox", "52 20 65 65");
-        document
-          .getElementById("pt-links")
-          .setAttribute("viewBox", "52 17 65 65");
-        document
-          .getElementById("pt-pause")
-          .setAttribute("viewBox", "52 20 65 65");
-        document
-          .getElementById("pt-images-remove")
-          .setAttribute("viewBox", "22 -4 70 70");
-        document
-          .getElementById("pt-focus")
-          .setAttribute("viewBox", "22 -4 70 70");
-        document
-          .getElementById("pt-font-readable")
-          .setAttribute("viewBox", "3 -9 55 55");
-        document
-          .getElementById("fr-11")
-          .setAttribute("transform", "translate(1.04 13.97)");
-        document
-          .getElementById("pt-headings")
-          .setAttribute("viewBox", "32 -4 55 55");
-        document
-          .getElementById("pt-revert")
-          .setAttribute("viewBox", "22 -4 65 65");
-        document.getElementById("menu-disclaimer").style.margin = "0 0 0 66px";
-        document.getElementById("menu-version").style.margin = "0 15px 0 0";
+        $("#pt-font-zoomin").attr("viewBox", "52 20 70 70");
+        $("#pt-font-zoomout").attr("viewBox", "52 20 70 70");
+        $("#pt-page-zoomin").attr("viewBox", "52 20 70 70");
+        $("#pt-cursor").attr("viewBox", "20 5 60 60");
+        $("#pt-contrast").attr("viewBox", "52 20 70 70");
+        $("#pt-invert").attr("viewBox", "52 20 70 70");
+        $("#pt-monochrome").attr("viewBox", "52 20 65 65");
+        $("#pt-links").attr("viewBox", "52 17 65 65");
+        $("#pt-pause").attr("viewBox", "52 20 65 65");
+        $("#pt-images-remove").attr("viewBox", "22 -4 70 70");
+        $("#pt-focus").attr("viewBox", "22 -4 70 70");
+        $("#pt-font-readable").attr("viewBox", "3 -9 55 55");
+        $("#fr-11").attr("transform", "translate(1.04 13.97)");
+        $("#pt-headings").attr("viewBox", "32 -4 55 55");
+        $("#pt-revert").attr("viewBox", "22 -4 65 65");
+        $("#menu-disclaimer").css("margin", "0 0 0 66px");
+        $("#menu-version").css("margin", "0 15px 0 0");
       }
 
       // ----------
       // Selected language
       var selectedLanguage = options.localization;
-      document.getElementById("lang-sel").value = selectedLanguage;
-
+      $("#lang-sel").val(selectedLanguage);
       // ----------
       // Text Zoom
       applyFontZoom(options.fontSelector, options.fZoom);
       var fZoomInd = "x " + options.fZoom.toFixed(1);
 
-      document.getElementById("fZoomIn-indicator").innerHTML = fZoomInd;
-      document.getElementById("fZoomOut-indicator").innerHTML = fZoomInd;
+      $("#fZoomIn-indicator").html(fZoomInd);
+      $("#fZoomOut-indicator").html(fZoomInd);
 
       if (options.fZoom > options.minFZoomLevel) {
         fZoomInButton.addClass("button-pressed");
-        // $("#font-zoom-in-button").css("background-color", options.mainColor);
-
-        document
-          .getElementById("font-zoom-in-button")
-          .setAttribute("aria-pressed", "true");
+        fZoomInButton.attr("aria-pressed", "true");
       } else {
         fZoomInButton.removeClass("button-pressed");
-        // $("#font-zoom-in-button").css("background-color", "transparent");
-
-        document
-          .getElementById("font-zoom-in-button")
-          .setAttribute("aria-pressed", "false");
+        fZoomInButton.attr("aria-pressed", "false");
       }
 
       if (options.fZoom >= options.maxFZoomLevel) {
         fZoomInButton.addClass("disabled-button");
-        document
-          .getElementById("font-zoom-in-button")
-          .setAttribute("aria-disabled", "true");
+        fZoomInButton.attr("aria-disabled", "true");
       } else {
         fZoomInButton.removeClass("disabled-button");
-        document
-          .getElementById("font-zoom-in-button")
-          .setAttribute("aria-disabled", "false");
-        fZoomInButton.addClass("open-accessibility-menu-button");
+        fZoomInButton.attr("aria-disabled", "false");
       }
 
       if (options.fZoom <= options.minFZoomLevel) {
         fZoomOutButton.removeClass("button-pressed");
         fZoomOutButton.addClass("disabled-button");
-        document
-          .getElementById("font-zoom-out-button")
-          .setAttribute("aria-disabled", "true");
+        fZoomOutButton.attr("aria-disabled", "true");
       } else {
         fZoomOutButton.removeClass("disabled-button");
-        document
-          .getElementById("font-zoom-out-button")
-          .setAttribute("aria-disabled", "false");
-        fZoomOutButton.addClass("open-accessibility-menu-button");
-        // $("#font-zoom-in-button").css({
-        //   fill: options.mainColor,
-        //   color: options.mainColor,
-        // });
+        fZoomOutButton.attr("aria-disabled", "false");
       }
 
       // ----------
@@ -803,49 +713,30 @@
       $("body").css("zoom", options.pZoom);
       $(".empty").not(".fill").css("zoom", options.mZoom);
 
-      // var setMenuTop = options.origMenuTop * options.mZoom + "px";
-      // document.getElementById("pina-main").style.top = setMenuTop;
-
       var pZoomInd = "x " + options.pZoom.toFixed(1);
-      document.getElementById("pZoom-indicator").innerHTML = pZoomInd;
+      $("#pZoom-indicator").html(pZoomInd);
 
       if (options.pZoom > options.minPZoomLevel) {
         pZoomButton.addClass("button-pressed");
-
-        document
-          .getElementById("page-zoom-button")
-          .setAttribute("aria-pressed", "true");
+        pZoomButton.attr("aria-pressed", "true");
       } else {
         pZoomButton.removeClass("button-pressed");
-
-        document
-          .getElementById("page-zoom-button")
-          .setAttribute("aria-pressed", "false");
+        pZoomButton.attr("aria-pressed", "false");
       }
 
       // ----------
       // Bigger Cursor
 
       if (options.cursor) {
-        $("*").addClass("open-accessibility-cursor");
-
         cursorButton.addClass("button-pressed");
-        document
-          .getElementById("cursor-button")
-          .setAttribute("aria-pressed", "true");
-        // if (!googleChrome) {
-        //   cursorWorkaround.show();
-        // }
-      } else {
-        $("*").removeClass("open-accessibility-cursor");
-        cursorButton.removeClass("button-pressed");
-        document
-          .getElementById("cursor-button")
-          .setAttribute("aria-pressed", "false");
+        cursorButton.attr("aria-pressed", "true");
 
-        // if (!googleChrome) {
-        //   cursorWorkaround.hide();
-        // }
+        $("*").addClass("open-accessibility-cursor");
+      } else {
+        cursorButton.removeClass("button-pressed");
+        cursorButton.attr("aria-pressed", "false");
+
+        $("*").removeClass("open-accessibility-cursor");
       }
 
       // ----------------
@@ -856,6 +747,9 @@
       // Contrast
 
       if (options.contrast > 100) {
+        contrastButton.addClass("button-pressed");
+        contrastButton.attr("aria-pressed", "true");
+
         $("*")
           .not(".empty")
           .not(".empties")
@@ -879,6 +773,7 @@
           .not("a")
           .addClass("dc");
         $("*").removeClass("lc");
+        $(".open-accessibility-menu-button span").addClass("dc-button");
 
         $("#lbexpand").css("background-color", "#fff");
         $("#expand-image").css("fill", options.mainColor);
@@ -887,18 +782,12 @@
           "transparent"
         );
         $("#pina-container").css("width", "260px");
-        // $(".open-accessibility-menu").css("width", "260px");
 
         $(".open-accessibility-menu").css("border", "2px solid white");
         $(".open-accessibility-menu").css("border-radius", "10px");
-
-        $(".open-accessibility-menu-button span").addClass("dc-button");
-        contrastButton.addClass("button-pressed");
-
-        document
-          .getElementById("contrast-button")
-          .setAttribute("aria-pressed", "true");
       } else if (options.contrast < 100) {
+        contrastButton.attr("aria-pressed", "true");
+
         $("*")
           .not(".empty")
           .not(".empties")
@@ -936,16 +825,15 @@
         );
 
         $("#pina-container").css("width", "256px");
-        // $(".open-accessibility-menu").css("width", "256px");
 
         $(".open-accessibility-menu").css("border", "none");
         $(".open-accessibility-menu").css("border-radius", "0px");
 
         $("*").removeClass("dc-button");
-        document
-          .getElementById("contrast-button")
-          .setAttribute("aria-pressed", "true");
       } else {
+        contrastButton.removeClass("button-pressed");
+        contrastButton.attr("aria-pressed", "false");
+
         $("*").removeClass("dc");
         $("*").removeClass("dc-button");
 
@@ -958,14 +846,6 @@
           "background-color",
           options.mainColor
         );
-
-        // $("#accDec").css("color", "#fff");
-
-        contrastButton.removeClass("button-pressed");
-
-        document
-          .getElementById("contrast-button")
-          .setAttribute("aria-pressed", "false");
       }
 
       // console.log("c", options.contrast);
@@ -974,6 +854,8 @@
 
       if (options.invert) {
         invertButton.addClass("button-pressed");
+        invertButton.attr("aria-pressed", "true");
+
         filters.push("invert(1)");
 
         //   if (
@@ -996,6 +878,7 @@
         //   }
       } else {
         invertButton.removeClass("button-pressed");
+        invertButton.attr("aria-pressed", "false");
 
         //   html.css(
         //     "background-color",
@@ -1008,10 +891,10 @@
 
       if (options.grayscale == 100) {
         monochromeButton.addClass("button-pressed");
-        var bgc = document.body.style.backgroundColor;
-        // console.log("bgc", bgc);
+        monochromeButton.attr("aria-pressed", "true");
       } else {
         monochromeButton.removeClass("button-pressed");
+        monochromeButton.attr("aria-pressed", "false");
       }
 
       filters.push("contrast(" + 100 + "%)");
@@ -1028,56 +911,57 @@
       // Link Highlight
 
       if (options.highlightedLinks) {
+        linksButton.addClass("button-pressed");
+        linksButton.attr("aria-pressed", "true");
+
         $("a:not(a:has(img))")
           .not(".open-accessibility *")
           .addClass("highlight-links");
         $("a img").addClass("highlight-links");
-        // $(".open-accessibility-menu-footer").addClass("highlight-links");
-        // $(".open-accessibility-menu-footer svg").addClass(
-        //   "highlight-links-footer-img"
-        // );
-
-        linksButton.addClass("button-pressed");
-        document
-          .getElementById("links-button")
-          .setAttribute("aria-pressed", "true");
       } else {
+        linksButton.removeClass("button-pressed");
+        linksButton.attr("aria-pressed", "false");
+
         $("a:not(a:has(img))").removeClass("highlight-links");
         $("a img").removeClass("highlight-links");
         $(".open-accessibility-menu-footer").removeClass("highlight-links");
         $(".open-accessibility-menu-footer svg").removeClass(
           "highlight-links-footer-img"
         );
-
-        linksButton.removeClass("button-pressed");
-        document
-          .getElementById("links-button")
-          .setAttribute("aria-pressed", "false");
       }
 
       // Animation Stop
       if (options.isAnimStopped) {
         animationButton.addClass("button-pressed");
-        document
-          .getElementById("stop-anim-button")
-          .setAttribute("aria-pressed", "true");
+        animationButton.attr("aria-pressed", "true");
 
         $("*").not(".open-accessibility *").not("img").addClass("paused");
+
+        let iframeLength = document.getElementsByTagName("iframe").length;
+        for (let i = 0; i < iframeLength; i++) {
+          $("iframe")[i].contentWindow.postMessage(
+            '{"event":"command","func":"' + "pauseVideo" + '","args":""}',
+            "*"
+          );
+        }
       } else {
         animationButton.removeClass("button-pressed");
-        document
-          .getElementById("stop-anim-button")
-          .setAttribute("aria-pressed", "false");
+        animationButton.attr("aria-pressed", "false");
 
         $("*").removeClass("paused");
+
+        // for (var i = 0; i < 999; i++) {
+        //   $("iframe")[i].contentWindow.postMessage(
+        //     '{"event":"command","func":"' + "playVideo" + '","args":""}',
+        //     "*"
+        //   );
+        // }
       }
 
       // Images Remove
       if (options.imagesRemove) {
         imagesButton.addClass("button-pressed");
-        document
-          .getElementById("img-remove-button")
-          .setAttribute("aria-pressed", "true");
+        imagesButton.attr("aria-pressed", "true");
 
         $("img")
           .not(".empty")
@@ -1097,10 +981,27 @@
           .not(".open-accessibility-menu-disclaimer")
           .not("#open-accessibility-footer-logo svg")
           .not(".open-accessibility")
-          // .not("a img")
-          // .not("a svg")
           .addClass("hide-images");
         $("svg")
+          .not(".empty")
+          .not(".empties")
+          .not("#filler")
+          .not("#lbexpand")
+          .not("#lbclose svg")
+          .not("#pina-container")
+          .not(".open-accessibility-menu-button")
+          .not(".open-accessibility-menu-button svg")
+          .not(".open-accessibility-menu-button span")
+          .not(".button-icon")
+          .not(".open-accessibility-expand-button")
+          .not(".first-line")
+          .not(".open-accessibility-expand-button svg")
+          .not("#open-accessibility-footer-logo")
+          .not(".open-accessibility-menu-disclaimer")
+          .not("#open-accessibility-footer-logo svg")
+          .not(".open-accessibility")
+          .addClass("hide-images");
+        $("a svg")
           .not(".empty")
           .not(".empties")
           .not("#filler")
@@ -1124,22 +1025,15 @@
         $("iframe[src]").addClass("hide-images");
       } else {
         imagesButton.removeClass("button-pressed");
-        document
-          .getElementById("img-remove-button")
-          .setAttribute("aria-pressed", "false");
+        imagesButton.attr("aria-pressed", "false");
 
         $("*").removeClass("hide-images");
-        // $("img").removeClass("hide-images");
-        // $("svg").removeClass("hide-images");
-        // $("img[src]").removeClass("hide-images");
       }
 
       // Focus strip
       if (options.focus) {
         focusButton.addClass("button-pressed");
-        document
-          .getElementById("img-remove-button")
-          .setAttribute("aria-pressed", "true");
+        focusButton.attr("aria-pressed", "true");
 
         var focusDiv =
           '<div id="prefollower"></div><div id="follower"></div><div id="parafollower"></div>';
@@ -1181,9 +1075,7 @@
         });
       } else {
         focusButton.removeClass("button-pressed");
-        document
-          .getElementById("focus-button")
-          .setAttribute("aria-pressed", "false");
+        focusButton.attr("aria-pressed", "false");
 
         $("html").off("mousemove");
         $("#prefollower").remove();
@@ -1195,6 +1087,9 @@
 
       // Readable font
       if (options.fontReadable) {
+        fontReadableButton.addClass("button-pressed");
+        fontReadableButton.attr("aria-pressed", "true");
+
         $("*")
           .not(".empty")
           .not(".empties")
@@ -1230,35 +1125,22 @@
           .not("a")
           .not(".bottom-links")
           .addClass("readable-font");
-
-        fontReadableButton.addClass("button-pressed");
-
-        document
-          .getElementById("fontr-button")
-          .setAttribute("aria-pressed", "true");
       } else {
-        $("*").removeClass("readable-font");
-
         fontReadableButton.removeClass("button-pressed");
+        fontReadableButton.attr("aria-pressed", "false");
 
-        document
-          .getElementById("fontr-button")
-          .setAttribute("aria-pressed", "false");
+        $("*").removeClass("readable-font");
       }
 
       // Headings highlight
       if (options.headings) {
         headingsButton.addClass("button-pressed");
-        document
-          .getElementById("headings-button")
-          .setAttribute("aria-pressed", "true");
+        headingsButton.attr("aria-pressed", "true");
 
         $("h1, h2, h3, h4, h5, h6").addClass("heading-highlight");
       } else {
         headingsButton.removeClass("button-pressed");
-        document
-          .getElementById("headings-button")
-          .setAttribute("aria-pressed", "false");
+        headingsButton.attr("aria-pressed", "false");
 
         $("h1, h2, h3, h4, h5, h6").removeClass("heading-highlight");
       }
@@ -1282,26 +1164,6 @@
       return "rgb(" + r + "," + g + "," + b + ")";
     }
 
-    // function getUserOptions2() {
-    //   var data;
-    //   try {
-    //     data = localStorage.getItem(LOCAL_STORAGE_OPTIONS_KEY);
-    //     data = JSON.parse(data);
-    //   } catch (e) {}
-
-    //   if (data && typeof data === "object") {
-    //     return data;
-    //   } else {
-    //     return {};
-    //   }
-    // }
-
-    // function setUserOptions2(options) {
-    //   localStorage.setItem(LOCAL_STORAGE_OPTIONS_KEY, JSON.stringify(options));
-    // }
-
-    // ================================
-    // Drag & Drop features and applying initial Toolbar vertical position
     var fill = document.querySelector(".fill");
     var empties = document.querySelectorAll(".empty");
 

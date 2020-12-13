@@ -133,3 +133,9 @@ Bug fixs:
 * Removed transorm & transition sttributes from Animation Stop Function
 * Added a fixed height to the Toolbar's footer
 * Added a 100% width to the footer's svg
+
+2.24 (13/12/2020)
+* Changed some js code to jquery 
+* Fixed Toolbar's button aria attributes
+* Optimized Hide Pictures function
+* Optimized Animation Stop function (pause iframes)

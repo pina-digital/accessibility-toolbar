@@ -20,6 +20,11 @@
     <link rel="stylesheet" href="dist/open-accessibility.min.css" />
     <script src="dist/open-accessibility.min.js"></script>
     <script src="https://www.youtube.com/iframe_api" class=""></script>
+    <script
+      src="http://www.youtube.com/v/VIDEO_ID?version=3&enablejsapi=1"
+      class=""
+    ></script>
+
     <script>
       $(function () {
         $("body").openAccessibility({
@@ -75,6 +80,88 @@
       .pageImages {
         background-color: lightgreen;
       }
+
+      .mySlides {
+        display: none;
+      }
+      img {
+        vertical-align: middle;
+      }
+
+      /* Slideshow container */
+      .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+      }
+
+      /* Caption text */
+      .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Number text (1/3 etc) */
+      .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+
+      /* The dots/bullets/indicators */
+      .dot {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+      }
+
+      .active {
+        background-color: #717171;
+      }
+
+      /* Fading animation */
+      .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+
+      @-webkit-keyframes fade {
+        from {
+          opacity: 0.4;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0.4;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* On smaller screens, decrease text size */
+      @media only screen and (max-width: 300px) {
+        .text {
+          font-size: 11px;
+        }
+      }
     </style>
   </head>
 
@@ -86,14 +173,14 @@
       <iframe
         class="elementor-background-video-embed"
         data-open-accessibility-font-original="16px"
-        style="font-size: 16px !important; width: 1131px; height: 636.188px"
+        style="font-size: 16px !important; height: 636.188px"
         frameborder="0"
         allowfullscreen="1"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         title="YouTube video player"
-        width="640"
+        width="100%"
         height="360"
-        src="https://www.youtube.com/embed/wAqufyvN3kw?controls=0&amp;rel=0&amp;playsinline=1&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fwww.bmeiri.com&amp;widgetid=1"
+        src="https://www.youtube.com/embed/wAqufyvN3kw?controls=0&amp;enablejsapi=1&version=3&playerapiid=ytplayer"
         id="widget2"
       ></iframe>
       <div>
@@ -550,6 +637,153 @@
         dapibus diam quis, laoreet orci.
       </p>
     </main>
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <div class="numbertext">1 / 3</div>
+        <img
+          src="./misc/118860939_1571823466543488_8890648245741509424_o.jpg"
+          style="height: 200px"
+        />
+        <div class="text">Caption Text</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 3</div>
+        <img src="./misc/kitten.jpg" style="height: 200px" />
+        <div class="text">Caption Two</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">3 / 3</div>
+        <img
+          src="./misc/118860939_1571823466543488_8890648245741509424_o.jpg"
+          style="height: 200px"
+        />
+        <div class="text">Caption Three</div>
+      </div>
+    </div>
+    <br />
+
+    <div style="text-align: center">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
     <footer></footer>
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <div id="player">
+      <iframe
+        class="youtube-video"
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/wAqufyvN3kw?controls=0&amp;enablejsapi=1&version=3&playerapiid=ytplayer"
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
+      <iframe
+        class="youtube-video"
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/wAqufyvN3kw?controls=0&amp;enablejsapi=1&version=3&playerapiid=ytplayer"
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement("script");
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName("script")[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player("player", {
+          height: "390",
+          width: "640",
+          videoId: "M7lc1UVf-VE",
+          events: {
+            onReady: onPlayerReady,
+            onStateChange: onPlayerStateChange,
+          },
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 6000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+    </script>
+    <a
+      class="elementor-icon elementor-animation-grow"
+      href="https://www.bmeiri.com/%d7%91%d7%a7%d7%a8%d7%aa-%d7%9e%d7%a2%d7%a8%d7%9b%d7%95%d7%aa-co/"
+      data-open-accessibility-font-original="65px"
+      style="font-size: 65px !important"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="512"
+        viewBox="0 0 64 64"
+        width="512"
+      >
+        <g id="outline">
+          <path d="m19 29h8v2h-8z"></path>
+          <path d="m19 33h8v2h-8z"></path>
+          <path d="m11 43h2v2h-2z"></path>
+          <path d="m15 43h2v2h-2z"></path>
+          <path
+            d="m33 38v4a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-4a1 1 0 0 0 -1-1h-12a1 1 0 0 0 -1 1zm2 1h10v2h-10z"
+          ></path>
+          <path d="m57 29h-4v2h3v2h2v-3a1 1 0 0 0 -1-1z"></path>
+          <path d="m56 35h2v2h-2z"></path>
+          <path
+            d="m61 12h-18a1 1 0 0 0 -.447.105l-1.789.895h-8.948a3 3 0 0 0 -2.816-2h-12a2.966 2.966 0 0 0 -1 .184v-2.184h17a5.006 5.006 0 0 0 5-5 1 1 0 0 0 -1-1h-22a5.006 5.006 0 0 0 -5 5v14a4.948 4.948 0 0 0 1.026 3h-1.026a3 3 0 0 0 -3 3v2h-4a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h4v2h-4a1 1 0 0 0 -1 1v4a1 1 0 0 0 1 1h4a3 3 0 0 0 3 3h.279l1.772 5.316a1 1 0 0 0 .949.684h4a1 1 0 0 0 .949-.684l1.772-5.316h21.279v5a1 1 0 0 1 -1 1h-14a1 1 0 0 0 -1 1v4a1 1 0 0 0 1 1h14a7.008 7.008 0 0 0 7-7v-5h1.279l1.772 5.316a1 1 0 0 0 .949.684h4a1 1 0 0 0 .949-.684l1.772-5.316h1.279a3 3 0 0 0 3-3v-18a3 3 0 0 0 -3-3v-3h2a1 1 0 0 0 1-1v-8a1 1 0 0 0 -1-1zm-31-7h5.829a3.006 3.006 0 0 1 -2.829 2h-3zm-23 39h-3v-2h3zm0-8h-3v-4h3zm22 23h-2v-2h2zm3-44h8v4h-8zm-4-2h1a1 1 0 0 1 1 1v7h-2zm-4 0h2v8h-2zm-1 10h2v2h-2zm-3-10h2v8h-2zm-3 0h1v8h-2v-7a1 1 0 0 1 1-1zm-5-5a3 3 0 0 1 3-3h13v2h-13a1 1 0 0 0 -1 1v14a1 1 0 0 0 1 1h6v2h-6a3 3 0 0 1 -3-3zm-3 20a1 1 0 0 1 1-1h5v10h-6zm7.279 25h-2.558l-1.334-4h5.226zm12.721-6h-19a1 1 0 0 1 -1-1v-7h7a1 1 0 0 0 1-1v-11h12zm-2-22v-2h4a1 1 0 0 0 1-1v-1h8.764l1.789.895a1 1 0 0 0 .447.105v3zm18 29a5.006 5.006 0 0 1 -5 5h-9v-2h9a3 3 0 0 0 3-3v-5h2zm4-7h-18v-20h18zm-4-22v-3h12v3zm9.279 28h-2.558l-1.334-4h5.226zm5.721-25v18a1 1 0 0 1 -1 1h-8v-20h8a1 1 0 0 1 1 1zm0-8h-16.764l-1.236-.618v-4.764l1.236-.618h16.764z"
+          ></path>
+          <path d="m56 16h2v2h-2z"></path>
+          <path d="m52 16h2v2h-2z"></path>
+        </g>
+      </svg>
+    </a>
   </body>
+  <script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+      setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+  </script>
 </html>
