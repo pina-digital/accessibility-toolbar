@@ -625,21 +625,68 @@
         $("#side-switch").css("margin", "0 2px 0 43px");
         $("#oals").css("margin", "0 0 0 25px");
 
-        $("#pt-font-zoomin").attr("viewBox", "30 20 70 70");
-        $("#pt-font-zoomout").attr("viewBox", "30 20 70 70");
-        $("#pt-page-zoomin").attr("viewBox", "30 20 70 70");
-        $("#pt-cursor").attr("viewBox", "0 5 60 60");
-        $("#pt-contrast").attr("viewBox", "30 20 70 70");
-        $("#pt-invert").attr("viewBox", "30 20 70 70");
-        $("#pt-monochrome").attr("viewBox", "30 20 65 65");
-        $("#pt-links").attr("viewBox", "30 17 65 65");
-        $("#pt-pause").attr("viewBox", "32 20 65 65");
-        $("#pt-images-remove").attr("viewBox", "0 -4 70 70");
-        $("#pt-focus").attr("viewBox", "2 -4 70 70");
-        $("#pt-font-readable").attr("viewBox", "-15 -9 55 55");
-        $("#fr-11").attr("transform", "translate(11.04 13.97)");
-        $("#pt-headings").attr("viewBox", "-12 -4 55 55");
-        $("#pt-revert").attr("viewBox", "2 -4 65 65");
+        document
+          .getElementById("pt-font-zoomin")
+          .setAttribute("viewBox", "30 20 70 70");
+
+        document
+          .getElementById("pt-font-zoomout")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-page-zoomin")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-cursor")
+          .setAttribute("viewBox", "0 5 60 60");
+        document
+          .getElementById("pt-contrast")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-invert")
+          .setAttribute("viewBox", "30 20 70 70");
+        document
+          .getElementById("pt-monochrome")
+          .setAttribute("viewBox", "30 20 65 65");
+        document
+          .getElementById("pt-links")
+          .setAttribute("viewBox", "30 17 65 65");
+        document
+          .getElementById("pt-pause")
+          .setAttribute("viewBox", "32 20 65 65");
+        document
+          .getElementById("pt-images-remove")
+          .setAttribute("viewBox", "0 -4 70 70");
+        document
+          .getElementById("pt-focus")
+          .setAttribute("viewBox", "2 -4 70 70");
+        document
+          .getElementById("pt-font-readable")
+          .setAttribute("viewBox", "-15 -9 55 55");
+        document
+          .getElementById("fr-11")
+          .setAttribute("transform", "translate(11.04 13.97)");
+        document
+          .getElementById("pt-headings")
+          .setAttribute("viewBox", "-12 -4 55 55");
+        document
+          .getElementById("pt-revert")
+          .setAttribute("viewBox", "2 -4 65 65");
+        // $("#pt-font-zoomin").attr("viewBox", "30 20 70 70");
+        // $("#pt-font-zoomout").attr("viewBox", "30 20 70 70");
+        // $("#pt-page-zoomin").attr("viewBox", "30 20 70 70");
+        // $("#pt-cursor").attr("viewBox", "0 5 60 60");
+        // $("#pt-contrast").attr("viewBox", "30 20 70 70");
+        // $("#pt-invert").attr("viewBox", "30 20 70 70");
+        // $("#pt-monochrome").attr("viewBox", "30 20 65 65");
+        // $("#pt-links").attr("viewBox", "30 17 65 65");
+        // $("#pt-pause").attr("viewBox", "32 20 65 65");
+        // $("#pt-images-remove").attr("viewBox", "0 -4 70 70");
+        // $("#pt-focus").attr("viewBox", "2 -4 70 70");
+        // $("#pt-font-readable").attr("viewBox", "-15 -9 55 55");
+        // $("#fr-11").attr("transform", "translate(11.04 13.97)");
+        // $("#pt-headings").attr("viewBox", "-12 -4 55 55");
+        // $("#pt-revert").attr("viewBox", "2 -4 65 65");
+
         $("#menu-disclaimer").css("margin", "0 66px 0 0");
         $("#menu-version").css("margin", "0 0 0 15px");
       } else {
@@ -652,21 +699,52 @@
         $("#side-switch").css("margin", "0 43px 0 2px");
         $("#oals").css("margin", "0 25px 0 0");
 
-        $("#pt-font-zoomin").attr("viewBox", "52 20 70 70");
-        $("#pt-font-zoomout").attr("viewBox", "52 20 70 70");
-        $("#pt-page-zoomin").attr("viewBox", "52 20 70 70");
-        $("#pt-cursor").attr("viewBox", "20 5 60 60");
-        $("#pt-contrast").attr("viewBox", "52 20 70 70");
-        $("#pt-invert").attr("viewBox", "52 20 70 70");
-        $("#pt-monochrome").attr("viewBox", "52 20 65 65");
-        $("#pt-links").attr("viewBox", "52 17 65 65");
-        $("#pt-pause").attr("viewBox", "52 20 65 65");
-        $("#pt-images-remove").attr("viewBox", "22 -4 70 70");
-        $("#pt-focus").attr("viewBox", "22 -4 70 70");
-        $("#pt-font-readable").attr("viewBox", "3 -9 55 55");
-        $("#fr-11").attr("transform", "translate(1.04 13.97)");
-        $("#pt-headings").attr("viewBox", "32 -4 55 55");
-        $("#pt-revert").attr("viewBox", "22 -4 65 65");
+        document
+          .getElementById("pt-font-zoomin")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-font-zoomout")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-page-zoomin")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-cursor")
+          .setAttribute("viewBox", "20 5 60 60");
+        document
+          .getElementById("pt-contrast")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-invert")
+          .setAttribute("viewBox", "52 20 70 70");
+        document
+          .getElementById("pt-monochrome")
+          .setAttribute("viewBox", "52 20 65 65");
+        document
+          .getElementById("pt-links")
+          .setAttribute("viewBox", "52 17 65 65");
+        document
+          .getElementById("pt-pause")
+          .setAttribute("viewBox", "52 20 65 65");
+        document
+          .getElementById("pt-images-remove")
+          .setAttribute("viewBox", "22 -4 70 70");
+        document
+          .getElementById("pt-focus")
+          .setAttribute("viewBox", "22 -4 70 70");
+        document
+          .getElementById("pt-font-readable")
+          .setAttribute("viewBox", "3 -9 55 55");
+        document
+          .getElementById("fr-11")
+          .setAttribute("transform", "translate(1.04 13.97)");
+        document
+          .getElementById("pt-headings")
+          .setAttribute("viewBox", "32 -4 55 55");
+        document
+          .getElementById("pt-revert")
+          .setAttribute("viewBox", "22 -4 65 65");
+
         $("#menu-disclaimer").css("margin", "0 0 0 66px");
         $("#menu-version").css("margin", "0 15px 0 0");
       }

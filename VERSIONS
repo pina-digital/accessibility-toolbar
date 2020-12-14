@@ -139,3 +139,9 @@ Bug fixs:
 * Fixed Toolbar's button aria attributes
 * Optimized Hide Pictures function
 * Optimized Animation Stop function (pause iframes)
+
+2.25 (14/12/2020)
+* Changed Toolbar's icons position back to js (from jquery) 
+* Fixed the Language Selector's Height
+* Fixed Remove Headings icon's svg
+* Changed the version's font to Assistant
