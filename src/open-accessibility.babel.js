@@ -623,7 +623,7 @@
         $("#lbexpand").css("border-radius", "50% 0% 0% 50%");
 
         $("#side-switch").css("margin", "0 2px 0 43px");
-        $("#oals").css("margin", "0 0 0 25px");
+        $("#oals").css("margin", "-12px 0 0 25px");
 
         document
           .getElementById("pt-font-zoomin")
@@ -697,7 +697,7 @@
         $("#lbexpand").css("border-radius", "0% 50% 50% 0%");
 
         $("#side-switch").css("margin", "0 43px 0 2px");
-        $("#oals").css("margin", "0 25px 0 0");
+        $("#oals").css("margin", "-12px 25px 0 0");
 
         document
           .getElementById("pt-font-zoomin")
