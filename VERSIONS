@@ -157,3 +157,4 @@ Bug fixs:
 * Fixed the Language Select top margin when switching Toolbar's sides
 
 2.29 (15/12/2020)
+* Fixed menu/buttons width when contrast/screen resolution changes
