@@ -585,15 +585,17 @@
       // console.log("optionstest", options);
       // ----------------
       // Setting the toolbar's buttons section height based on window height
-      if (screenHeight < 1080) {
-        $(".open-accessibility-menu-buttons").addClass("low-res-screen");
-        $("#pina-container").css("width", "262px");
-        $(".open-accessibility-menu-footer").css("width", "262px");
-      } else {
-        $(".open-accessibility-menu-buttons").removeClass("low-res-screen");
-        $("#pina-container").css("width", "256px");
-        $(".open-accessibility-menu-footer").css("width", "256px");
-      }
+      // if (screenHeight < 1080) {
+      //   $(".open-accessibility-menu-buttons").addClass("low-res-screen");
+      //   // $("#pina-container").css("width", "262px");
+      //   document.getElementById("pina-container").style.width =
+      //     "262px !important";
+      //   $(".open-accessibility-menu-footer").css("width", "262px");
+      // } else {
+      //   $(".open-accessibility-menu-buttons").removeClass("low-res-screen");
+      //   $("#pina-container").css("width", "256px");
+      //   $(".open-accessibility-menu-footer").css("width", "256px");
+      // }
 
       // ----------------
       // Changing between menu closed/open classes
@@ -824,6 +826,18 @@
 
       // Contrast
 
+      // if (screenHeight < 1080) {
+      //   $(".open-accessibility-menu-buttons").addClass("low-res-screen");
+      //   // $("#pina-container").css("width", "262px");
+      //   document.getElementById("pina-container").style.width =
+      //     "262px !important";
+      //   $(".open-accessibility-menu-footer").css("width", "262px");
+      // } else {
+      //   $(".open-accessibility-menu-buttons").removeClass("low-res-screen");
+      //   $("#pina-container").css("width", "256px");
+      //   $(".open-accessibility-menu-footer").css("width", "256px");
+      // }
+
       if (options.contrast > 100) {
         contrastButton.addClass("button-pressed");
         contrastButton.attr("aria-pressed", "true");
@@ -859,10 +873,20 @@
           "background-color",
           "transparent"
         );
-        $("#pina-container").css("width", "260px");
-
         $(".open-accessibility-menu").css("border", "2px solid white");
         $(".open-accessibility-menu").css("border-radius", "10px");
+
+        if (screenHeight < 1080) {
+          $(".open-accessibility-container").css("width", "262px");
+          $(".open-accessibility-menu-buttons").css("width", "262px");
+          $(".open-accessibility-menu-buttons").css("height", "376px");
+          $(".open-accessibility-menu-footer").css("width", "auto");
+        } else {
+          $(".open-accessibility-container").css("width", "260px");
+          $(".open-accessibility-menu-buttons").css("width", "256px");
+          $(".open-accessibility-menu-buttons").css("height", "auto");
+          $(".open-accessibility-menu-footer").css("width", "256px");
+        }
       } else if (options.contrast < 100) {
         contrastButton.attr("aria-pressed", "true");
 
@@ -902,12 +926,22 @@
           options.mainColor
         );
 
-        $("#pina-container").css("width", "256px");
-
         $(".open-accessibility-menu").css("border", "none");
         $(".open-accessibility-menu").css("border-radius", "0px");
 
         $("*").removeClass("dc-button");
+
+        if (screenHeight < 1080) {
+          $(".open-accessibility-container").css("width", "262px");
+          $(".open-accessibility-menu-buttons").css("width", "262px");
+          $(".open-accessibility-menu-buttons").css("height", "376px");
+          $(".open-accessibility-menu-footer").css("width", "262px");
+        } else {
+          $(".open-accessibility-container").css("width", "260px");
+          $(".open-accessibility-menu-buttons").css("width", "256px");
+          $(".open-accessibility-menu-buttons").css("height", "auto");
+          $(".open-accessibility-menu-footer").css("width", "260px");
+        }
       } else {
         contrastButton.removeClass("button-pressed");
         contrastButton.attr("aria-pressed", "false");
@@ -924,6 +958,18 @@
           "background-color",
           options.mainColor
         );
+
+        if (screenHeight < 1080) {
+          $(".open-accessibility-container").css("width", "262px");
+          $(".open-accessibility-menu-buttons").css("width", "262px");
+          $(".open-accessibility-menu-buttons").css("height", "376px");
+          $(".open-accessibility-menu-footer").css("width", "262px");
+        } else {
+          $(".open-accessibility-container").css("width", "260px");
+          $(".open-accessibility-menu-buttons").css("width", "256px");
+          $(".open-accessibility-menu-buttons").css("height", "auto");
+          $(".open-accessibility-menu-footer").css("width", "260px");
+        }
       }
 
       // console.log("c", options.contrast);
