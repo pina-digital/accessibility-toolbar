@@ -623,7 +623,7 @@
         $("#lbexpand").css("border-radius", "50% 0% 0% 50%");
 
         $("#side-switch").css("margin", "0 2px 0 43px");
-        $("#oals").css("margin", "-12px 0 0 25px");
+        $("#oals").css("margin", "0 0 0 25px");
 
         document
           .getElementById("pt-font-zoomin")
@@ -687,7 +687,7 @@
         // $("#pt-headings").attr("viewBox", "-12 -4 55 55");
         // $("#pt-revert").attr("viewBox", "2 -4 65 65");
 
-        $("#menu-disclaimer").css("margin", "0 66px 0 0");
+        $("#menu-disclaimer").css("margin", "0 53px 0 0");
         $("#menu-version").css("margin", "0 0 0 15px");
       } else {
         $("#empties-side").css("left", "0px");
@@ -697,7 +697,7 @@
         $("#lbexpand").css("border-radius", "0% 50% 50% 0%");
 
         $("#side-switch").css("margin", "0 43px 0 2px");
-        $("#oals").css("margin", "-12px 25px 0 0");
+        $("#oals").css("margin", "0 25px 0 0");
 
         document
           .getElementById("pt-font-zoomin")
@@ -745,7 +745,7 @@
           .getElementById("pt-revert")
           .setAttribute("viewBox", "22 -4 65 65");
 
-        $("#menu-disclaimer").css("margin", "0 0 0 66px");
+        $("#menu-disclaimer").css("margin", "0 0 0 53px");
         $("#menu-version").css("margin", "0 15px 0 0");
       }
 
