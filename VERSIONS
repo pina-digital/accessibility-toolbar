@@ -149,3 +149,6 @@ Bug fixs:
 2.26 (15/12/2020)
 * Fixed the Language Select top margin when switching Toolbar's sides
 * Changed the Accessibility Decrlaration link's width to fit 1 line
+
+2.27 (15/12/2020)
+* Trying to remove background image from <div>
