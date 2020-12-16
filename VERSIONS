@@ -158,3 +158,7 @@ Bug fixs:
 
 2.29 (15/12/2020)
 * Fixed menu/buttons width when contrast/screen resolution changes
+
+2.30 (16/12/2020)
+* Aligned Menu Button images to center
+* Working on the Hide Images function

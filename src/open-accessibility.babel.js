@@ -629,35 +629,35 @@
 
         document
           .getElementById("pt-font-zoomin")
-          .setAttribute("viewBox", "30 20 70 70");
+          .setAttribute("viewBox", "32 20 70 70");
 
         document
           .getElementById("pt-font-zoomout")
-          .setAttribute("viewBox", "30 20 70 70");
+          .setAttribute("viewBox", "32 20 70 70");
         document
           .getElementById("pt-page-zoomin")
-          .setAttribute("viewBox", "30 20 70 70");
+          .setAttribute("viewBox", "32 20 70 70");
         document
           .getElementById("pt-cursor")
-          .setAttribute("viewBox", "0 5 60 60");
+          .setAttribute("viewBox", "4 5 60 60");
         document
           .getElementById("pt-contrast")
           .setAttribute("viewBox", "30 20 70 70");
         document
           .getElementById("pt-invert")
-          .setAttribute("viewBox", "30 20 70 70");
+          .setAttribute("viewBox", "32 20 70 70");
         document
           .getElementById("pt-monochrome")
-          .setAttribute("viewBox", "30 20 65 65");
+          .setAttribute("viewBox", "33 20 65 65");
         document
           .getElementById("pt-links")
-          .setAttribute("viewBox", "30 17 65 65");
+          .setAttribute("viewBox", "34 17 65 65");
         document
           .getElementById("pt-pause")
-          .setAttribute("viewBox", "32 20 65 65");
+          .setAttribute("viewBox", "31 20 65 65");
         document
           .getElementById("pt-images-remove")
-          .setAttribute("viewBox", "0 -4 70 70");
+          .setAttribute("viewBox", "2 -4 70 70");
         document
           .getElementById("pt-focus")
           .setAttribute("viewBox", "2 -4 70 70");
@@ -1145,7 +1145,7 @@
           .not(".open-accessibility")
           .addClass("hide-images");
         $("img[src]").addClass("hide-images");
-        $("div").addClass("hide-images");
+        $("div[background-image]").addClass("hide-images");
 
         $("div[src]").addClass("hide-images");
         $("iframe[src]").addClass("hide-images");
