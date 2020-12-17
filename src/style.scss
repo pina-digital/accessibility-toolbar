@@ -241,16 +241,16 @@
 
 .button-indicator {
   visibility: visible !important;
-  width: 25px !important;
+  width: 20px !important;
   // width: 1rem !important;
-  height: 18px !important;
+  height: 14px !important;
   color: #fff;
   font-size: 9px;
   font-weight: bold;
   background-color: var(--main-color);
-  padding: 2px 6px 0 6px !important;
+  padding: 3px 3px 0 3px !important;
   border-radius: 8px;
-  margin: 5px;
+  margin: 3px 3px 0 0;
 }
 
 .first-line {
@@ -262,7 +262,7 @@
   visibility: hidden;
   display: flex;
   justify-content: center;
-  width: 35px;
+  width: 25px;
   padding: 5px 5px 0 0;
 }
 
@@ -426,6 +426,7 @@
       padding: 0 5px;
     }
     &:hover {
+      color: #fff;
       font-size: 16px;
       text-decoration: underline;
     }
