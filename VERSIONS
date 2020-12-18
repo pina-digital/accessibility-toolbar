@@ -162,3 +162,11 @@ Bug fixs:
 2.30 (16/12/2020)
 * Aligned Menu Button images to center
 * Working on the Hide Images function
+
+2.31 (17/12/2020)
+* Changed the Accessibility Declaration link's color when hovered to #fff
+* Working on the Hide Images function
+* Fixed the hidden menu buttons indicator
+
+2.32 (17/12/2020)
+* Working on the Hide Images function

@@ -1146,6 +1146,7 @@
           .addClass("hide-images");
         $("img[src]").addClass("hide-images");
         $("div[background-image]").addClass("hide-images");
+        $("img").addClass("hide-images");
 
         $("div[src]").addClass("hide-images");
         $("iframe[src]").addClass("hide-images");
