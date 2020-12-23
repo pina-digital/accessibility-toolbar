@@ -171,6 +171,7 @@
       toolbarSide: true,
       toolbarVertPos: "5",
       mainColor: "#114761",
+      secondaryColor: "#47C0EA",
       isMenuOpened: false,
       accessibilityDeclaration: "",
     };
@@ -252,20 +253,29 @@
     // Set icon size
     container.addClass(getIconClass(options.iconSize));
 
+    $(".open-accessibility-expand-button").hover(function () {
+      $(this).find("#expand-image").toggleClass("hovera");
+    });
+
     // Setting Toolbar's Main Color to var in style.scss
     let root = document.documentElement;
     root.style.setProperty("--main-color", options.mainColor);
+    root.style.setProperty("--secondary-color", options.secondaryColor);
 
     // Setting Toolbar's footer logo hover behaviour
     $("#open-accessibility-footer-logo").hover(
       function () {
-        $(this).css("background-color", "#e6e6e6");
+        $(this).css("background-color", "#47C0EA");
         $(".pw").css("fill", options.mainColor);
+        $(".plb").css("fill", "#FFF");
+
         // $(this).css("fill", "#fff");
       },
       function () {
         $(this).css("background-color", options.mainColor);
         $(".pw").css("fill", "#fff");
+        $(".plb").css("fill", "#47C0EA");
+
         // $(this).css("fill", options.mainColor);
       }
     );
@@ -885,7 +895,7 @@
           $(".open-accessibility-container").css("width", "260px");
           $(".open-accessibility-menu-buttons").css("width", "256px");
           $(".open-accessibility-menu-buttons").css("height", "auto");
-          $(".open-accessibility-menu-footer").css("width", "256px");
+          $(".open-accessibility-menu-footer").css("width", "auto");
         }
       } else if (options.contrast < 100) {
         contrastButton.attr("aria-pressed", "true");

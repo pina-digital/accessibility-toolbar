@@ -1,5 +1,6 @@
 :root {
   --main-color: #114761;
+  --secondary-color: #47c0ea;
 }
 .pageImages {
   border: 1px solid red;
@@ -48,6 +49,13 @@
     outline: 3px dashed var(--main-color);
     border-radius: 5px;
   }
+}
+// #expand-image {
+//   transition: transform 0.5s ease 0s;
+// }
+.hovera {
+  fill: var(--secondary-color) !important;
+  // transform: rotate(180deg);
 }
 
 .open-accessibility {
@@ -104,9 +112,9 @@
   z-index: 999;
 }
 
-.open-accessibility-menu {
-  width: 256px !important;
-}
+// .open-accessibility-menu {
+//   width: 256px !important;
+// }
 
 .open-accessibility-top-row {
   display: flex;
