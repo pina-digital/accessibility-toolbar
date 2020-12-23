@@ -288,6 +288,7 @@
   .fill,
   #lbexpand,
   a,
+  iframe,
   button,
   a:link,
   a:link img #pina-container,
@@ -677,7 +678,7 @@ input:checked + .slider .off {
   position: absolute;
   display: block;
   width: 100%;
-  /* z-index: 999; */
+  z-index: 999;
   left: 0;
   top: 0;
 }
@@ -692,7 +693,7 @@ input:checked + .slider .off {
   display: block;
   width: 100%;
   left: 0;
-  /* z-index: 999; */
+  z-index: 999;
 }
 
 .readable-font {
