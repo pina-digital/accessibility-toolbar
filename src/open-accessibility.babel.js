@@ -887,12 +887,12 @@
         $(".open-accessibility-menu").css("border-radius", "10px");
 
         if (screenHeight < 1080) {
-          $(".open-accessibility-container").css("width", "262px");
+          $(".open-accessibility-container").css("width", "266px");
           $(".open-accessibility-menu-buttons").css("width", "262px");
           $(".open-accessibility-menu-buttons").css("height", "376px");
           $(".open-accessibility-menu-footer").css("width", "auto");
         } else {
-          $(".open-accessibility-container").css("width", "260px");
+          $(".open-accessibility-container").css("width", "264px");
           $(".open-accessibility-menu-buttons").css("width", "256px");
           $(".open-accessibility-menu-buttons").css("height", "auto");
           $(".open-accessibility-menu-footer").css("width", "auto");
@@ -947,7 +947,7 @@
           $(".open-accessibility-menu-buttons").css("height", "376px");
           $(".open-accessibility-menu-footer").css("width", "262px");
         } else {
-          $(".open-accessibility-container").css("width", "260px");
+          $(".open-accessibility-container").css("width", "256px");
           $(".open-accessibility-menu-buttons").css("width", "256px");
           $(".open-accessibility-menu-buttons").css("height", "auto");
           $(".open-accessibility-menu-footer").css("width", "260px");
@@ -975,7 +975,7 @@
           $(".open-accessibility-menu-buttons").css("height", "376px");
           $(".open-accessibility-menu-footer").css("width", "262px");
         } else {
-          $(".open-accessibility-container").css("width", "260px");
+          $(".open-accessibility-container").css("width", "256px");
           $(".open-accessibility-menu-buttons").css("width", "256px");
           $(".open-accessibility-menu-buttons").css("height", "auto");
           $(".open-accessibility-menu-footer").css("width", "260px");
